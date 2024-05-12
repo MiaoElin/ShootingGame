@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeId: 100
   hpMax: 100
-  moveSpeed: 10
+  moveSpeed: 5
+  moveType: 1
   body: {fileID: 7072444061591711186, guid: 3e031dc0faae7f44d97782d975076c7f, type: 3}

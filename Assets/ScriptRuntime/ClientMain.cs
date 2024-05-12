@@ -19,6 +19,7 @@ public class ClientMain : MonoBehaviour {
     void Update() {
 
         float dt = Time.deltaTime;
+        
 
         ctx.input.Process();
         GameBusiness_Normal.Tick(ctx, dt);

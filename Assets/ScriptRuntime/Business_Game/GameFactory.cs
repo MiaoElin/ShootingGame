@@ -16,6 +16,7 @@ public static class GameFactory {
         role.hp = tm.hpMax;
         role.hpMax = tm.hpMax;
         role.moveSpeed = tm.moveSpeed;
+        role.moveType = tm.moveType;
         return role;
     }
 }

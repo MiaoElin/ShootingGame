@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameContext {
 
+    public float restTime;
+
     public InputEntity input;
 
     // Core
@@ -16,11 +18,16 @@ public class GameContext {
     // === Owner ===
     public int ownerID;
 
+    // Fsm
+    public GameFsmComponent fsm;
+
     public GameContext() {
         input = new InputEntity();
         asset = new AssetCore();
         roleRepo = new RoleRepo();
         iDService = new IDService();
+
+        fsm = new GameFsmComponent();
     }
 
     public RoleEntity GetOwner() {

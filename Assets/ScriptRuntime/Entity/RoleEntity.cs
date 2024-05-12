@@ -7,6 +7,7 @@ public class RoleEntity : MonoBehaviour {
     public int hp;
     public int hpMax;
     public float moveSpeed;
+    public MoveType moveType;
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     public GameObject body;
