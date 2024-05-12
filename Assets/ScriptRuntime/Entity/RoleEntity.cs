@@ -12,7 +12,8 @@ public class RoleEntity : MonoBehaviour {
     [SerializeField] Animator anim;
     public GameObject body;
 
-    public void Ctor(Animator anim) {
+    public void Ctor(Animator anim, Rigidbody rb) {
+        this.rb = rb;
         this.anim = anim;
     }
 

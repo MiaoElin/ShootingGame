@@ -11,9 +11,10 @@ public class GameContext {
 
     // Service
     public IDService iDService;
-
+    public PoolService poolService;
     // === Repo ===
     public RoleRepo roleRepo;
+
 
     // === Owner ===
     public int ownerID;
@@ -28,6 +29,7 @@ public class GameContext {
         iDService = new IDService();
 
         fsm = new GameFsmComponent();
+        poolService = new PoolService();
     }
 
     public RoleEntity GetOwner() {

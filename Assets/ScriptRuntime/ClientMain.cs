@@ -9,6 +9,7 @@ public class ClientMain : MonoBehaviour {
 
     void Start() {
         Load();
+        ctx.poolService.Init(() => GameFactory.Role_Create(ctx));
         GameBusiness_Normal.Enter(ctx);
     }
 
@@ -19,10 +20,13 @@ public class ClientMain : MonoBehaviour {
     void Update() {
 
         float dt = Time.deltaTime;
-        
 
         ctx.input.Process();
-        GameBusiness_Normal.Tick(ctx, dt);
+
+        var status = ctx.fsm.status;
+        if (status == GameStatus.Normal) {
+            GameBusiness_Normal.Tick(ctx, dt);
+        }
 
 
     }

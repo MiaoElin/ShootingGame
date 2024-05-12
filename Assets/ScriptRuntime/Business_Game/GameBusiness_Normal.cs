@@ -6,6 +6,7 @@ public static class GameBusiness_Normal {
     public static void Enter(GameContext ctx) {
         var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 0, 0));
         ctx.ownerID = owner.id;
+        ctx.fsm.EnterNormal();
     }
 
     public static void Tick(GameContext ctx, float dt) {
