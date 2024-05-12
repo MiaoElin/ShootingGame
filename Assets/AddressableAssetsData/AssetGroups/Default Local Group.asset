@@ -20,7 +20,14 @@ MonoBehaviour:
   - m_GUID: 838cba82e710e8e4ca15201d32e4178c
     m_Address: Assets/ResourceRuntime/Entity/RoleEntity.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Entities
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f39343edff87f54cb64a5be1c44553b
+    m_Address: Assets/ResourceRuntime/Templete/RoleTM_100.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RoleTM
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4f5eacb28cbfc954d9ddea2bca523a81, type: 2}

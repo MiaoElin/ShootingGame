@@ -9,6 +9,7 @@ public class ClientMain : MonoBehaviour {
 
     void Start() {
         Load();
+        GameBusiness_Normal.Enter(ctx);
     }
 
     private void Load() {
@@ -16,8 +17,11 @@ public class ClientMain : MonoBehaviour {
     }
 
     void Update() {
+
+        float dt = Time.deltaTime;
+
         ctx.input.Process();
-        
+        GameBusiness_Normal.Tick(ctx, dt);
 
 
     }

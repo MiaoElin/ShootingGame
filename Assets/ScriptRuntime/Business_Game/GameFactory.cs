@@ -9,7 +9,8 @@ public static class GameFactory {
         }
         ctx.asset.TryGetEntity_Prefab(typeof(RoleEntity).Name, out var prefab);
         RoleEntity role = GameObject.Instantiate(prefab).GetComponent<RoleEntity>();
-        role.Ctor();
+        role.body = GameObject.Instantiate(tm.body, role.transform);
+        role.Ctor(role.body.GetComponent<Animator>());
         role.typeId = typeId;
         role.id = ctx.iDService.roleIdRecord++;
         role.hp = tm.hpMax;
