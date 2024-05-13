@@ -44,6 +44,6 @@ public static class GameBusiness_Normal {
     }
 
     public static void LateTick(GameContext ctx, float dt) {
-        ctx.camreEntity.Follow(ctx.input.mouseAxis, ctx.GetOwner());
+        ctx.camreEntity.Follow(ctx.input.mouseAxis, ctx.GetOwner(),dt);
     }
 }

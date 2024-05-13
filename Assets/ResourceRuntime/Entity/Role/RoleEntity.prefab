@@ -51,7 +51,6 @@ MonoBehaviour:
   hp: 0
   hpMax: 0
   moveSpeed: 0
-  faceDir: {x: 0, y: 0, z: 0}
   moveType: 0
   lastPos: {x: 0, y: 0, z: 0}
   rb: {fileID: 866934450577288924}

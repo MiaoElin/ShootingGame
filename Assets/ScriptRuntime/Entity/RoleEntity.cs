@@ -7,7 +7,6 @@ public class RoleEntity : MonoBehaviour {
     public int hp;
     public int hpMax;
     public float moveSpeed;
-    public Vector3 faceDir;
     public MoveType moveType;
     public Vector3 lastPos;
     [SerializeField] Rigidbody rb;
@@ -22,6 +21,13 @@ public class RoleEntity : MonoBehaviour {
         var velocity = rb.velocity;
         velocity = moveAxis.normalized * moveSpeed;
         rb.velocity = velocity;
+        if (moveAxis != Vector3.zero) {
+            SetForward(moveAxis);
+        }
+    }
+
+    public void SetForward(Vector3 forward) {
+        transform.forward = forward;
     }
 
     public void SetPos(Vector3 pos) {

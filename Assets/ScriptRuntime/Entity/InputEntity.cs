@@ -5,7 +5,7 @@ public class InputEntity {
     public Vector3 moveAxis;
     public Vector2 mouseAxis;
 
-    public void Process() {
+    public void Process(Vector3 forward, Vector3 right) {
         moveAxis = Vector2.zero;
         if (Input.GetButton("Vertical")) {
             moveAxis.z = Input.GetAxis("Vertical");
@@ -15,6 +15,9 @@ public class InputEntity {
         } else if (Input.GetKey(KeyCode.D)) {
             moveAxis.x = 1;
         }
+        forward.y = 0;
+        right.y = 0;
+        moveAxis = moveAxis.z * forward.normalized + moveAxis.x * right.normalized;
 
         mouseAxis = Vector2.zero;
         if (Input.GetMouseButton(0)) {

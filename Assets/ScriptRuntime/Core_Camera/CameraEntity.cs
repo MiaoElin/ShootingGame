@@ -23,16 +23,17 @@ public class CameraEntity {
         camera.transform.forward = target - camera.transform.position;
     }
 
-    public void Follow(Vector3 mouseAxis, RoleEntity role) {
-        Debug.Log(role.GetLastPos() + " " + role.GetPos());
-
+    public void Follow(Vector3 mouseAxis, RoleEntity role, float dt) {
+        mouseAxis = mouseAxis * dt;
+        mouseAxis *= 1000;
+        mouseAxis.y = -mouseAxis.y;
         var rotation = camera.transform.eulerAngles;
         if (rotation.x > 270 && rotation.x < 360) {
             rotation.x = rotation.x - 360;
         }
         Vector3 dir = (camera.transform.position - role.GetLastPos()).normalized;
         var angleX = rotation.x + mouseAxis.y;
-        if (angleX > -30 && angleX < 60) {
+        if (angleX > -26 && angleX < 60) {
             var rotX = Quaternion.AngleAxis(mouseAxis.y, camera.transform.right);
             dir = rotX * dir;
         }
