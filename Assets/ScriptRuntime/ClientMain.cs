@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ClientMain : MonoBehaviour {
+
+    [SerializeField] Camera mainCamera;
     bool isDestory;
-    GameContext ctx = new GameContext();
+    GameContext ctx;
 
     void Start() {
+        ctx = new GameContext();
         Load();
+        ctx.Inject(mainCamera);
         ctx.poolService.Init(() => GameFactory.Role_Create(ctx));
         GameBusiness_Normal.Enter(ctx);
     }
@@ -20,7 +24,6 @@ public class ClientMain : MonoBehaviour {
     void Update() {
 
         float dt = Time.deltaTime;
-
         ctx.input.Process();
 
         var status = ctx.fsm.status;

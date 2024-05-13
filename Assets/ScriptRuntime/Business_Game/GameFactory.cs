@@ -9,7 +9,8 @@ public static class GameFactory {
         }
         var role = ctx.poolService.GetRole();
         role.body = GameObject.Instantiate(tm.body, role.transform);
-        role.Ctor(role.body.GetComponent<Animator>(), role.body.GetComponent<Rigidbody>());
+        role.Ctor(role.body.GetComponent<Animator>());
+        role.SetPos(pos);
         role.typeId = typeId;
         role.id = ctx.iDService.roleIdRecord++;
         role.hp = tm.hpMax;

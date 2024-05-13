@@ -4,12 +4,14 @@ public class GameContext {
 
     public float restTime;
 
+    // === Entity ===
     public InputEntity input;
+    public CameraEntity camreEntity;
 
-    // Core
+    // === Core ===
     public AssetCore asset;
 
-    // Service
+    // === Service ===
     public IDService iDService;
     public PoolService poolService;
     // === Repo ===
@@ -19,17 +21,27 @@ public class GameContext {
     // === Owner ===
     public int ownerID;
 
-    // Fsm
+    // === Fsm ===
     public GameFsmComponent fsm;
 
     public GameContext() {
+        // entity
         input = new InputEntity();
+        camreEntity = new CameraEntity();
+        // core
         asset = new AssetCore();
         roleRepo = new RoleRepo();
+        // Service
         iDService = new IDService();
-
-        fsm = new GameFsmComponent();
         poolService = new PoolService();
+        // componet
+        fsm = new GameFsmComponent();
+
+    }
+
+    public void Inject(Camera camera) {
+        this.camreEntity.camera = camera;
+        camreEntity.Ctor();
     }
 
     public RoleEntity GetOwner() {

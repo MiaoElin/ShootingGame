@@ -26,6 +26,7 @@ public static class GameBusiness_Normal {
             }
         }
 
+        LateTick(ctx, dt);
     }
 
     private static void PreTick(GameContext ctx, float dt) {
@@ -33,15 +34,16 @@ public static class GameBusiness_Normal {
 
     public static void FixedTick(GameContext ctx, float dt) {
         var owner = ctx.GetOwner();
-
+        owner.SetLastPos(owner.GetPos());
         int roleLen = ctx.roleRepo.TakeAll(out var allRoles);
         for (int i = 0; i < roleLen; i++) {
             var role = allRoles[i];
             RoleDomain.Move(ctx, role);
         }
+        Physics.Simulate(dt);
     }
 
     public static void LateTick(GameContext ctx, float dt) {
-
+        ctx.camreEntity.Follow(ctx.input.mouseAxis, ctx.GetOwner());
     }
 }

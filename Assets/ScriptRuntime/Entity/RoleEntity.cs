@@ -7,13 +7,14 @@ public class RoleEntity : MonoBehaviour {
     public int hp;
     public int hpMax;
     public float moveSpeed;
+    public Vector3 faceDir;
     public MoveType moveType;
+    public Vector3 lastPos;
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     public GameObject body;
 
-    public void Ctor(Animator anim, Rigidbody rb) {
-        this.rb = rb;
+    public void Ctor(Animator anim) {
         this.anim = anim;
     }
 
@@ -21,6 +22,22 @@ public class RoleEntity : MonoBehaviour {
         var velocity = rb.velocity;
         velocity = moveAxis.normalized * moveSpeed;
         rb.velocity = velocity;
+    }
+
+    public void SetPos(Vector3 pos) {
+        transform.position = pos;
+    }
+
+    public void SetLastPos(Vector3 pos) {
+        this.lastPos = pos;
+    }
+
+    public Vector3 GetPos() {
+        return transform.position;
+    }
+
+    public Vector3 GetLastPos() {
+        return lastPos;
     }
 
     public void Anim_Run() {
