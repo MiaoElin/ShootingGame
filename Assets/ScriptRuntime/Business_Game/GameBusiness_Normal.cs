@@ -6,6 +6,7 @@ public static class GameBusiness_Normal {
     public static void Enter(GameContext ctx) {
         var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 0, 0));
         ctx.ownerID = owner.id;
+        UIDomain.Panel_CrossHair_Open(ctx);
         ctx.fsm.EnterNormal();
     }
 
@@ -44,6 +45,6 @@ public static class GameBusiness_Normal {
     }
 
     public static void LateTick(GameContext ctx, float dt) {
-        ctx.camreEntity.Follow(ctx.input.mouseAxis, ctx.GetOwner(),dt);
+        ctx.camreEntity.Follow(ctx.input.mouseAxis, ctx.GetOwner(), dt);
     }
 }

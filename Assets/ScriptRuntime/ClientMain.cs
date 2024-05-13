@@ -6,13 +6,14 @@ using UnityEngine;
 public class ClientMain : MonoBehaviour {
 
     [SerializeField] Camera mainCamera;
+    [SerializeField] Canvas screenCanvas;
     bool isDestory;
     GameContext ctx;
 
     void Start() {
         ctx = new GameContext();
         Load();
-        ctx.Inject(mainCamera);
+        ctx.Inject(mainCamera, screenCanvas);
         ctx.poolService.Init(() => GameFactory.Role_Create(ctx));
         GameBusiness_Normal.Enter(ctx);
     }

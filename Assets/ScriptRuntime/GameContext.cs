@@ -10,6 +10,7 @@ public class GameContext {
 
     // === Core ===
     public AssetCore asset;
+    public UIApp uIApp;
 
     // === Service ===
     public IDService iDService;
@@ -31,6 +32,7 @@ public class GameContext {
         // core
         asset = new AssetCore();
         roleRepo = new RoleRepo();
+        uIApp = new UIApp();
         // Service
         iDService = new IDService();
         poolService = new PoolService();
@@ -39,9 +41,10 @@ public class GameContext {
 
     }
 
-    public void Inject(Camera camera) {
+    public void Inject(Camera camera, Canvas screenCanvas) {
         this.camreEntity.camera = camera;
         camreEntity.Ctor();
+        uIApp.Inject(asset, screenCanvas);
     }
 
     public RoleEntity GetOwner() {

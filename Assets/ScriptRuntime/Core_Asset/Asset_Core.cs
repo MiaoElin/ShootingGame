@@ -6,20 +6,25 @@ using UnityEngine.AddressableAssets;
 public class AssetCore {
 
     Dictionary<string, GameObject> entities;
-    AsyncOperationHandle entityHandle;
+    AsyncOperationHandle entityPtr;
 
     Dictionary<int, RoleTM> roleTMs;
-    AsyncOperationHandle roleTMHandle;
+    AsyncOperationHandle roleTMPtr;
+
+    Dictionary<string, GameObject> allUI_Prefab;
+    public AsyncOperationHandle uiPrefabPtr;
+
 
     public AssetCore() {
         entities = new Dictionary<string, GameObject>();
         roleTMs = new Dictionary<int, RoleTM>();
+        allUI_Prefab = new Dictionary<string, GameObject>();
     }
 
     public void LoadAll() {
         {
             var handle = Addressables.LoadAssetsAsync<GameObject>("Entities", null);
-            entityHandle = handle;
+            entityPtr = handle;
             var list = handle.WaitForCompletion();
             foreach (var prefab in list) {
                 entities.Add(prefab.name, prefab);
@@ -27,20 +32,31 @@ public class AssetCore {
         }
         {
             var handle = Addressables.LoadAssetsAsync<RoleTM>("RoleTM", null);
-            roleTMHandle = handle;
+            roleTMPtr = handle;
             var list = handle.WaitForCompletion();
             foreach (var tm in list) {
                 roleTMs.Add(tm.typeId, tm);
             }
         }
+        {
+            var ptr = Addressables.LoadAssetsAsync<GameObject>("UI", null);
+            uiPrefabPtr = ptr;
+            var list = ptr.WaitForCompletion();
+            foreach (var prefab in list) {
+                allUI_Prefab.Add(prefab.name, prefab);
+            }
+        }
     }
 
     public void Unload() {
-        if (entityHandle.IsValid()) {
-            Addressables.Release(entityHandle);
+        if (entityPtr.IsValid()) {
+            Addressables.Release(entityPtr);
         }
-        if (roleTMHandle.IsValid()) {
-            Addressables.Release(roleTMHandle);
+        if (roleTMPtr.IsValid()) {
+            Addressables.Release(roleTMPtr);
+        }
+        if (uiPrefabPtr.IsValid()) {
+            Addressables.Release(uiPrefabPtr);
         }
     }
 
@@ -51,4 +67,9 @@ public class AssetCore {
     public bool TryGetRoleTM(int typeID, out RoleTM tm) {
         return roleTMs.TryGetValue(typeID, out tm);
     }
+
+    public bool TrygeUI_Prefab(string name, out GameObject ui) {
+        return allUI_Prefab.TryGetValue(name, out ui);
+    }
+
 }
