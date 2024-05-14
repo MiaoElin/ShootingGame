@@ -25,7 +25,7 @@ public class ClientMain : MonoBehaviour {
     void Update() {
 
         float dt = Time.deltaTime;
-        ctx.input.Process(ctx.camreEntity.camera.transform.rotation);
+        ctx.input.Process(ctx.camreEntity.camera.transform.forward,ctx.camreEntity.camera.transform.right);
 
         var status = ctx.fsm.status;
         if (status == GameStatus.Normal) {

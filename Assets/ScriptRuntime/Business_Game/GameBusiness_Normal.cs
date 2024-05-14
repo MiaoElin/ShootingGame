@@ -39,7 +39,7 @@ public static class GameBusiness_Normal {
         int roleLen = ctx.roleRepo.TakeAll(out var allRoles);
         for (int i = 0; i < roleLen; i++) {
             var role = allRoles[i];
-            RoleDomain.Move(ctx, role);
+            RoleDomain.Move(ctx, role,dt);
         }
         Physics.Simulate(dt);
     }
