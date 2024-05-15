@@ -56,6 +56,7 @@ MonoBehaviour:
   rb: {fileID: 866934450577288924}
   anim: {fileID: 0}
   body: {fileID: 0}
+  cameraT: {fileID: 574974159737441512}
   rotationSpeed: 0
 --- !u!54 &866934450577288924
 Rigidbody:
@@ -94,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8990928897549164364}
   m_Layer: 0
-  m_Name: Body
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -6,6 +6,7 @@ public static class GameBusiness_Normal {
     public static void Enter(GameContext ctx) {
         var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 0, 0));
         ctx.ownerID = owner.id;
+        ctx.camreEntity.camera.transform.SetParent(owner.transform.Find("Camera"));
         UIDomain.Panel_CrossHair_Open(ctx);
         ctx.fsm.EnterNormal();
     }
@@ -39,12 +40,13 @@ public static class GameBusiness_Normal {
         int roleLen = ctx.roleRepo.TakeAll(out var allRoles);
         for (int i = 0; i < roleLen; i++) {
             var role = allRoles[i];
-            RoleDomain.Move(ctx, role,dt);
+            RoleDomain.Move(ctx, role, dt);
         }
         Physics.Simulate(dt);
     }
 
     public static void LateTick(GameContext ctx, float dt) {
-        ctx.camreEntity.Follow(ctx.input.mouseAxis, ctx.GetOwner(), dt);
+        var owner = ctx.GetOwner();
+        owner.SetRotation(ctx.input.mouseAxis, dt);
     }
 }

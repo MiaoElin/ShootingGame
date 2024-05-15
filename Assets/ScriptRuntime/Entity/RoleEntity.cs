@@ -12,12 +12,18 @@ public class RoleEntity : MonoBehaviour {
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     public GameObject body;
+    public GameObject cameraT;
 
     // Componet
     public GunComponent gunCom;
 
     // faceDir;
     public float rotationSpeed;
+    public Vector3 startForward;
+    public Vector3 endForward;
+    public Vector3 oldForward;
+    public float time;
+    public float duration;
 
     public RoleEntity() {
         gunCom = new GunComponent();
@@ -25,7 +31,8 @@ public class RoleEntity : MonoBehaviour {
 
     public void Ctor(Animator anim) {
         this.anim = anim;
-        rotationSpeed = 600;
+        rotationSpeed = 100;
+        duration = 0.25f;
     }
 
     public void Move(Vector3 moveAxis, float dt) {
@@ -39,24 +46,47 @@ public class RoleEntity : MonoBehaviour {
             return;
         }
         // Update Forward
+        // var bodyAngle = body.transform.eulerAngles;
+        // var cameraAngle = cameraT.transform.eulerAngles;
+        // if (bodyAngle.y != cameraAngle.y) {
+        //     bodyAngle.y = cameraAngle.y;
+        //     body.transform.eulerAngles = bodyAngle;
+        // }
         SetForward(moveAxis);
+
         // if (moveAxis == Vector3.zero) {
         //     return;
         // }
 
-        // if (GetForward() == moveAxis) {
-        //     return;
-        // }
-        // float angle = Vector3.Angle(moveAxis.normalized, GetForward().normalized);
-        // if (angle < 1) {
-        //     return;
-        // }
-        // Vector3 cross = Vector3.Cross(moveAxis.normalized, GetForward().normalized);
-        // if (cross.y > 0) {
-        //     transform.Rotate(Vector3.up, -rotationSpeed * dt);
-        // } else {
-        //     transform.Rotate(Vector3.up, rotationSpeed * dt);
-        // }
+        // // Update Forward 方法1
+        Vector3 newForward = new Vector3(moveAxis.x, 0, moveAxis.z);
+        if (newForward != oldForward) {
+            startForward = oldForward;
+            if (startForward == Vector3.zero) {
+                startForward = transform.forward;
+            }
+            endForward = newForward;
+            oldForward = newForward;
+            time = 0;
+        }
+
+        if (time <= duration) {
+            time += dt;
+            var quatStar = Quaternion.LookRotation(startForward);
+            var quatEnd = Quaternion.LookRotation(endForward);
+            body.transform.rotation = Quaternion.Lerp(quatStar, quatEnd, time / duration);
+        }
+    }
+
+    public void SetRotation(Vector2 mouseAxis, float dt) {
+        mouseAxis *= 1000;
+        mouseAxis.y = -mouseAxis.y;
+        // transform.Rotate(0, mouseAxis.x, 0);
+        // cameraT.transform.Rotate(-mouseAxis.y * 300f * dt, 0, 0);
+        Quaternion qutY = Quaternion.AngleAxis(mouseAxis.x * dt, Vector3.up);
+        Quaternion qutX = Quaternion.AngleAxis(mouseAxis.y * dt, cameraT.transform.right);
+        cameraT.transform.forward = qutY * cameraT.transform.forward;
+        cameraT.transform.forward = qutX * cameraT.transform.forward;
     }
 
     public float GetRotationY() {
@@ -64,7 +94,7 @@ public class RoleEntity : MonoBehaviour {
     }
 
     public void SetForward(Vector3 forward) {
-        transform.forward = forward;
+        body.transform.forward = forward;
     }
 
     public Vector3 GetForward() {
