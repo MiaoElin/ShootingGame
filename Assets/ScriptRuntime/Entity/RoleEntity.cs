@@ -16,24 +16,19 @@ public class RoleEntity : MonoBehaviour {
     // Componet
     public GunComponent gunCom;
 
-    // faceDir
-    Vector3 startForward;
-    Vector3 endForward;
-    Vector3 oldForward;
-    float timer;
-    float duration;
+    // faceDir;
+    public float rotationSpeed;
 
     public RoleEntity() {
         gunCom = new GunComponent();
-        timer = 0;
-        duration = 0.5f;
     }
 
     public void Ctor(Animator anim) {
         this.anim = anim;
+        rotationSpeed = 100;
     }
 
-    public void Move(Vector3 moveAxis, float dt) {
+    public void Move(Vector3 moveAxis, float dt, float cameraRotationY) {
 
         var velocity = rb.velocity;
         velocity = moveAxis.normalized * moveSpeed;
@@ -43,23 +38,26 @@ public class RoleEntity : MonoBehaviour {
             return;
         }
         // Update Forward
-        Vector3 newForward = new Vector3(moveAxis.x, 0, moveAxis.z);
-        if (newForward != oldForward) {
-            startForward = oldForward;
-            if (startForward == Vector3.zero) {
-                startForward = transform.forward;
-            }
-            endForward = newForward;
-            oldForward = newForward;
-            timer = 0;
+        if (moveAxis == Vector3.zero) {
+            return;
         }
 
-        if (timer <= duration) {
-            timer += dt;
-            var quatStar = Quaternion.LookRotation(startForward);
-            var quatEnd = Quaternion.LookRotation(endForward);
-            transform.rotation = Quaternion.Lerp(quatStar, quatEnd, timer / duration);
+        if (GetForward() == moveAxis) {
+            return;
         }
+        float angle = Vector3.Angle(moveAxis.normalized, GetForward().normalized);
+        Vector3 cross = Vector3.Cross(moveAxis.normalized, GetForward().normalized);
+        if (cross.y > 0) {
+            transform.Rotate(Vector3.up, -rotationSpeed * dt);
+        } else {
+            // angle = 360 - angle;
+            // Debug.Log("IN"+rotationSpeed*dt);
+            transform.Rotate(Vector3.up, rotationSpeed * dt);
+        }
+    }
+
+    public float GetRotationY() {
+        return transform.rotation.y;
     }
 
     public void SetForward(Vector3 forward) {

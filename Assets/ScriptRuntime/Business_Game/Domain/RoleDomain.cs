@@ -8,9 +8,9 @@ public static class RoleDomain {
         return role;
     }
 
-    public static void Move(GameContext ctx, RoleEntity role,float dt) {
+    public static void Move(GameContext ctx, RoleEntity role, float dt) {
         if (role.moveType == MoveType.ByInput) {
-            role.Move(ctx.input.moveAxis,dt);
+            role.Move(ctx.input.moveAxis, dt, ctx.camreEntity.camera.transform.rotation.y);
             role.Anim_Run();
         }
     }

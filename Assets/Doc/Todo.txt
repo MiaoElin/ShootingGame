@@ -1,0 +1,17 @@
+=== bug ===
+
+=== Input ===
+更换InputSystem
+
+=== role ===
+- 角色面向旋转用阻尼的方式
+
+=== SoundCore ===
+- 添加SoundCore
+- 添加脚步声
+
+=== 技能系统 ===
+- 将GunSubEntity 改为技能
+-添加一种枪，向准心位置发射子弹
+-添加子弹发射的特效
+
