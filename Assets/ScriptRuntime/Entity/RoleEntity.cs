@@ -25,7 +25,7 @@ public class RoleEntity : MonoBehaviour {
 
     public void Ctor(Animator anim) {
         this.anim = anim;
-        rotationSpeed = 100;
+        rotationSpeed = 600;
     }
 
     public void Move(Vector3 moveAxis, float dt, float cameraRotationY) {
@@ -46,6 +46,9 @@ public class RoleEntity : MonoBehaviour {
             return;
         }
         float angle = Vector3.Angle(moveAxis.normalized, GetForward().normalized);
+        if (angle < 1) {
+            return;
+        }
         Vector3 cross = Vector3.Cross(moveAxis.normalized, GetForward().normalized);
         if (cross.y > 0) {
             transform.Rotate(Vector3.up, -rotationSpeed * dt);
