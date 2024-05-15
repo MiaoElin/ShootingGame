@@ -10,8 +10,16 @@ public static class RoleDomain {
 
     public static void Move(GameContext ctx, RoleEntity role, float dt) {
         if (role.moveType == MoveType.ByInput) {
-            role.Move(ctx.input.moveAxis, dt, ctx.camreEntity.camera.transform.rotation.y);
+            Vector3 dir = ctx.input.moveAxis;
+            role.Move(dir, dt);
+            // animator
             role.Anim_Run();
+            // sfx
+            if (dir != Vector3.zero) {
+                SFXDomain.Role_Walk_Play(ctx);
+            } else {
+                SFXDomain.Role_Walk_Stop(ctx);
+            }
         }
     }
 }

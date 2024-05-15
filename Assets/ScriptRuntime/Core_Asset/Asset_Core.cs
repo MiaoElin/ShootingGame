@@ -14,6 +14,9 @@ public class AssetCore {
     Dictionary<string, GameObject> allUI_Prefab;
     public AsyncOperationHandle uiPrefabPtr;
 
+    public ConfigTM configTM;
+    AsyncOperationHandle configPtr;
+
 
     public AssetCore() {
         entities = new Dictionary<string, GameObject>();
@@ -46,6 +49,11 @@ public class AssetCore {
                 allUI_Prefab.Add(prefab.name, prefab);
             }
         }
+        {
+            var ptr = Addressables.LoadAssetAsync<ConfigTM>("ConfigTM");
+            configPtr = ptr;
+            configTM = ptr.WaitForCompletion();
+        }
     }
 
     public void Unload() {
@@ -57,6 +65,9 @@ public class AssetCore {
         }
         if (uiPrefabPtr.IsValid()) {
             Addressables.Release(uiPrefabPtr);
+        }
+        if (configPtr.IsValid()) {
+            Addressables.Release(configPtr);
         }
     }
 

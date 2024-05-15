@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 4031729326d68cc48b44b47345bb0753
   m_currentHash:
     serializedVersion: 2
-    Hash: b0a81af3ca5c488512273f6764a9585c
+    Hash: fd86ecfab6174e3262371950de90e050
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -90,6 +90,8 @@ MonoBehaviour:
     - Entities
     - RoleTM
     - UI
+    - ConfigTM
+    - AudioSource
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0222282db09855e44a301b2c570351d5, type: 2}

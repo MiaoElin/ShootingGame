@@ -28,7 +28,7 @@ public class RoleEntity : MonoBehaviour {
         rotationSpeed = 600;
     }
 
-    public void Move(Vector3 moveAxis, float dt, float cameraRotationY) {
+    public void Move(Vector3 moveAxis, float dt) {
 
         var velocity = rb.velocity;
         velocity = moveAxis.normalized * moveSpeed;
@@ -53,8 +53,6 @@ public class RoleEntity : MonoBehaviour {
         if (cross.y > 0) {
             transform.Rotate(Vector3.up, -rotationSpeed * dt);
         } else {
-            // angle = 360 - angle;
-            // Debug.Log("IN"+rotationSpeed*dt);
             transform.Rotate(Vector3.up, rotationSpeed * dt);
         }
     }

@@ -20,12 +20,13 @@ public class ClientMain : MonoBehaviour {
 
     private void Load() {
         ctx.asset.LoadAll();
+        ctx.soundCore.LoadAll();
     }
 
     void Update() {
 
         float dt = Time.deltaTime;
-        ctx.input.Process(ctx.camreEntity.camera.transform.forward,ctx.camreEntity.camera.transform.right);
+        ctx.input.Process(ctx.camreEntity.camera.transform.forward, ctx.camreEntity.camera.transform.right);
 
         var status = ctx.fsm.status;
         if (status == GameStatus.Normal) {
@@ -37,6 +38,7 @@ public class ClientMain : MonoBehaviour {
 
     public void Unload() {
         ctx.asset.Unload();
+        ctx.soundCore.Unload();
     }
 
     void OnApplicationQuit() {

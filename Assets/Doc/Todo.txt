@@ -1,7 +1,8 @@
 === bug ===
+角色转向抖动
 
 === Input ===
-更换InputSystem
+更换InputSystem（不会）
 
 === role ===
 - 角色面向旋转用阻尼的方式

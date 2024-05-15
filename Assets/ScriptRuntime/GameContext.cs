@@ -11,6 +11,7 @@ public class GameContext {
     // === Core ===
     public AssetCore asset;
     public UIApp uIApp;
+    public SoundCore soundCore;
 
     // === Service ===
     public IDService iDService;
@@ -33,6 +34,7 @@ public class GameContext {
         asset = new AssetCore();
         roleRepo = new RoleRepo();
         uIApp = new UIApp();
+        soundCore = new SoundCore();
         // Service
         iDService = new IDService();
         poolService = new PoolService();
