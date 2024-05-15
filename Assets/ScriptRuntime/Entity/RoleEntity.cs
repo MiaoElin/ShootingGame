@@ -32,29 +32,31 @@ public class RoleEntity : MonoBehaviour {
 
         var velocity = rb.velocity;
         velocity = moveAxis.normalized * moveSpeed;
+        velocity.y = rb.velocity.y;
         rb.velocity = velocity;
 
         if (moveAxis == Vector3.zero) {
             return;
         }
         // Update Forward
-        if (moveAxis == Vector3.zero) {
-            return;
-        }
+        SetForward(moveAxis);
+        // if (moveAxis == Vector3.zero) {
+        //     return;
+        // }
 
-        if (GetForward() == moveAxis) {
-            return;
-        }
-        float angle = Vector3.Angle(moveAxis.normalized, GetForward().normalized);
-        if (angle < 1) {
-            return;
-        }
-        Vector3 cross = Vector3.Cross(moveAxis.normalized, GetForward().normalized);
-        if (cross.y > 0) {
-            transform.Rotate(Vector3.up, -rotationSpeed * dt);
-        } else {
-            transform.Rotate(Vector3.up, rotationSpeed * dt);
-        }
+        // if (GetForward() == moveAxis) {
+        //     return;
+        // }
+        // float angle = Vector3.Angle(moveAxis.normalized, GetForward().normalized);
+        // if (angle < 1) {
+        //     return;
+        // }
+        // Vector3 cross = Vector3.Cross(moveAxis.normalized, GetForward().normalized);
+        // if (cross.y > 0) {
+        //     transform.Rotate(Vector3.up, -rotationSpeed * dt);
+        // } else {
+        //     transform.Rotate(Vector3.up, rotationSpeed * dt);
+        // }
     }
 
     public float GetRotationY() {
