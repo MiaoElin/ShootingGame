@@ -31,7 +31,7 @@ public class RoleEntity : MonoBehaviour {
 
     public void Ctor(Animator anim) {
         this.anim = anim;
-        rotationSpeed = 100;
+        rotationSpeed = 200;
         duration = 0.25f;
     }
 
@@ -46,17 +46,7 @@ public class RoleEntity : MonoBehaviour {
             return;
         }
         // Update Forward
-        // var bodyAngle = body.transform.eulerAngles;
-        // var cameraAngle = cameraT.transform.eulerAngles;
-        // if (bodyAngle.y != cameraAngle.y) {
-        //     bodyAngle.y = cameraAngle.y;
-        //     body.transform.eulerAngles = bodyAngle;
-        // }
-        SetForward(moveAxis);
-
-        // if (moveAxis == Vector3.zero) {
-        //     return;
-        // }
+        // SetForward(moveAxis);
 
         // // Update Forward 方法1
         Vector3 newForward = new Vector3(moveAxis.x, 0, moveAxis.z);
@@ -76,6 +66,18 @@ public class RoleEntity : MonoBehaviour {
             var quatEnd = Quaternion.LookRotation(endForward);
             body.transform.rotation = Quaternion.Lerp(quatStar, quatEnd, time / duration);
         }
+
+        // // 方法2
+        // if (body.transform.forward != moveAxis) {
+        //     float angle = Vector3.Angle(body.transform.forward.normalized, moveAxis.normalized);
+        //     var coross = Vector3.Cross(body.transform.forward.normalized, moveAxis.normalized);
+        //     if (coross.y > 0) {
+        //         body.transform.Rotate(Vector3.up, rotationSpeed * dt);
+        //     } else {
+        //         body.transform.Rotate(Vector3.up, -rotationSpeed * dt);
+        //     }
+        // }
+
     }
 
     public void SetRotation(Vector2 mouseAxis, float dt) {
@@ -87,6 +89,14 @@ public class RoleEntity : MonoBehaviour {
         Quaternion qutX = Quaternion.AngleAxis(mouseAxis.y * dt, cameraT.transform.right);
         cameraT.transform.forward = qutY * cameraT.transform.forward;
         cameraT.transform.forward = qutX * cameraT.transform.forward;
+    }
+
+    public void Jump() {
+
+    }
+
+    public void Falling() {
+
     }
 
     public float GetRotationY() {
@@ -119,6 +129,10 @@ public class RoleEntity : MonoBehaviour {
 
     public void Anim_Run() {
         anim.SetFloat("F_MoveSpeed", rb.velocity.magnitude);
+    }
+
+    public void Anim_Jump() {
+        anim.SetTrigger("T_Jump");
     }
 
 

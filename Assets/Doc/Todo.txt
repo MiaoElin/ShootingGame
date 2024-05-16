@@ -1,6 +1,12 @@
 === bug ===
 角色转向抖动
 
+=== 学习 ===
+模型怎么换枪
+InputSystem
+
+
+
 === Input ===
 更换InputSystem（不会）
 
@@ -8,8 +14,7 @@
 - 角色面向旋转用阻尼的方式
 
 === SoundCore ===
-- 添加SoundCore
-- 添加脚步声
+
 
 === 技能系统 ===
 - 将GunSubEntity 改为技能
