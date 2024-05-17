@@ -8,6 +8,7 @@ public class GameContext {
     public InputEntity input;
     // === Camera ===
     public CinemachineFreeLook mainCamera;
+    public Camera camera1;
 
     // === Core ===
     public AssetCore asset;
@@ -43,8 +44,9 @@ public class GameContext {
 
     }
 
-    public void Inject(CinemachineFreeLook camera, Canvas screenCanvas) {
+    public void Inject(CinemachineFreeLook camera, Camera camera1, Canvas screenCanvas) {
         this.mainCamera = camera;
+        this.camera1 = camera1;
         uIApp.Inject(asset, screenCanvas);
     }
 

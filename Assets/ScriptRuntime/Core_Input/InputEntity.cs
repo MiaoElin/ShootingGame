@@ -5,7 +5,7 @@ public class InputEntity {
     public Vector3 moveAxis;
     public Vector2 mouseAxis;
 
-    public void Process() {
+    public void Process(Quaternion cameraQuat) {
         moveAxis = Vector2.zero;
         if (Input.GetKey(KeyCode.W)) {
             moveAxis.z = 1;
@@ -17,6 +17,9 @@ public class InputEntity {
         } else if (Input.GetKey(KeyCode.D)) {
             moveAxis.x = 1;
         }
+
+        moveAxis = (cameraQuat * moveAxis).normalized;
+
 
         mouseAxis = Vector2.zero;
         if (Input.GetMouseButton(0)) {

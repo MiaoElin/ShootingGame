@@ -6,6 +6,7 @@ using Cinemachine;
 public class ClientMain : MonoBehaviour {
 
     [SerializeField] CinemachineFreeLook mainCamera;
+    [SerializeField] Camera cameraR;
     [SerializeField] Canvas screenCanvas;
     bool isDestory;
     GameContext ctx;
@@ -13,7 +14,7 @@ public class ClientMain : MonoBehaviour {
     void Start() {
         ctx = new GameContext();
         Load();
-        ctx.Inject(mainCamera, screenCanvas);
+        ctx.Inject(mainCamera, cameraR, screenCanvas);
         ctx.poolService.Init(() => GameFactory.Role_Create(ctx));
         GameBusiness_Normal.Enter(ctx);
     }
@@ -26,7 +27,8 @@ public class ClientMain : MonoBehaviour {
     void Update() {
 
         float dt = Time.deltaTime;
-        ctx.input.Process();
+        ctx.input.Process(cameraR.transform.rotation);
+
         var status = ctx.fsm.status;
         if (status == GameStatus.Normal) {
             GameBusiness_Normal.Tick(ctx, dt);

@@ -46,26 +46,25 @@ public class RoleEntity : MonoBehaviour {
             return;
         }
         // Update Forward
-        // SetForward(moveAxis);
 
         // // Update Forward 方法1
-        Vector3 newForward = new Vector3(moveAxis.x, 0, moveAxis.z);
-        if (newForward != oldForward) {
-            startForward = oldForward;
-            if (startForward == Vector3.zero) {
-                startForward = transform.forward;
-            }
-            endForward = newForward;
-            oldForward = newForward;
-            time = 0;
-        }
+        // Vector3 newForward = new Vector3(moveAxis.x, 0, moveAxis.z);
+        // if (newForward != oldForward) {
+        //     startForward = oldForward;
+        //     if (startForward == Vector3.zero) {
+        //         startForward = transform.forward;
+        //     }
+        //     endForward = newForward;
+        //     oldForward = newForward;
+        //     time = 0;
+        // }
 
-        if (time <= duration) {
-            time += dt;
-            var quatStar = Quaternion.LookRotation(startForward);
-            var quatEnd = Quaternion.LookRotation(endForward);
-            body.transform.rotation = Quaternion.Lerp(quatStar, quatEnd, time / duration);
-        }
+        // if (time <= duration) {
+        //     time += dt;
+        //     var quatStar = Quaternion.LookRotation(startForward);
+        //     var quatEnd = Quaternion.LookRotation(endForward);
+        //     body.transform.rotation = Quaternion.Lerp(quatStar, quatEnd, time / duration);
+        // }
 
         // // 方法2
         // if (body.transform.forward != moveAxis) {
@@ -78,6 +77,12 @@ public class RoleEntity : MonoBehaviour {
         //     }
         // }
 
+    }
+
+    public void SetRotation(float angle) {
+        var rotation = transform.eulerAngles;
+        rotation.y = angle;
+        transform.eulerAngles = rotation;
     }
 
     public void Jump() {
