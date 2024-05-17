@@ -1,12 +1,13 @@
 using UnityEngine;
-
+using Cinemachine;
 public class GameContext {
 
     public float restTime;
 
     // === Entity ===
     public InputEntity input;
-    public CameraEntity camreEntity;
+    // === Camera ===
+    public CinemachineFreeLook mainCamera;
 
     // === Core ===
     public AssetCore asset;
@@ -29,7 +30,6 @@ public class GameContext {
     public GameContext() {
         // entity
         input = new InputEntity();
-        camreEntity = new CameraEntity();
         // core
         asset = new AssetCore();
         roleRepo = new RoleRepo();
@@ -43,9 +43,8 @@ public class GameContext {
 
     }
 
-    public void Inject(Camera camera, Canvas screenCanvas) {
-        this.camreEntity.camera = camera;
-        camreEntity.Ctor();
+    public void Inject(CinemachineFreeLook camera, Canvas screenCanvas) {
+        this.mainCamera = camera;
         uIApp.Inject(asset, screenCanvas);
     }
 

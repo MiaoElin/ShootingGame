@@ -1,12 +1,16 @@
 using System;
 using UnityEngine;
+using Cinemachine;
 
 public static class GameBusiness_Normal {
 
     public static void Enter(GameContext ctx) {
         var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 0, 0));
         ctx.ownerID = owner.id;
-        ctx.camreEntity.camera.transform.SetParent(owner.transform.Find("Camera"));
+
+        // 设置相机跟随
+        ctx.mainCamera.Follow = owner.transform;
+        ctx.mainCamera.LookAt = owner.transform;
         UIDomain.Panel_CrossHair_Open(ctx);
         ctx.fsm.EnterNormal();
     }
@@ -46,7 +50,5 @@ public static class GameBusiness_Normal {
     }
 
     public static void LateTick(GameContext ctx, float dt) {
-        var owner = ctx.GetOwner();
-        owner.SetRotation(ctx.input.mouseAxis, dt);
     }
 }

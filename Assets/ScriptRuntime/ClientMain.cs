@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ClientMain : MonoBehaviour {
 
-    [SerializeField] Camera mainCamera;
+    [SerializeField] CinemachineFreeLook mainCamera;
     [SerializeField] Canvas screenCanvas;
     bool isDestory;
     GameContext ctx;
@@ -26,8 +26,7 @@ public class ClientMain : MonoBehaviour {
     void Update() {
 
         float dt = Time.deltaTime;
-        ctx.input.Process(ctx.camreEntity.camera.transform.forward, ctx.camreEntity.camera.transform.right);
-
+        ctx.input.Process();
         var status = ctx.fsm.status;
         if (status == GameStatus.Normal) {
             GameBusiness_Normal.Tick(ctx, dt);

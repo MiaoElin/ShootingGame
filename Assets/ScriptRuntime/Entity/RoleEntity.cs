@@ -80,17 +80,6 @@ public class RoleEntity : MonoBehaviour {
 
     }
 
-    public void SetRotation(Vector2 mouseAxis, float dt) {
-        mouseAxis *= 1000;
-        mouseAxis.y = -mouseAxis.y;
-        // transform.Rotate(0, mouseAxis.x, 0);
-        // cameraT.transform.Rotate(-mouseAxis.y * 300f * dt, 0, 0);
-        Quaternion qutY = Quaternion.AngleAxis(mouseAxis.x * dt, Vector3.up);
-        Quaternion qutX = Quaternion.AngleAxis(mouseAxis.y * dt, cameraT.transform.right);
-        cameraT.transform.forward = qutY * cameraT.transform.forward;
-        cameraT.transform.forward = qutX * cameraT.transform.forward;
-    }
-
     public void Jump() {
 
     }
