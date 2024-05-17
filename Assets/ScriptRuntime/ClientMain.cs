@@ -12,6 +12,11 @@ public class ClientMain : MonoBehaviour {
     GameContext ctx;
 
     void Start() {
+        
+        // 锁定鼠标
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         ctx = new GameContext();
         Load();
         ctx.Inject(mainCamera, cameraR, screenCanvas);
