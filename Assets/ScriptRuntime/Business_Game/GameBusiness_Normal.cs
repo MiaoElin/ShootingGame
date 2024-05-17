@@ -9,8 +9,10 @@ public static class GameBusiness_Normal {
         ctx.ownerID = owner.id;
 
         // 设置相机跟随
-        ctx.mainCamera.Follow = owner.transform;
-        ctx.mainCamera.LookAt = owner.transform;
+        ctx.cameraEntity.EnterShoot();
+        ctx.cameraEntity.SetFollow(owner.transform);
+        ctx.cameraEntity.SetLookAt(owner.shootLookAt);
+
         UIDomain.Panel_CrossHair_Open(ctx);
         ctx.fsm.EnterNormal();
     }
@@ -46,6 +48,7 @@ public static class GameBusiness_Normal {
             var role = allRoles[i];
             RoleDomain.Move(ctx, role, dt);
             // role.SetRotation(ctx.camera1.transform.eulerAngles.y);
+            role.SetForward_Shoot(ctx.cameraEntity.GetPos());
         }
         Physics.Simulate(dt);
     }

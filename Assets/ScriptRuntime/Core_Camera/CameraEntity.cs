@@ -1,49 +1,43 @@
 using UnityEngine;
+using Cinemachine;
 
 public class CameraEntity {
+    public CinemachineFreeLook normalCamera;
+    public CinemachineFreeLook shootLookCamera;
 
-    public Camera camera;
-    public Vector3 offset;
-    public float distance;
+    public CinemachineFreeLook currentCamera;
 
     public CameraEntity() {
         //暂时的，是相机与角色的距离；
     }
 
+    public void Inject(CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera) {
+        this.normalCamera = normalCamera;
+        this.shootLookCamera = shootCamera;
+    }
+
+    public void EnterShoot() {
+        normalCamera.gameObject.SetActive(false);
+        currentCamera = shootLookCamera;
+    }
+
+    public void EnterNormal() {
+        shootLookCamera.gameObject.SetActive(false);
+        currentCamera = normalCamera;
+    }
+
     public void Ctor() {
-        offset = camera.transform.position;
-        distance = Vector3.Distance(camera.transform.position, Vector3.zero);
     }
 
     public Vector3 GetPos() {
-        return camera.transform.position;
+        return currentCamera.transform.position;
     }
 
-    public void LookAt(Vector3 target) {
-        camera.transform.forward = target - camera.transform.position;
+    public void SetLookAt(Transform target) {
+        currentCamera.LookAt = target;
     }
 
-    public void Follow(Vector2 mouseAxis, float dt) {
-        camera.transform.Rotate(-mouseAxis.y * 1000 * dt, 0, 0);
-
-        // mouseAxis = mouseAxis * dt;
-        // mouseAxis *= 1000;
-        // mouseAxis.y = -mouseAxis.y;
-        // var rotation = camera.transform.eulerAngles;
-        // if (rotation.x > 270 && rotation.x < 360) {
-        //     rotation.x = rotation.x - 360;
-        // }
-        // Vector3 dir = (camera.transform.position - role.GetLastPos()).normalized;
-        // var angleX = rotation.x + mouseAxis.y;
-        // if (angleX > -26 && angleX < 60) {
-        //     var rotX = Quaternion.AngleAxis(mouseAxis.y, camera.transform.right);
-        //     dir = rotX * dir;
-        // }
-        // var roty = Quaternion.AngleAxis(mouseAxis.x, Vector3.up);
-        // dir = roty * dir;
-        // dir *= distance;
-        // offset = dir;
-        // camera.transform.position = role.GetPos() + offset; // 相机的位置要根据角色现在的位置！
-        // LookAt(role.GetLastPos() + Vector3.up * 3);
+    public void SetFollow(Transform target) {
+        currentCamera.Follow = target;
     }
 }

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &300780889023677187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7656543191376709728}
+  m_Layer: 0
+  m_Name: shootlookAt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7656543191376709728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300780889023677187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8990928897549164364}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &381327259068173467
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +87,7 @@ MonoBehaviour:
   rb: {fileID: 866934450577288924}
   anim: {fileID: 0}
   body: {fileID: 0}
-  cameraT: {fileID: 574974159737441512}
+  shootLookAt: {fileID: 7656543191376709728}
   rotationSpeed: 0
   startForward: {x: 0, y: 0, z: 0}
   endForward: {x: 0, y: 0, z: 0}
@@ -100,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8990928897549164364}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +149,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7656543191376709728}
   m_Father: {fileID: 4515679340497612191}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

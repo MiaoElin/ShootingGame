@@ -5,7 +5,8 @@ using Cinemachine;
 
 public class ClientMain : MonoBehaviour {
 
-    [SerializeField] CinemachineFreeLook mainCamera;
+    [SerializeField] CinemachineFreeLook normalCamera;
+    [SerializeField] CinemachineFreeLook shootCamera;
     [SerializeField] Camera cameraR;
     [SerializeField] Canvas screenCanvas;
     bool isDestory;
@@ -19,7 +20,7 @@ public class ClientMain : MonoBehaviour {
 
         ctx = new GameContext();
         Load();
-        ctx.Inject(mainCamera, cameraR, screenCanvas);
+        ctx.Inject(normalCamera, shootCamera, screenCanvas);
         ctx.poolService.Init(() => GameFactory.Role_Create(ctx));
         GameBusiness_Normal.Enter(ctx);
     }

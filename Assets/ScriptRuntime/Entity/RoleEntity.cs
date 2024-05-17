@@ -12,7 +12,7 @@ public class RoleEntity : MonoBehaviour {
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     public GameObject body;
-    public GameObject cameraT;
+    public Transform shootLookAt;
 
     // Componet
     public GunComponent gunCom;
@@ -45,35 +45,22 @@ public class RoleEntity : MonoBehaviour {
         if (moveAxis == Vector3.zero) {
             return;
         }
-        
-        // Update Forward
-        if (moveAxis != Vector3.zero) {
-            body.transform.forward = Vector3.Lerp(body.transform.forward, moveAxis.normalized, dt * rotationSpeed);
-        }
-        // // Update Forward 方法1
-        // Vector3 newForward = new Vector3(moveAxis.x, 0, moveAxis.z);
-        // if (newForward != oldForward) {
-        //     startForward = oldForward;
-        //     if (startForward == Vector3.zero) {
-        //         startForward = transform.forward;
-        //     }
-        //     endForward = newForward;
-        //     oldForward = newForward;
-        //     time = 0;
-        // }
-        // Debug.Log(moveAxis);
-        // if (time <= duration) {
-        //     time += dt;
-        //     var quatStar = Quaternion.LookRotation(startForward);
-        //     var quatEnd = Quaternion.LookRotation(endForward);
-        //     body.transform.rotation = Quaternion.Lerp(quatStar, quatEnd, time / duration);
-        // }
+
+        // // SetForward_Normal(moveAxis, dt);
+        // SetForward_Shoot();
     }
 
-    public void SetRotation(float angle) {
-        var rotation = transform.eulerAngles;
-        rotation.y = angle;
-        transform.eulerAngles = rotation;
+    public void SetForward_Normal(Vector3 moveAxis, float dt) {
+        // Update Forward
+        if (moveAxis != Vector3.zero) {
+            transform.forward = Vector3.Lerp(transform.forward, moveAxis.normalized, dt * rotationSpeed);
+        }
+    }
+
+    public void SetForward_Shoot(Vector3 cameraPos) {
+        var viewDir = shootLookAt.position - cameraPos;
+        viewDir.y = 0;
+        transform.forward = viewDir;
     }
 
     public void Jump() {
