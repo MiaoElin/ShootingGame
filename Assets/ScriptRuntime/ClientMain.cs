@@ -12,7 +12,7 @@ public class ClientMain : MonoBehaviour {
     GameContext ctx;
 
     void Start() {
-        
+
         // 锁定鼠标
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -32,7 +32,7 @@ public class ClientMain : MonoBehaviour {
     void Update() {
 
         float dt = Time.deltaTime;
-        ctx.input.Process(cameraR.transform.rotation);
+        ctx.input.Process(cameraR.transform.forward, cameraR.transform.right);
 
         var status = ctx.fsm.status;
         if (status == GameStatus.Normal) {

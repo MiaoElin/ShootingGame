@@ -45,7 +45,7 @@ public static class GameBusiness_Normal {
         for (int i = 0; i < roleLen; i++) {
             var role = allRoles[i];
             RoleDomain.Move(ctx, role, dt);
-            role.SetRotation(ctx.camera1.transform.eulerAngles.y);
+            // role.SetRotation(ctx.camera1.transform.eulerAngles.y);
         }
         Physics.Simulate(dt);
     }

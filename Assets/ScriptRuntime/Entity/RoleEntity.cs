@@ -31,7 +31,7 @@ public class RoleEntity : MonoBehaviour {
 
     public void Ctor(Animator anim) {
         this.anim = anim;
-        rotationSpeed = 200;
+        rotationSpeed = 7;
         duration = 0.25f;
     }
 
@@ -45,8 +45,11 @@ public class RoleEntity : MonoBehaviour {
         if (moveAxis == Vector3.zero) {
             return;
         }
+        
         // Update Forward
-
+        if (moveAxis != Vector3.zero) {
+            body.transform.forward = Vector3.Lerp(body.transform.forward, moveAxis.normalized, dt * rotationSpeed);
+        }
         // // Update Forward 方法1
         // Vector3 newForward = new Vector3(moveAxis.x, 0, moveAxis.z);
         // if (newForward != oldForward) {
@@ -58,25 +61,13 @@ public class RoleEntity : MonoBehaviour {
         //     oldForward = newForward;
         //     time = 0;
         // }
-
+        // Debug.Log(moveAxis);
         // if (time <= duration) {
         //     time += dt;
         //     var quatStar = Quaternion.LookRotation(startForward);
         //     var quatEnd = Quaternion.LookRotation(endForward);
         //     body.transform.rotation = Quaternion.Lerp(quatStar, quatEnd, time / duration);
         // }
-
-        // // 方法2
-        // if (body.transform.forward != moveAxis) {
-        //     float angle = Vector3.Angle(body.transform.forward.normalized, moveAxis.normalized);
-        //     var coross = Vector3.Cross(body.transform.forward.normalized, moveAxis.normalized);
-        //     if (coross.y > 0) {
-        //         body.transform.Rotate(Vector3.up, rotationSpeed * dt);
-        //     } else {
-        //         body.transform.Rotate(Vector3.up, -rotationSpeed * dt);
-        //     }
-        // }
-
     }
 
     public void SetRotation(float angle) {
