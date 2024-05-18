@@ -5,6 +5,8 @@ public class InputEntity {
     public Vector3 moveAxis;
     public Vector2 mouseAxis;
 
+    public bool isShootReady;
+
     public void Process(Vector3 forward, Vector3 right) {
         moveAxis = Vector2.zero;
         if (Input.GetKey(KeyCode.W)) {
@@ -27,5 +29,9 @@ public class InputEntity {
             mouseAxis.x = Input.GetAxis("Mouse X");
             mouseAxis.y = Input.GetAxis("Mouse Y");
         }
+
+
+        // isShootReady
+        isShootReady = Input.GetKeyDown(KeyCode.Z);
     }
 }

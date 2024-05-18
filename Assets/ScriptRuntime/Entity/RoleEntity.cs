@@ -13,8 +13,10 @@ public class RoleEntity : MonoBehaviour {
     [SerializeField] Rigidbody rb;
     [SerializeField] Animator anim;
     public GameObject body;
-    public Transform shootLookAt;
-    public GameObject shootT;
+    public Transform lookAtPoint;
+    public Transform orientation;
+
+    public bool isShootReady;
 
     // Componet
     public GunComponent gunCom;
@@ -48,9 +50,9 @@ public class RoleEntity : MonoBehaviour {
     }
 
     public void SetForward_Normal(Vector3 moveAxis, Vector3 cameraPos, float dt) {
-        var viewDir = shootLookAt.position - cameraPos;
+        var viewDir = lookAtPoint.position - cameraPos;
         viewDir.y = 0;
-        shootT.transform.forward = viewDir;
+        orientation.forward = viewDir;
         // Update Forward
         if (moveAxis != Vector3.zero) {
             transform.forward = Vector3.Lerp(transform.forward, moveAxis.normalized, dt * rotationSpeed);
@@ -58,7 +60,7 @@ public class RoleEntity : MonoBehaviour {
     }
 
     public void SetForward_Shoot(Vector3 cameraPos) {
-        var viewDir = shootLookAt.position - cameraPos;
+        var viewDir = lookAtPoint.position - cameraPos;
         viewDir.y = 0;
         transform.forward = viewDir;
     }

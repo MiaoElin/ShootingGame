@@ -4,25 +4,32 @@ using Cinemachine;
 public class CameraEntity {
     public CinemachineFreeLook normalCamera;
     public CinemachineFreeLook shootLookCamera;
-
-    public CinemachineFreeLook currentCamera;
+    public CinemachineFreeLook current;
+    public Camera currentCamera; // 目前没用到。用brain切换相机没成功
 
     public CameraEntity() {
     }
 
-    public void Inject(CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera) {
+    public void Inject(Camera currentCamera, CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera) {
+        this.currentCamera = currentCamera;
         this.normalCamera = normalCamera;
         this.shootLookCamera = shootCamera;
     }
 
     public void EnterShoot() {
+        shootLookCamera.m_YAxis = normalCamera.m_YAxis;
+        shootLookCamera.m_XAxis = normalCamera.m_XAxis;
+        current = shootLookCamera;
         normalCamera.gameObject.SetActive(false);
-        currentCamera = shootLookCamera;
+        shootLookCamera.gameObject.SetActive(true);
     }
 
     public void EnterNormal() {
+        normalCamera.m_YAxis = shootLookCamera.m_YAxis;
+        normalCamera.m_XAxis = shootLookCamera.m_XAxis;
+        current = normalCamera;
         shootLookCamera.gameObject.SetActive(false);
-        currentCamera = normalCamera;
+        normalCamera.gameObject.SetActive(true);
     }
 
     public void Ctor() {
@@ -33,10 +40,10 @@ public class CameraEntity {
     }
 
     public void SetLookAt(Transform target) {
-        currentCamera.LookAt = target;
+        current.LookAt = target;
     }
 
     public void SetFollow(Transform target) {
-        currentCamera.Follow = target;
+        current.Follow = target;
     }
 }

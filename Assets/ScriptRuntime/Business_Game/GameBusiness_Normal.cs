@@ -9,10 +9,7 @@ public static class GameBusiness_Normal {
         ctx.ownerID = owner.id;
 
         // 设置相机跟随
-        ctx.cameraEntity.EnterNormal();
-        ctx.cameraEntity.SetFollow(owner.transform);
-        ctx.cameraEntity.SetLookAt(owner.shootLookAt);
-
+        CameraDomain.EnterNormal(ctx);
         UIDomain.Panel_CrossHair_Open(ctx);
         ctx.fsm.EnterNormal();
     }
@@ -41,17 +38,33 @@ public static class GameBusiness_Normal {
     }
 
     public static void FixedTick(GameContext ctx, float dt) {
+
         var owner = ctx.GetOwner();
-        owner.SetLastPos(owner.GetPos());
+        RoleFSMController.ApplyFsm(ctx, owner, dt);
+
         int roleLen = ctx.roleRepo.TakeAll(out var allRoles);
         for (int i = 0; i < roleLen; i++) {
             var role = allRoles[i];
             RoleDomain.Move(ctx, role, dt);
-            role.SetForward_Normal(ctx.input.moveAxis, ctx.mainCamera.transform.forward, dt);
         }
         Physics.Simulate(dt);
     }
 
     public static void LateTick(GameContext ctx, float dt) {
+        var owner = ctx.GetOwner();
+        if (owner.isShootReady) {
+            if (ctx.input.isShootReady) {
+                ctx.input.isShootReady = false;
+                owner.isShootReady = false;
+                owner.roleFSMComponent.EnterNormal();
+            }
+        }
+        if (!owner.isShootReady) {
+            if (ctx.input.isShootReady) {
+                ctx.input.isShootReady = false;
+                owner.isShootReady = true;
+                owner.roleFSMComponent.EnterShoot();
+            }
+        }
     }
 }

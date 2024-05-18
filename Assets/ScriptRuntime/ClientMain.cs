@@ -7,7 +7,7 @@ public class ClientMain : MonoBehaviour {
 
     [SerializeField] CinemachineFreeLook normalCamera;
     [SerializeField] CinemachineFreeLook shootCamera;
-    [SerializeField] Camera cameraR;
+    [SerializeField] Camera currentCamera;
     [SerializeField] Canvas screenCanvas;
     bool isDestory;
     GameContext ctx;
@@ -20,7 +20,7 @@ public class ClientMain : MonoBehaviour {
 
         ctx = new GameContext();
         Load();
-        ctx.Inject(normalCamera, shootCamera, cameraR, screenCanvas);
+        ctx.Inject(normalCamera, shootCamera, currentCamera, screenCanvas);
         ctx.poolService.Init(() => GameFactory.Role_Create(ctx));
         GameBusiness_Normal.Enter(ctx);
     }
@@ -33,7 +33,7 @@ public class ClientMain : MonoBehaviour {
     void Update() {
 
         float dt = Time.deltaTime;
-        ctx.input.Process(cameraR.transform.forward, cameraR.transform.right);
+        ctx.input.Process(currentCamera.transform.forward, currentCamera.transform.right);
 
         var status = ctx.fsm.status;
         if (status == GameStatus.Normal) {

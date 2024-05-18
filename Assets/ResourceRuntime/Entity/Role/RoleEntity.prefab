@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7656543191376709728}
   m_Layer: 0
-  m_Name: shootlookAt
+  m_Name: shootlookAt_position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,8 +87,8 @@ MonoBehaviour:
   rb: {fileID: 866934450577288924}
   anim: {fileID: 0}
   body: {fileID: 0}
-  shootLookAt: {fileID: 7656543191376709728}
-  shootT: {fileID: 574974159737441512}
+  lookAtPoint: {fileID: 7656543191376709728}
+  orientation: {fileID: 8990928897549164364}
   rotationSpeed: 0
 --- !u!54 &866934450577288924
 Rigidbody:
@@ -127,7 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8990928897549164364}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: shoot_orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -22,4 +22,12 @@ public static class RoleDomain {
             }
         }
     }
+
+    public static void SetForward_Normal(GameContext ctx, RoleEntity role, float dt) {
+        role.SetForward_Normal(ctx.input.moveAxis, ctx.cameraEntity.GetPos(), dt);
+    }
+
+    public static void SetForward_Shoot(GameContext ctx, RoleEntity role) {
+        role.SetForward_Shoot(ctx.cameraEntity.GetPos());
+    }
 }
