@@ -6,6 +6,7 @@ public class RoleEntity : MonoBehaviour {
     public int id;
     public int hp;
     public int hpMax;
+    public RoleFSMComponent roleFSMComponent;
     public float moveSpeed;
     public MoveType moveType;
     public Vector3 lastPos;
@@ -13,26 +14,22 @@ public class RoleEntity : MonoBehaviour {
     [SerializeField] Animator anim;
     public GameObject body;
     public Transform shootLookAt;
+    public GameObject shootT;
 
     // Componet
     public GunComponent gunCom;
 
     // faceDir;
     public float rotationSpeed;
-    public Vector3 startForward;
-    public Vector3 endForward;
-    public Vector3 oldForward;
-    public float time;
-    public float duration;
 
     public RoleEntity() {
         gunCom = new GunComponent();
+        roleFSMComponent = new RoleFSMComponent();
     }
 
     public void Ctor(Animator anim) {
         this.anim = anim;
         rotationSpeed = 7;
-        duration = 0.25f;
     }
 
     public void Move(Vector3 moveAxis, float dt) {
@@ -45,12 +42,15 @@ public class RoleEntity : MonoBehaviour {
         if (moveAxis == Vector3.zero) {
             return;
         }
-
+        // shootLookAt.transform.GetComponentInParent<GameObject>.t
         // // SetForward_Normal(moveAxis, dt);
         // SetForward_Shoot();
     }
 
-    public void SetForward_Normal(Vector3 moveAxis, float dt) {
+    public void SetForward_Normal(Vector3 moveAxis, Vector3 cameraPos, float dt) {
+        var viewDir = shootLookAt.position - cameraPos;
+        viewDir.y = 0;
+        shootT.transform.forward = viewDir;
         // Update Forward
         if (moveAxis != Vector3.zero) {
             transform.forward = Vector3.Lerp(transform.forward, moveAxis.normalized, dt * rotationSpeed);

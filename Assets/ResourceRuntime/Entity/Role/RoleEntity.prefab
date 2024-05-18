@@ -88,12 +88,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   body: {fileID: 0}
   shootLookAt: {fileID: 7656543191376709728}
+  shootT: {fileID: 574974159737441512}
   rotationSpeed: 0
-  startForward: {x: 0, y: 0, z: 0}
-  endForward: {x: 0, y: 0, z: 0}
-  oldForward: {x: 0, y: 0, z: 0}
-  time: 0
-  duration: 0
 --- !u!54 &866934450577288924
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public static class GameBusiness_Normal {
         ctx.ownerID = owner.id;
 
         // 设置相机跟随
-        ctx.cameraEntity.EnterShoot();
+        ctx.cameraEntity.EnterNormal();
         ctx.cameraEntity.SetFollow(owner.transform);
         ctx.cameraEntity.SetLookAt(owner.shootLookAt);
 
@@ -47,8 +47,7 @@ public static class GameBusiness_Normal {
         for (int i = 0; i < roleLen; i++) {
             var role = allRoles[i];
             RoleDomain.Move(ctx, role, dt);
-            // role.SetRotation(ctx.camera1.transform.eulerAngles.y);
-            role.SetForward_Shoot(ctx.cameraEntity.GetPos());
+            role.SetForward_Normal(ctx.input.moveAxis, ctx.mainCamera.transform.forward, dt);
         }
         Physics.Simulate(dt);
     }

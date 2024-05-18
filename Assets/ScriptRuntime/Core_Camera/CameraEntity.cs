@@ -8,7 +8,6 @@ public class CameraEntity {
     public CinemachineFreeLook currentCamera;
 
     public CameraEntity() {
-        //暂时的，是相机与角色的距离；
     }
 
     public void Inject(CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera) {
