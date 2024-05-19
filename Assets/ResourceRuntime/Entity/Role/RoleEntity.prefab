@@ -83,13 +83,17 @@ MonoBehaviour:
   hpMax: 0
   moveSpeed: 0
   moveType: 0
-  lastPos: {x: 0, y: 0, z: 0}
   rb: {fileID: 866934450577288924}
+  gravity: 0
+  jumpingForce: 0
+  isInGround: 0
+  isEnterGround: 0
   anim: {fileID: 0}
   body: {fileID: 0}
   lookAtPoint: {fileID: 7656543191376709728}
   orientation: {fileID: 8990928897549164364}
   isShootReady: 0
+  isJumpKeyDown: 0
   rotationSpeed: 0
 --- !u!54 &866934450577288924
 Rigidbody:

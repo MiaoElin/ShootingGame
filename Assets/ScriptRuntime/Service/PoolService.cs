@@ -11,7 +11,7 @@ public class PoolService {
 
     public void Init(Func<RoleEntity> role_Create) {
         rolePoolGroup = new GameObject("RolePool").transform;
-        rolePool = new Pool<RoleEntity>(role_Create, 300);
+        rolePool = new Pool<RoleEntity>(role_Create, 1);
     }
 
     public RoleEntity GetRole() {
