@@ -30,12 +30,19 @@ public static class GameFactory {
         return role;
     }
 
-    public static LootEntity Loot_Spawn(GameContext ctx, int typeID, Vector2 pos) {
+    public static LootEntity Loot_Spawn(GameContext ctx, int typeID, Vector3 pos, Vector3 eulerAngles) {
         bool has = ctx.asset.TryGetLootTM(typeID, out var tm);
         if (!has) {
             Debug.LogError($"GameFactory.LootSpawn {typeID} is not find");
         }
         var loot = ctx.poolService.GetPool();
+        loot.typeID = typeID;
+        loot.SetPos(pos);
+        loot.SetEulerAngles(eulerAngles);
+        loot.id = ctx.iDService.lootIdRecord++;
+        loot.isBox = tm.isBox;
+        loot.stuffTypeIDs = tm.stuffTypeIDs;
+        loot.stuffCount = tm.stuffCount;
         loot.meshF.mesh = tm.mesh;
         loot.meshR.material = tm.material;
         loot.gameObject.SetActive(true);

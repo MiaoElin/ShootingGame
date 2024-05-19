@@ -5,7 +5,7 @@ using Cinemachine;
 public static class GameBusiness_Normal {
 
     public static void Enter(GameContext ctx) {
-        //获取场景里所有的LootEntity
+        // // 获取场景里所有的LootEntity
         // var loots = Resources.FindObjectsOfTypeAll<LootEntity>();
         // foreach (var loot in loots) {
         //     if (loot.gameObject.activeSelf) {
@@ -14,13 +14,21 @@ public static class GameBusiness_Normal {
         //     }
         // }
 
+        // 生成临时loot
+        LootDomain.Spawn(ctx, 102, new Vector3(0.5f, -3, 5), new Vector3(0, -150, 90));
+
+        // 生成owner
         var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 0, 0));
         ctx.ownerID = owner.id;
+        owner.roleFSMComponent.EnterNormal();
 
         // 设置相机跟随
-        owner.roleFSMComponent.EnterNormal();
         CameraDomain.EnterNormal(ctx);
+
+        // 打开准心UI
         UIDomain.Panel_CrossHair_Open(ctx);
+
+        // 游戏进入Normal status 
         ctx.fsm.EnterNormal();
     }
 

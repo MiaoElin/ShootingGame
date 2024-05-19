@@ -13,7 +13,7 @@ public class PoolService {
     public void Init(Func<RoleEntity> role_Create, Func<LootEntity> loot_Create) {
         rolePoolGroup = new GameObject("RolePool").transform;
         rolePool = new Pool<RoleEntity>(role_Create, 1);
-        lootPool = new Pool<LootEntity>(loot_Create, 0);
+        lootPool = new Pool<LootEntity>(loot_Create, 20);
     }
 
     public RoleEntity GetRole() {
@@ -28,7 +28,7 @@ public class PoolService {
         return lootPool.Get();
     }
 
-    public void ReturnPool(LootEntity loot) {
+    public void ReturnLoot(LootEntity loot) {
         lootPool.Return(loot);
     }
 }

@@ -37,7 +37,6 @@ public static class RoleDomain {
             // anim
             role.Anim_Jump();
             // sfx
-
             // vfx
         }
     }
@@ -46,7 +45,7 @@ public static class RoleDomain {
         role.Falling(dt);
     }
 
-    // rayCast
+    // Ground Check
     public static void GroundCheck(GameContext ctx, RoleEntity role) {
         if (role.Velocity().y > 0) {
             return;
@@ -57,7 +56,6 @@ public static class RoleDomain {
 
         if (hits.Length != 0) {
             if (!role.isInGround) {
-                // role.isEnterGround = true;
                 SFXDomain.Role_EnterGroud(ctx);
             }
             role.isInGround = true;
@@ -65,4 +63,7 @@ public static class RoleDomain {
             role.isInGround = false;
         }
     }
+
+    // 找最近的Loot
+    
 }

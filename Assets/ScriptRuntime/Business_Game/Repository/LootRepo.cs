@@ -15,6 +15,10 @@ public class LootRepo {
         all.Add(loot.id, loot);
     }
 
+    public void Remove(LootEntity loot) {
+        all.Remove(loot.id);
+    }
+
     public bool Tryget(int id, out LootEntity loot) {
         return all.TryGetValue(id, out loot);
     }
