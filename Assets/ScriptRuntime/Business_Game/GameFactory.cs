@@ -17,6 +17,8 @@ public static class GameFactory {
         role.hpMax = tm.hpMax;
         role.moveSpeed = tm.moveSpeed;
         role.moveType = tm.moveType;
+        role.gravity = tm.gravity;
+        role.jumpingForce = tm.jumpingForce;
         role.gameObject.SetActive(true);
         return role;
     }

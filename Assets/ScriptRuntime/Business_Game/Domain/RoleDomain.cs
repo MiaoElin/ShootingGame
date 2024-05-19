@@ -30,4 +30,36 @@ public static class RoleDomain {
     public static void SetForward_Shoot(GameContext ctx, RoleEntity role) {
         role.SetForward_Shoot(ctx.cameraEntity.GetPos());
     }
+
+    public static void Jump(RoleEntity role) {
+        bool isJump = role.IsJump();
+        if (isJump) {
+            // anim
+
+            // sfx
+
+            // vfx
+        }
+    }
+
+    public static void Falling(RoleEntity role, float dt) {
+        role.Falling(dt);
+    }
+
+    // rayCast
+    public static void GroundCheck(RoleEntity role) {
+        // if (role.Velocity().y > 0) {
+        //     return;
+        // }
+        var layerMask = 1 << LayerMaskConst.GROUND;
+        var quat = Quaternion.LookRotation(role.GetForward(), Vector3.up);
+        var hit = Physics.OverlapBox(role.GetPos(), new Vector3(0.6f, 0.1f, 0.3f), quat, layerMask);
+
+        if (hit.Length != 0) {
+            role.isInGround = true;
+        } else {
+            role.isInGround = false;
+        }
+
+    }
 }

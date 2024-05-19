@@ -9,14 +9,21 @@ public class RoleEntity : MonoBehaviour {
     public RoleFSMComponent roleFSMComponent;
     public float moveSpeed;
     public MoveType moveType;
-    public Vector3 lastPos;
+
     [SerializeField] Rigidbody rb;
+    public float gravity;
+    public float jumpingForce;
+    public bool isInGround;
+
     [SerializeField] Animator anim;
     public GameObject body;
     public Transform lookAtPoint;
     public Transform orientation;
 
     public bool isShootReady;
+
+    // input
+    public bool isJumpKeyDown;
 
     // Componet
     public GunComponent gunCom;
@@ -44,16 +51,18 @@ public class RoleEntity : MonoBehaviour {
         if (moveAxis == Vector3.zero) {
             return;
         }
-        // shootLookAt.transform.GetComponentInParent<GameObject>.t
-        // // SetForward_Normal(moveAxis, dt);
-        // SetForward_Shoot();
+    }
+
+    public Vector3 Velocity() {
+        return rb.velocity;
     }
 
     public void SetForward_Normal(Vector3 moveAxis, Vector3 cameraPos, float dt) {
+        // Update Orientation Forward
         var viewDir = lookAtPoint.position - cameraPos;
         viewDir.y = 0;
         orientation.forward = viewDir;
-        // Update Forward
+        // Update RoleEntity Forward
         if (moveAxis != Vector3.zero) {
             transform.forward = Vector3.Lerp(transform.forward, moveAxis.normalized, dt * rotationSpeed);
         }
@@ -65,12 +74,21 @@ public class RoleEntity : MonoBehaviour {
         transform.forward = viewDir;
     }
 
-    public void Jump() {
-
+    public bool IsJump() {
+        if (isInGround && isJumpKeyDown) {
+            isInGround = false;
+            var velocity = rb.velocity;
+            velocity.y = jumpingForce;
+            rb.velocity = velocity;
+            return true;
+        }
+        return false;
     }
 
-    public void Falling() {
-
+    public void Falling(float dt) {
+        var velocity = rb.velocity;
+        velocity.y -= gravity * dt;
+        rb.velocity = velocity;
     }
 
     public float GetRotationY() {
@@ -89,17 +107,11 @@ public class RoleEntity : MonoBehaviour {
         transform.position = pos;
     }
 
-    public void SetLastPos(Vector3 pos) {
-        this.lastPos = pos;
-    }
 
     public Vector3 GetPos() {
         return transform.position;
     }
 
-    public Vector3 GetLastPos() {
-        return lastPos;
-    }
 
     public void Anim_Run() {
         anim.SetFloat("F_MoveSpeed", rb.velocity.magnitude);

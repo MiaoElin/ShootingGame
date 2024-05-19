@@ -6,6 +6,7 @@ public class InputEntity {
     public Vector2 mouseAxis;
 
     public bool isShootReady;
+    public bool isJumpKeyDown;
 
     public void Process(Vector3 forward, Vector3 right) {
         moveAxis = Vector2.zero;
@@ -33,5 +34,8 @@ public class InputEntity {
 
         // isShootReady
         isShootReady = Input.GetKeyDown(KeyCode.Z);
+
+        // Jump
+        isJumpKeyDown = Input.GetKeyDown(KeyCode.Space);
     }
 }

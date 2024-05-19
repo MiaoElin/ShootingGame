@@ -17,9 +17,11 @@ public class CameraEntity {
     }
 
     public void EnterShoot() {
+
+        current = shootLookCamera;
+        // 切换相机要用上次的鼠标偏移位置，来保持相机的旋转角度不变
         shootLookCamera.m_YAxis = normalCamera.m_YAxis;
         shootLookCamera.m_XAxis = normalCamera.m_XAxis;
-        current = shootLookCamera;
         normalCamera.gameObject.SetActive(false);
         shootLookCamera.gameObject.SetActive(true);
     }
