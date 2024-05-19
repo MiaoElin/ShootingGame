@@ -11,6 +11,9 @@ public class AssetCore {
     Dictionary<int, RoleTM> roleTMs;
     AsyncOperationHandle roleTMPtr;
 
+    Dictionary<int, LootTM> lootTMs;
+    AsyncOperationHandle lootTMPtr;
+
     Dictionary<string, GameObject> allUI_Prefab;
     public AsyncOperationHandle uiPrefabPtr;
 
@@ -21,6 +24,7 @@ public class AssetCore {
     public AssetCore() {
         entities = new Dictionary<string, GameObject>();
         roleTMs = new Dictionary<int, RoleTM>();
+        lootTMs = new Dictionary<int, LootTM>();
         allUI_Prefab = new Dictionary<string, GameObject>();
     }
 
@@ -54,6 +58,14 @@ public class AssetCore {
             configPtr = ptr;
             configTM = ptr.WaitForCompletion();
         }
+        {
+            var ptr = Addressables.LoadAssetsAsync<LootTM>("LootTM", null);
+            lootTMPtr = ptr;
+            var list = ptr.WaitForCompletion();
+            foreach (var tm in list) {
+                lootTMs.Add(tm.typeID, tm);
+            }
+        }
     }
 
     public void Unload() {
@@ -69,6 +81,9 @@ public class AssetCore {
         if (configPtr.IsValid()) {
             Addressables.Release(configPtr);
         }
+        if (lootTMPtr.IsValid()) {
+            Addressables.Release(lootTMPtr);
+        }
     }
 
     public bool TryGetEntity_Prefab(string name, out GameObject prefab) {
@@ -81,6 +96,10 @@ public class AssetCore {
 
     public bool TrygeUI_Prefab(string name, out GameObject ui) {
         return allUI_Prefab.TryGetValue(name, out ui);
+    }
+
+    public bool TryGetLootTM(int typeID, out LootTM tm) {
+        return lootTMs.TryGetValue(typeID, out tm);
     }
 
 }

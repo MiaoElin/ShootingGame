@@ -28,6 +28,8 @@ public class RoleEntity : MonoBehaviour {
 
     // Componet
     public GunComponent gunCom;
+    public StuffComponent stuffCom;
+    public EquipComponent equipCom;
 
     // faceDir;
     public float rotationSpeed;
@@ -39,7 +41,7 @@ public class RoleEntity : MonoBehaviour {
 
     public void Ctor(Animator anim) {
         this.anim = anim;
-        rotationSpeed = 7;
+        rotationSpeed = 10;
     }
 
     public void Move(Vector3 moveAxis, float dt) {
@@ -65,14 +67,20 @@ public class RoleEntity : MonoBehaviour {
         orientation.forward = viewDir;
         // Update RoleEntity Forward
         if (moveAxis != Vector3.zero) {
-            transform.forward = Vector3.Lerp(transform.forward, moveAxis.normalized, dt * rotationSpeed);
+            // 注意这里转的是body，与准心分开的
+            body.transform.forward = Vector3.Lerp(body.transform.forward, moveAxis.normalized, dt * rotationSpeed);
         }
     }
 
     public void SetForward_Shoot(Vector3 cameraPos) {
+        // 准心和body的forward是一起变的，所以直接转Transform
         var viewDir = lookAtPoint.position - cameraPos;
         viewDir.y = 0;
-        transform.forward = viewDir;
+        transform.forward = Vector3.Lerp(transform.forward, viewDir.normalized, 0.01f * rotationSpeed);
+        // transform.forward = viewDir.normalized;
+        // var angle = transform.eulerAngles;
+        // angle.y = cameraPos.y;
+        // transform.eulerAngles = angle;
     }
 
     public bool IsJump() {

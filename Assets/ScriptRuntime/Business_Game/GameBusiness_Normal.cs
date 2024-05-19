@@ -5,6 +5,15 @@ using Cinemachine;
 public static class GameBusiness_Normal {
 
     public static void Enter(GameContext ctx) {
+        //获取场景里所有的LootEntity
+        // var loots = Resources.FindObjectsOfTypeAll<LootEntity>();
+        // foreach (var loot in loots) {
+        //     if (loot.gameObject.activeSelf) {
+        //         Debug.Log(loot.id);
+        //         ctx.lootRepo.Add(loot);
+        //     }
+        // }
+
         var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 0, 0));
         ctx.ownerID = owner.id;
 

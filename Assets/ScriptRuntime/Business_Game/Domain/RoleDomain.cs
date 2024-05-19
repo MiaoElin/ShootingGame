@@ -53,9 +53,9 @@ public static class RoleDomain {
         }
         var layerMask = 1 << LayerMaskConst.GROUND;
         var quat = Quaternion.LookRotation(role.GetForward(), Vector3.up);
-        var hit = Physics.OverlapBox(role.GetPos(), new Vector3(0.6f, 0.1f, 0.3f), quat, layerMask);
+        Collider[] hits = Physics.OverlapBox(role.GetPos(), new Vector3(0.6f, 0.1f, 0.3f), quat, layerMask);
 
-        if (hit.Length != 0) {
+        if (hits.Length != 0) {
             if (!role.isInGround) {
                 // role.isEnterGround = true;
                 SFXDomain.Role_EnterGroud(ctx);
@@ -64,6 +64,5 @@ public static class RoleDomain {
         } else {
             role.isInGround = false;
         }
-
     }
 }

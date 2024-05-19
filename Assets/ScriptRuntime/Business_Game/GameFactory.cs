@@ -29,4 +29,23 @@ public static class GameFactory {
         role.gameObject.SetActive(false);
         return role;
     }
+
+    public static LootEntity Loot_Spawn(GameContext ctx, int typeID, Vector2 pos) {
+        bool has = ctx.asset.TryGetLootTM(typeID, out var tm);
+        if (!has) {
+            Debug.LogError($"GameFactory.LootSpawn {typeID} is not find");
+        }
+        var loot = ctx.poolService.GetPool();
+        loot.meshF.mesh = tm.mesh;
+        loot.meshR.material = tm.material;
+        loot.gameObject.SetActive(true);
+        return loot;
+    }
+
+    public static LootEntity Loot_Create(GameContext ctx) {
+        ctx.asset.TryGetEntity_Prefab(typeof(LootEntity).Name, out var prefab);
+        var loot = GameObject.Instantiate(prefab, ctx.poolService.rolePoolGroup).GetComponent<LootEntity>();
+        loot.gameObject.SetActive(false);
+        return loot;
+    }
 }

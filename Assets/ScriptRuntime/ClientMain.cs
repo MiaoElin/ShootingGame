@@ -21,7 +21,7 @@ public class ClientMain : MonoBehaviour {
         ctx = new GameContext();
         Load();
         ctx.Inject(normalCamera, shootCamera, currentCamera, screenCanvas);
-        ctx.poolService.Init(() => GameFactory.Role_Create(ctx));
+        ctx.poolService.Init(() => GameFactory.Role_Create(ctx), () => GameFactory.Loot_Create(ctx));
         GameBusiness_Normal.Enter(ctx);
     }
 

@@ -16,9 +16,10 @@ public class GameContext {
     // === Service ===
     public IDService iDService;
     public PoolService poolService;
+
     // === Repo ===
     public RoleRepo roleRepo;
-
+    public LootRepo lootRepo;
 
     // === Owner ===
     public int ownerID;
@@ -32,9 +33,13 @@ public class GameContext {
         cameraEntity = new CameraEntity();
         // core
         asset = new AssetCore();
-        roleRepo = new RoleRepo();
         uIApp = new UIApp();
         soundCore = new SoundCore();
+
+        // Repo
+        roleRepo = new RoleRepo();
+        lootRepo = new LootRepo();
+        
         // Service
         iDService = new IDService();
         poolService = new PoolService();
@@ -44,7 +49,7 @@ public class GameContext {
     }
 
     public void Inject(CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera, Camera currentCamera, Canvas screenCanvas) {
-        cameraEntity.Inject(currentCamera,normalCamera, shootCamera);
+        cameraEntity.Inject(currentCamera, normalCamera, shootCamera);
         uIApp.Inject(asset, screenCanvas);
     }
 
