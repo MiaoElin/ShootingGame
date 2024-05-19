@@ -52,7 +52,7 @@ public static class GameBusiness_Normal {
         //     RoleDomain.Falling(role, dt);
         // }
         Physics.Simulate(dt);
-        RoleDomain.GroundCheck(owner);
+        RoleDomain.GroundCheck(ctx, owner);
     }
 
     public static void LateTick(GameContext ctx, float dt) {

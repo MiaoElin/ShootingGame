@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -5,7 +6,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class SoundCore {
 
     public AudioSource prefab;
-    public AudioSource role_walk;
+    public AudioSource role_Walk;
+    public AudioSource role_EnterGround;
     AsyncOperationHandle prefabHandle;
 
     public void LoadAll() {
@@ -13,7 +15,8 @@ public class SoundCore {
         var handle = Addressables.LoadAssetAsync<GameObject>("AudioSource");
         prefabHandle = handle;
         prefab = handle.WaitForCompletion().GetComponent<AudioSource>();
-        role_walk = GameObject.Instantiate(prefab, sfx.transform);
+        role_Walk = GameObject.Instantiate(prefab, sfx.transform);
+        role_EnterGround = GameObject.Instantiate(prefab, sfx.transform);
     }
 
     public void Unload() {
@@ -23,17 +26,25 @@ public class SoundCore {
     }
 
     public void Role_walk_Play(AudioClip clip) {
-        role_walk.loop = true;
-        role_walk.pitch = 1.5f;
-        if (!role_walk.isPlaying) {
-            role_walk.clip = clip;
-            role_walk.Play();
+        role_Walk.loop = true;
+        role_Walk.pitch = 1.5f;
+        if (!role_Walk.isPlaying) {
+            role_Walk.clip = clip;
+            role_Walk.Play();
         }
     }
 
     public void Role_walk_Stop() {
-        if (role_walk.isPlaying) {
-            role_walk.Stop();
+        if (role_Walk.isPlaying) {
+            role_Walk.Stop();
+        }
+    }
+
+    internal void Role_EnterGround_Play(AudioClip clip) {
+        role_EnterGround.volume = 0.15f;
+        if (!role_EnterGround.isPlaying) {
+            role_EnterGround.clip = clip;
+            role_EnterGround.Play();
         }
     }
 

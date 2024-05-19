@@ -14,6 +14,7 @@ public class RoleEntity : MonoBehaviour {
     public float gravity;
     public float jumpingForce;
     public bool isInGround;
+    public bool isEnterGround;
 
     [SerializeField] Animator anim;
     public GameObject body;

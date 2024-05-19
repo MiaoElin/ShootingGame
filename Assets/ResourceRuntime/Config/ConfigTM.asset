@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e685bec8d0a50840bd878cda17e3aca, type: 3}
   m_Name: ConfigTM
   m_EditorClassIdentifier: 
-  role_Walk: {fileID: 8300000, guid: 500b0bcba1523a248a5872995caa5b71, type: 3}
+  sfx_role_Walk: {fileID: 8300000, guid: 500b0bcba1523a248a5872995caa5b71, type: 3}
+  sfx_role_EnterGround: {fileID: 8300000, guid: 566d29df386b1704f9a7fa085b9ee519, type: 3}
