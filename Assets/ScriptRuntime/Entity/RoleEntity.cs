@@ -22,10 +22,12 @@ public class RoleEntity : MonoBehaviour {
     public Transform orientation;
 
     public bool isShootReady;
+    public bool isBagOpen;
 
     // input
     public bool isJumpKeyDown;
     public bool isPickKeyDown;
+    public bool isBagkeyDown;
 
     // Componet
     public GunComponent gunCom;

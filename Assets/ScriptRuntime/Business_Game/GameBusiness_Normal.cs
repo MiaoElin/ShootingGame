@@ -56,6 +56,7 @@ public static class GameBusiness_Normal {
         var owner = ctx.GetOwner();
         owner.isJumpKeyDown = ctx.input.isJumpKeyDown;
         owner.isPickKeyDown = ctx.input.isPickKeyDown;
+        owner.isBagkeyDown = ctx.input.isBagkeyDown;
     }
 
     public static void FixedTick(GameContext ctx, float dt) {
@@ -90,5 +91,21 @@ public static class GameBusiness_Normal {
                 owner.roleFSMComponent.EnterShoot();
             }
         }
+
+        if (owner.isBagOpen) {
+            if (owner.isBagkeyDown) {
+                owner.isBagOpen = false;
+                UIDomain.Panel_Bag_Hide(ctx);
+            }
+        }
+
+        if (!owner.isBagOpen) {
+            if (owner.isBagkeyDown) {
+                owner.isBagOpen = true;
+                UIDomain.Panel_Bag_Open(ctx);
+            }
+        }
+
+        // CameraDomain.MouseAxisTick(ctx);
     }
 }

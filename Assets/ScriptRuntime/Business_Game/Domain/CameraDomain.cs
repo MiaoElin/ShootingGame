@@ -19,9 +19,10 @@ public static class CameraDomain {
 
     public static void MouseAxisTick(GameContext ctx) {
         var camera = ctx.cameraEntity.currentCam;
+        var axisSpeed = ctx.cameraEntity.GetCameraAxisSpeed();
         if (ctx.input.isMouseLeftDown) {
-            camera.m_XAxis.m_MaxSpeed = 300;
-            camera.m_YAxis.m_MaxSpeed = 2;
+            camera.m_XAxis.m_MaxSpeed = axisSpeed.x;
+            camera.m_YAxis.m_MaxSpeed = axisSpeed.y;
         } else if (ctx.input.isMouseLeftUp) {
             camera.m_XAxis.m_MaxSpeed = 0;
             camera.m_YAxis.m_MaxSpeed = 0;

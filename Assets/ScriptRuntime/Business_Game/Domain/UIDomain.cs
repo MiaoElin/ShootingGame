@@ -21,4 +21,12 @@ public static class UIDomain {
     public static void Panel_LootSignal_Close(GameContext ctx, int id) {
         ctx.uIApp.Panel_LootSignal_Close(id);
     }
+
+    public static void Panel_Bag_Open(GameContext ctx) {
+        ctx.uIApp.Panel_Bag_Open();
+    }
+
+    public static void Panel_Bag_Hide(GameContext ctx) {
+        ctx.uIApp.Panel_Bag_Hide();
+    }
 }

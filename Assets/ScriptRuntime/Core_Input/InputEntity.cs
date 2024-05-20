@@ -5,12 +5,15 @@ public class InputEntity {
     public Vector3 moveAxis;
     public Vector2 mouseAxis;
 
+
+    // key
     public bool isShootReady;
     public bool isJumpKeyDown;
     public bool isPickKeyDown;
-
+    public bool isBagkeyDown;
     public bool isMouseLeftDown;
     public bool isMouseLeftUp;
+
 
     public void Process(Vector3 forward, Vector3 right) {
         moveAxis = Vector2.zero;
@@ -48,5 +51,8 @@ public class InputEntity {
         // Mouse
         isMouseLeftDown = Input.GetMouseButtonDown(0);
         isMouseLeftUp = Input.GetMouseButtonUp(0);
+
+        // Bag
+        isBagkeyDown = Input.GetKeyDown(KeyCode.Tab);
     }
 }

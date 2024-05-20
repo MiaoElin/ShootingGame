@@ -10,6 +10,9 @@ InputSystem
 === Input ===
 更换InputSystem（不会）
 
+=== UI ===
+- 打开背包等UI页面的时候需要暂停游戏，相机旋转停止，且鼠标要实现使用
+
 === role ===
 
 === SoundCore ===

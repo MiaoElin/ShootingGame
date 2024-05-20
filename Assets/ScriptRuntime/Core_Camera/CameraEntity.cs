@@ -5,8 +5,8 @@ public class CameraEntity {
     public CinemachineFreeLook normalCamera;
     public CinemachineFreeLook shootLookCamera;
     public CinemachineFreeLook currentCam;
-    public Camera currentCamera; // 目前没用到。用brain切换相机没成功
-
+    // public Camera currentCamera; // 目前没用到。用brain切换相机没成功
+    public CameraType cameraType;
     public Vector2 normalCameraAxisSpeed;
     public Vector2 shootCameraAxisSpeed;
     public CameraEntity() {
@@ -14,13 +14,27 @@ public class CameraEntity {
         shootCameraAxisSpeed = new Vector2(300, 2);
     }
 
+    public void Ctor() {
+    }
+
     public void Inject(Camera currentCamera, CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera) {
-        this.currentCamera = currentCamera;
+        // this.currentCamera = currentCamera;
         this.normalCamera = normalCamera;
         this.shootLookCamera = shootCamera;
     }
 
+    public Vector2 GetCameraAxisSpeed() {
+        if (cameraType == CameraType.Normal) {
+            return normalCameraAxisSpeed;
+        } else if (cameraType == CameraType.Shoot) {
+            return shootCameraAxisSpeed;
+        } else {
+            return default;
+        }
+    }
+
     public void EnterShoot() {
+        cameraType = CameraType.Shoot;
         if (currentCam) {
             // 切换相机要用上次的鼠标偏移位置，来保持相机的旋转角度不变
             shootLookCamera.m_YAxis = currentCam.m_YAxis;
@@ -33,6 +47,7 @@ public class CameraEntity {
     }
 
     public void EnterNormal() {
+        cameraType = CameraType.Normal;
         if (currentCam) {
             normalCamera.m_YAxis = currentCam.m_YAxis;
             normalCamera.m_XAxis = currentCam.m_XAxis;
@@ -43,11 +58,8 @@ public class CameraEntity {
         currentCam = normalCamera;
     }
 
-    public void Ctor() {
-    }
-
     public Vector3 GetPos() {
-        return currentCamera.transform.position;
+        return currentCam.transform.position;
     }
 
     public void SetLookAt(Transform target) {
