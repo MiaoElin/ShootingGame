@@ -55,6 +55,7 @@ public static class GameBusiness_Normal {
     private static void PreTick(GameContext ctx, float dt) {
         var owner = ctx.GetOwner();
         owner.isJumpKeyDown = ctx.input.isJumpKeyDown;
+        owner.isPickKeyDown = ctx.input.isPickKeyDown;
     }
 
     public static void FixedTick(GameContext ctx, float dt) {

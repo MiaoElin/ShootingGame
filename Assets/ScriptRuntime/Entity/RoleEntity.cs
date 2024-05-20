@@ -25,6 +25,7 @@ public class RoleEntity : MonoBehaviour {
 
     // input
     public bool isJumpKeyDown;
+    public bool isPickKeyDown;
 
     // Componet
     public GunComponent gunCom;

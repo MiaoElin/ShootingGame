@@ -38,6 +38,7 @@ public static class RoleFSMController {
         RoleDomain.Move(ctx, role, dt);
         RoleDomain.Jump(role);
         RoleDomain.Falling(role, dt);
-        RoleDomain.SearchLoot(ctx, role);
+        RoleDomain.SearchLoot(ctx, role, out var nearlyLoot);
+        RoleDomain.PickUpLoot(ctx, role, nearlyLoot);
     }
 }

@@ -65,20 +65,34 @@ public static class RoleDomain {
     }
 
     // 找最近的Loot
-    public static void SearchLoot(GameContext ctx, RoleEntity role) {
+    public static void SearchLoot(GameContext ctx, RoleEntity role, out LootEntity nearlyLoot) {
         var lootLen = ctx.lootRepo.TakeAll(out var allLoots);
+        nearlyLoot = null;
+        float nearlyDistance = Mathf.Pow(CommonConst.OWNER_SEARCHRANGE, 2);
         for (int i = 0; i < lootLen; i++) {
             var loot = allLoots[i];
             // 判断是不是在搜索范围
-            var isInRange = PureFuction.IsPointInRange(role.Pos(), loot.Pos(), CommonConst.OWNER_SEARCHRANGE);
+            var isInRange = PureFuction.IsPointInRange(role.Pos(), loot.Pos(), CommonConst.OWNER_SEARCHRANGE, out var distance);
             if (isInRange) {
                 // 打开lootSignal
                 Vector2 pos = Camera.main.WorldToScreenPoint(loot.Pos());
-
                 UIDomain.Panel_LootSignal_Open(ctx, loot.id, pos + Vector2.up * 100, loot.signalSpr, loot.lootName);
+                if (distance <= nearlyDistance) {
+                    nearlyDistance = distance;
+                    nearlyLoot = loot;
+                }
             } else {
                 UIDomain.Panel_LootSignal_Hide(ctx, loot.id);
             }
+        }
+    }
+
+    public static void PickUpLoot(GameContext ctx, RoleEntity role, LootEntity nearlyLoot) {
+        if (role.isPickKeyDown && nearlyLoot) {
+            Debug.Log("In");
+            // 生成stuff
+            // 添加进背包
+            // 销毁loot
         }
     }
 

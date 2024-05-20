@@ -7,6 +7,7 @@ public class InputEntity {
 
     public bool isShootReady;
     public bool isJumpKeyDown;
+    public bool isPickKeyDown;
 
     public void Process(Vector3 forward, Vector3 right) {
         moveAxis = Vector2.zero;
@@ -37,5 +38,8 @@ public class InputEntity {
 
         // Jump
         isJumpKeyDown = Input.GetKeyDown(KeyCode.Space);
+
+        // Pick
+        isPickKeyDown = Input.GetKeyDown(KeyCode.E);
     }
 }
