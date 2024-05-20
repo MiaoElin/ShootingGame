@@ -94,7 +94,7 @@ public class AssetCore {
         return roleTMs.TryGetValue(typeID, out tm);
     }
 
-    public bool TrygeUI_Prefab(string name, out GameObject ui) {
+    public bool TryGetUI_Prefab(string name, out GameObject ui) {
         return allUI_Prefab.TryGetValue(name, out ui);
     }
 

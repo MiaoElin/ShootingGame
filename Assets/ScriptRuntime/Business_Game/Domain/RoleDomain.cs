@@ -52,7 +52,7 @@ public static class RoleDomain {
         }
         var layerMask = 1 << LayerMaskConst.GROUND;
         var quat = Quaternion.LookRotation(role.GetForward(), Vector3.up);
-        Collider[] hits = Physics.OverlapBox(role.GetPos(), new Vector3(0.6f, 0.1f, 0.3f), quat, layerMask);
+        Collider[] hits = Physics.OverlapBox(role.Pos(), new Vector3(0.6f, 0.1f, 0.3f), quat, layerMask);
 
         if (hits.Length != 0) {
             if (!role.isInGround) {
@@ -65,5 +65,22 @@ public static class RoleDomain {
     }
 
     // 找最近的Loot
-    
+    public static void SearchLoot(GameContext ctx, RoleEntity role) {
+        var lootLen = ctx.lootRepo.TakeAll(out var allLoots);
+        for (int i = 0; i < lootLen; i++) {
+            var loot = allLoots[i];
+            // 判断是不是在搜索范围
+            var isInRange = PureFuction.IsPointInRange(role.Pos(), loot.Pos(), CommonConst.OWNER_SEARCHRANGE);
+            if (isInRange) {
+                // 打开lootSignal
+                Vector2 pos = Camera.main.WorldToScreenPoint(loot.Pos());
+
+                UIDomain.Panel_LootSignal_Open(ctx, loot.id, pos + Vector2.up * 100, loot.signalSpr, loot.lootName);
+            } else {
+                UIDomain.Panel_LootSignal_Hide(ctx, loot.id);
+            }
+        }
+    }
+
+
 }

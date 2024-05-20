@@ -20,3 +20,4 @@ MonoBehaviour:
   meshR: {fileID: 3110951642294222381, guid: 6095ca98212cdf748b351ddfbe19bffe, type: 3}
   mesh: {fileID: 4300010, guid: 860793eb3324391468f1c120a75ec049, type: 3}
   material: {fileID: 2100000, guid: 78660c09ff101ea4cb77de408a9527da, type: 2}
+  signalSpr: {fileID: 21300000, guid: 3696a977e3e9a44479eaa7756f90871d, type: 3}

@@ -6,7 +6,7 @@ public static class Panel_CrossHairDomain {
         string name = typeof(Panel_CrossHair).Name;
         var panel = ctx.uIRepo.Tryget<Panel_CrossHair>();
         if (panel == null) {
-            ctx.asset.TrygeUI_Prefab(name, out var prefab);
+            ctx.asset.TryGetUI_Prefab(name, out var prefab);
             panel = GameObject.Instantiate(prefab, ctx.screenCanvas.transform).GetComponent<Panel_CrossHair>();
             ctx.uIRepo.Add(name, panel.gameObject);
         }

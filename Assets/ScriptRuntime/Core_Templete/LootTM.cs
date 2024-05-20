@@ -12,4 +12,6 @@ public class LootTM : ScriptableObject {
     public GameObject meshR;
     public Mesh mesh;
     public Material material;
+
+    public Sprite signalSpr;
 }

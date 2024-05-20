@@ -18,7 +18,7 @@ public static class GameBusiness_Normal {
         LootDomain.Spawn(ctx, 102, new Vector3(0.5f, -3, 5), new Vector3(0, -150, 90));
 
         // 生成owner
-        var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 0, 0));
+        var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, -3, 0));
         ctx.ownerID = owner.id;
         owner.roleFSMComponent.EnterNormal();
 

@@ -37,6 +37,7 @@ public static class GameFactory {
         }
         var loot = ctx.poolService.GetPool();
         loot.typeID = typeID;
+        loot.lootName = tm.lootName;
         loot.SetPos(pos);
         loot.SetEulerAngles(eulerAngles);
         loot.id = ctx.iDService.lootIdRecord++;
@@ -45,6 +46,7 @@ public static class GameFactory {
         loot.stuffCount = tm.stuffCount;
         loot.meshF.mesh = tm.mesh;
         loot.meshR.material = tm.material;
+        loot.signalSpr = tm.signalSpr;
         loot.gameObject.SetActive(true);
         return loot;
     }

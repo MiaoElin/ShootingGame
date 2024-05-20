@@ -117,7 +117,7 @@ public class RoleEntity : MonoBehaviour {
     }
 
 
-    public Vector3 GetPos() {
+    public Vector3 Pos() {
         return transform.position;
     }
 

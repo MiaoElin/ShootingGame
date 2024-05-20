@@ -7,15 +7,18 @@ public class UIContext {
 
     public AssetCore asset;
     public UIRepo uIRepo;
+    public P_LootSignalRepo p_LootSignalRepo;
     public Canvas screenCanvas;
 
     public UIContext() {
         uIRepo = new UIRepo();
+        p_LootSignalRepo = new P_LootSignalRepo();
     }
 
     public void Inject(AssetCore asset, Canvas screenCanvas) {
         this.asset = asset;
         this.screenCanvas = screenCanvas;
     }
+
 
 }

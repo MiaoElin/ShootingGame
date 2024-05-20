@@ -11,9 +11,12 @@ InputSystem
 更换InputSystem（不会）
 
 === role ===
-- 角色面向旋转用阻尼的方式
 
 === SoundCore ===
+
+=== Loot ===
+- 范围内物品加外发光
+- 
 
 
 === 技能系统 ===
