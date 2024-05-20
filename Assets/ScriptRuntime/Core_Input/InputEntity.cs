@@ -9,6 +9,9 @@ public class InputEntity {
     public bool isJumpKeyDown;
     public bool isPickKeyDown;
 
+    public bool isMouseLeftDown;
+    public bool isMouseLeftUp;
+
     public void Process(Vector3 forward, Vector3 right) {
         moveAxis = Vector2.zero;
         if (Input.GetKey(KeyCode.W)) {
@@ -41,5 +44,9 @@ public class InputEntity {
 
         // Pick
         isPickKeyDown = Input.GetKeyDown(KeyCode.E);
+
+        // Mouse
+        isMouseLeftDown = Input.GetMouseButtonDown(0);
+        isMouseLeftUp = Input.GetMouseButtonUp(0);
     }
 }

@@ -7,7 +7,11 @@ public class CameraEntity {
     public CinemachineFreeLook currentCam;
     public Camera currentCamera; // 目前没用到。用brain切换相机没成功
 
+    public Vector2 normalCameraAxisSpeed;
+    public Vector2 shootCameraAxisSpeed;
     public CameraEntity() {
+        normalCameraAxisSpeed = new Vector2(300, 3);
+        shootCameraAxisSpeed = new Vector2(300, 2);
     }
 
     public void Inject(Camera currentCamera, CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera) {
@@ -37,7 +41,6 @@ public class CameraEntity {
         normalCamera.gameObject.SetActive(true);
 
         currentCam = normalCamera;
-
     }
 
     public void Ctor() {

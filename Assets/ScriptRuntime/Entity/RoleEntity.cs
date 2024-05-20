@@ -74,14 +74,15 @@ public class RoleEntity : MonoBehaviour {
     }
 
     public void SetForward_Shoot(Vector3 cameraPos) {
-        // 准心和body的forward是一起变的，所以直接转Transform
+        // 准心和body的forward是一起变的，所以直接转Transform（XX),不可以,进入shoot前，如果body的forward初始值要和orientation一样才行，
+        // 如果初始值不一样，一起转，无法让orientation和body的forward都等于相机的forward；
+
+        // 旋转orientation的forward
         var viewDir = lookAtPoint.position - cameraPos;
         viewDir.y = 0;
-        transform.forward = Vector3.Lerp(transform.forward, viewDir.normalized, 0.01f * rotationSpeed);
-        // transform.forward = viewDir.normalized;
-        // var angle = transform.eulerAngles;
-        // angle.y = cameraPos.y;
-        // transform.eulerAngles = angle;
+        orientation.forward = viewDir;
+        // 旋转body的forward
+        body.transform.forward = Vector3.Lerp(body.transform.forward, viewDir.normalized, 0.01f * rotationSpeed);
     }
 
     public bool IsJump() {

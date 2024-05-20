@@ -16,4 +16,15 @@ public static class CameraDomain {
         ctx.cameraEntity.EnterShoot();
         SetFollowAndLookAt(ctx);
     }
+
+    public static void MouseAxisTick(GameContext ctx) {
+        var camera = ctx.cameraEntity.currentCam;
+        if (ctx.input.isMouseLeftDown) {
+            camera.m_XAxis.m_MaxSpeed = 300;
+            camera.m_YAxis.m_MaxSpeed = 2;
+        } else if (ctx.input.isMouseLeftUp) {
+            camera.m_XAxis.m_MaxSpeed = 0;
+            camera.m_YAxis.m_MaxSpeed = 0;
+        }
+    }
 }
