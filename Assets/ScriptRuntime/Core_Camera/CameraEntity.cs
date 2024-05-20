@@ -10,7 +10,7 @@ public class CameraEntity {
     public Vector2 normalCameraAxisSpeed;
     public Vector2 shootCameraAxisSpeed;
     public CameraEntity() {
-        normalCameraAxisSpeed = new Vector2(300, 3);
+        normalCameraAxisSpeed = new Vector2(300, 2);
         shootCameraAxisSpeed = new Vector2(300, 2);
     }
 
@@ -23,15 +23,7 @@ public class CameraEntity {
         this.shootLookCamera = shootCamera;
     }
 
-    public Vector2 GetCameraAxisSpeed() {
-        if (cameraType == CameraType.Normal) {
-            return normalCameraAxisSpeed;
-        } else if (cameraType == CameraType.Shoot) {
-            return shootCameraAxisSpeed;
-        } else {
-            return default;
-        }
-    }
+
 
     public void EnterShoot() {
         cameraType = CameraType.Shoot;
@@ -68,5 +60,26 @@ public class CameraEntity {
 
     public void SetFollow(Transform target) {
         currentCam.Follow = target;
+    }
+
+    public Vector2 GetCameraAxisSpeed() {
+        if (cameraType == CameraType.Normal) {
+            return normalCameraAxisSpeed;
+        } else if (cameraType == CameraType.Shoot) {
+            return shootCameraAxisSpeed;
+        } else {
+            return default;
+        }
+    }
+
+    public void CloseRotation() {
+        currentCam.m_XAxis.m_MaxSpeed = 0;
+        currentCam.m_YAxis.m_MaxSpeed = 0;
+    }
+
+    public void OpenRotation() {
+        var axisSpeed = GetCameraAxisSpeed();
+        currentCam.m_XAxis.m_MaxSpeed = axisSpeed.x;
+        currentCam.m_YAxis.m_MaxSpeed = axisSpeed.y;
     }
 }

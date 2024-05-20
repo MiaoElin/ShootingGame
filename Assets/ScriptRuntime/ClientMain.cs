@@ -38,6 +38,8 @@ public class ClientMain : MonoBehaviour {
         var status = ctx.fsm.status;
         if (status == GameStatus.Normal) {
             GameBusiness_Normal.Tick(ctx, dt);
+        } else if (status == GameStatus.OpenBag) {
+            GameBusiness_OpenBag.Tick(ctx);
         }
 
 

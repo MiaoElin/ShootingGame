@@ -56,7 +56,7 @@ public static class GameBusiness_Normal {
         var owner = ctx.GetOwner();
         owner.isJumpKeyDown = ctx.input.isJumpKeyDown;
         owner.isPickKeyDown = ctx.input.isPickKeyDown;
-        owner.isBagkeyDown = ctx.input.isBagkeyDown;
+        // owner.isBagkeyDown = ctx.input.isBagkeyDown;
     }
 
     public static void FixedTick(GameContext ctx, float dt) {
@@ -92,17 +92,11 @@ public static class GameBusiness_Normal {
             }
         }
 
-        if (owner.isBagOpen) {
-            if (owner.isBagkeyDown) {
-                owner.isBagOpen = false;
-                UIDomain.Panel_Bag_Hide(ctx);
-            }
-        }
-
         if (!owner.isBagOpen) {
-            if (owner.isBagkeyDown) {
+            if (ctx.input.isBagkeyDown) {
+                // owner.isBagkeyDown = false; // 注意重置，不重置的话进入其他状态并没有根据input重置
                 owner.isBagOpen = true;
-                UIDomain.Panel_Bag_Open(ctx);
+                ctx.fsm.EnterOpenBag();
             }
         }
 

@@ -17,6 +17,14 @@ public static class CameraDomain {
         SetFollowAndLookAt(ctx);
     }
 
+    public static void CloseRotation(GameContext ctx) {
+        ctx.cameraEntity.CloseRotation();
+    }
+
+    public static void OpenRotation(GameContext ctx) {
+        ctx.cameraEntity.OpenRotation();
+    }
+
     public static void MouseAxisTick(GameContext ctx) {
         var camera = ctx.cameraEntity.currentCam;
         var axisSpeed = ctx.cameraEntity.GetCameraAxisSpeed();
