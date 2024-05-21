@@ -2,10 +2,16 @@ using UnityEngine;
 
 public static class RoleDomain {
 
-    public static RoleEntity Spawn(GameContext ctx, int typeID, Vector2 pos) {
-        var role = GameFactory.Role_Spawn(ctx, typeID, pos);
+    public static RoleEntity Spawn(GameContext ctx, int typeID, Vector3 pos, Ally ally) {
+        var role = GameFactory.Role_Spawn(ctx, typeID, pos, ally);
         ctx.roleRepo.Add(role);
         return role;
+    }
+
+    public static void Unspawn(GameContext ctx, RoleEntity role) {
+        ctx.roleRepo.Remove(role);
+        role.gameObject.SetActive(false);
+        ctx.poolService.ReTurnRole(role);
     }
 
     public static void Move(GameContext ctx, RoleEntity role, float dt) {
@@ -92,7 +98,7 @@ public static class RoleDomain {
             role.isPickKeyDown = false;
             var stuffTypeIDs = nearlyLoot.stuffTypeIDs;
             var stuffCounts = nearlyLoot.stuffCount;
-            Debug.Log(Time.frameCount + ":" + nearlyLoot.typeID);
+            // Debug.Log(Time.frameCount + ":" + nearlyLoot.typeID);
             for (int i = 0; i < stuffTypeIDs.Count; i++) {
                 var typeID = stuffTypeIDs[i];
                 // 生成stuff
@@ -112,6 +118,24 @@ public static class RoleDomain {
                     }
                 }
             }
+        }
+    }
+
+    public static void ShootBullet(GameContext ctx, RoleEntity role) {
+        var gun = role.gun;
+        if (gun != null) {
+            // 从屏幕中心发射射线
+            var ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+            var layermask = 1 << 6;
+            var hit = Physics.Raycast(ray, out var raycastHit, 999f, layermask);
+            // 显示准点光源
+            if (hit) {
+                // gun.SetCrossHair(raycastHit.point);
+                if (ctx.input.isMouseLeftUp) {
+                    RoleDomain.Unspawn(ctx, raycastHit.collider.gameObject.GetComponentInParent<RoleEntity>());
+                }
+            }
+            // 生成子弹
         }
     }
 }

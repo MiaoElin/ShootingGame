@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7656543191376709728}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shootlookAt_position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4515679340497612191}
   - component: {fileID: 3570462778803690500}
   - component: {fileID: 866934450577288924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RoleEntity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeId: 0
+  ally: 0
   id: 0
   hp: 0
   hpMax: 0
@@ -93,8 +94,12 @@ MonoBehaviour:
   lookAtPoint: {fileID: 7656543191376709728}
   orientation: {fileID: 8990928897549164364}
   isShootReady: 0
+  isBagOpen: 0
   isJumpKeyDown: 0
+  isPickKeyDown: 0
+  isBagkeyDown: 0
   rotationSpeed: 0
+  gun: {fileID: 0}
 --- !u!54 &866934450577288924
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8990928897549164364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shoot_orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

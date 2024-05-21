@@ -317,11 +317,11 @@ MonoBehaviour:
   m_BindingMode: 4
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 5
+  - m_Height: 4
     m_Radius: 5
   - m_Height: 2
     m_Radius: 7
-  - m_Height: -1
+  - m_Height: 0
     m_Radius: 5
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
@@ -2122,7 +2122,7 @@ GameObject:
   - component: {fileID: 1597366070}
   - component: {fileID: 1596299652}
   - component: {fileID: 1600474956}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: lo_Prop_ChurchBench_A_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2139,7 +2139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593856598}
   - component: {fileID: 1581232412}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Prop_ChurchBench_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2158,7 +2158,7 @@ GameObject:
   - component: {fileID: 1597337330}
   - component: {fileID: 1596120480}
   - component: {fileID: 1600285998}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: lo_Prop_ChurchBench_A_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

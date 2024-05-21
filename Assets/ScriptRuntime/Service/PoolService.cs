@@ -12,7 +12,7 @@ public class PoolService {
 
     public void Init(Func<RoleEntity> role_Create, Func<LootEntity> loot_Create) {
         rolePoolGroup = new GameObject("RolePool").transform;
-        rolePool = new Pool<RoleEntity>(role_Create, 1);
+        rolePool = new Pool<RoleEntity>(role_Create, 10);
         lootPool = new Pool<LootEntity>(loot_Create, 20);
     }
 

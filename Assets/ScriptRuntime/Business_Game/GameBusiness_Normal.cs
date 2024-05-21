@@ -5,14 +5,6 @@ using Cinemachine;
 public static class GameBusiness_Normal {
 
     public static void Enter(GameContext ctx) {
-        // // 获取场景里所有的LootEntity
-        // var loots = Resources.FindObjectsOfTypeAll<LootEntity>();
-        // foreach (var loot in loots) {
-        //     if (loot.gameObject.activeSelf) {
-        //         Debug.Log(loot.id);
-        //         ctx.lootRepo.Add(loot);
-        //     }
-        // }
 
         // 生成临时loot
         LootDomain.Spawn(ctx, 102, new Vector3(0.5f, -3, 5), new Vector3(0, -150, 90));
@@ -20,9 +12,13 @@ public static class GameBusiness_Normal {
         loot.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
         // 生成owner
-        var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, -3, 0));
+        var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, -3, 0), Ally.Player);
         ctx.ownerID = owner.id;
         owner.roleFSMComponent.EnterNormal();
+        {
+            RoleDomain.Spawn(ctx, 1000, new Vector3(0, -3, 10), Ally.Monster);
+            var role = RoleDomain.Spawn(ctx, 1000, new Vector3(2, -3, 12), Ally.Monster);
+        }
 
         // 设置相机跟随
         CameraDomain.EnterNormal(ctx);
@@ -63,6 +59,14 @@ public static class GameBusiness_Normal {
 
     public static void FixedTick(GameContext ctx, float dt) {
         var owner = ctx.GetOwner();
+
+        int roleLen = ctx.roleRepo.TakeAll(out var allRoles);
+        for (int i = 0; i < roleLen; i++) {
+            var role = allRoles[i];
+            RoleDomain.Move(ctx, role, dt);
+            RoleDomain.Jump(role);
+            RoleDomain.Falling(role, dt);
+        }
         RoleFSMController.ApplyFsm(ctx, owner, dt);
 
         Physics.Simulate(dt);

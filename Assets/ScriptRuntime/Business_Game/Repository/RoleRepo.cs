@@ -15,6 +15,10 @@ public class RoleRepo {
         all.Add(role.id, role);
     }
 
+    public void Remove(RoleEntity role) {
+        all.Remove(role.id);
+    }
+
     public bool Tryget(int id, out RoleEntity role) {
         return all.TryGetValue(id, out role);
     }

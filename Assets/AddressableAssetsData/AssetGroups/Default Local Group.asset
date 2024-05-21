@@ -179,6 +179,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - StuffTM
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd17940ef7b30b64e9d39283f707ab44
+    m_Address: Assets/ResourceRuntime/Entity/Role/TM/RoleTM_Moster_1000.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - RoleTM
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4f5eacb28cbfc954d9ddea2bca523a81, type: 2}
   m_SchemaSet:

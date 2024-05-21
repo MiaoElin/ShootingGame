@@ -3,6 +3,7 @@ using UnityEngine;
 public class RoleEntity : MonoBehaviour {
 
     public int typeId;
+    public Ally ally;
     public int id;
     public int hp;
     public int hpMax;

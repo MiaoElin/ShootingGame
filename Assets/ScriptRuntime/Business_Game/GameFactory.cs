@@ -2,16 +2,17 @@ using UnityEngine;
 
 public static class GameFactory {
 
-    public static RoleEntity Role_Spawn(GameContext ctx, int typeId, Vector2 pos) {
+    public static RoleEntity Role_Spawn(GameContext ctx, int typeId, Vector3 pos, Ally ally) {
         bool has = ctx.asset.TryGetRoleTM(typeId, out var tm);
         if (!has) {
             Debug.LogError($"GameFactory.CreateRole {typeId} is not find");
         }
         var role = ctx.poolService.GetRole();
         role.body = GameObject.Instantiate(tm.body, role.transform);
-        role.Ctor(role.body.GetComponent<Animator>(), role.body.GetComponent<GunSubEntity>());
+        role.Ctor(role.body.GetComponent<Animator>(), role.body.GetComponentInChildren<GunSubEntity>());
         role.SetPos(pos);
         role.typeId = typeId;
+        role.ally = ally;
         role.id = ctx.iDService.roleIdRecord++;
         role.hp = tm.hpMax;
         role.hpMax = tm.hpMax;
