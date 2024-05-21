@@ -10,6 +10,7 @@ public static class LootDomain {
 
     public static void Unspawn(GameContext ctx, LootEntity loot) {
         ctx.lootRepo.Remove(loot);
+        loot.gameObject.SetActive(false);
         ctx.poolService.ReturnLoot(loot);
     }
 

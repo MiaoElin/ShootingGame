@@ -1,21 +1,24 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public static class Panel_BagDomain {
 
     public static void Open(UIContext ctx) {
-        var paenl = ctx.uIRepo.Tryget<Panel_Bag>();
-        if (paenl == null) {
+        var panel = ctx.uIRepo.Tryget<Panel_Bag>();
+        if (panel == null) {
             ctx.asset.TryGetUI_Prefab(typeof(Panel_Bag).Name, out var prefab);
-            paenl = GameObject.Instantiate(prefab, ctx.screenCanvas.transform).GetComponent<Panel_Bag>();
-            paenl.Ctor();
-            paenl.OnClickBtn_SupplyHandle = () => { };
-            paenl.OnClickBtn_WeaponHandle = () => { };
-            paenl.OnClickGridHandle = () => { };
-
-            ctx.uIRepo.Add(typeof(Panel_Bag).Name, paenl.gameObject);
+            panel = GameObject.Instantiate(prefab, ctx.screenCanvas.transform).GetComponent<Panel_Bag>();
+            panel.Ctor();
+            panel.OnClickBtn_SupplyHandle = () => { };
+            panel.OnClickBtn_WeaponHandle = () => { };
+            panel.OnClickGridHandle = () => { };
+            ctx.uIRepo.Add(typeof(Panel_Bag).Name, panel.gameObject);
+            EventSystem.current.SetSelectedGameObject(panel.btn_Supply.gameObject);
         }
-        paenl.Init();
-        paenl.gameObject.SetActive(true);
+        // panel.Init();
+        panel.gameObject.SetActive(true);
+        // panel.btn_Supply.Select();
     }
 
     public static void Hide(UIContext ctx) {

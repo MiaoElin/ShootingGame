@@ -16,7 +16,7 @@ public class ClientMain : MonoBehaviour {
 
         // 锁定鼠标
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Cursor.visible = false;
 
         ctx = new GameContext();
         Load();

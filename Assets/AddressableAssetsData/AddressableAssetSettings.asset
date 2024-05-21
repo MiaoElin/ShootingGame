@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 4031729326d68cc48b44b47345bb0753
   m_currentHash:
     serializedVersion: 2
-    Hash: 072fdcd803c8ea02cf7e4132289150b5
+    Hash: a0938e3dbc0b71b06235df13f4a97db9
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -93,6 +93,8 @@ MonoBehaviour:
     - ConfigTM
     - AudioSource
     - LootTM
+    - GunTM
+    - StuffTM
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0222282db09855e44a301b2c570351d5, type: 2}

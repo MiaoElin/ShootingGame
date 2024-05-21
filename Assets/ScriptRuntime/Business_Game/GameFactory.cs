@@ -9,7 +9,7 @@ public static class GameFactory {
         }
         var role = ctx.poolService.GetRole();
         role.body = GameObject.Instantiate(tm.body, role.transform);
-        role.Ctor(role.body.GetComponent<Animator>());
+        role.Ctor(role.body.GetComponent<Animator>(), role.body.GetComponent<GunSubEntity>());
         role.SetPos(pos);
         role.typeId = typeId;
         role.id = ctx.iDService.roleIdRecord++;
@@ -56,5 +56,20 @@ public static class GameFactory {
         var loot = GameObject.Instantiate(prefab, ctx.poolService.rolePoolGroup).GetComponent<LootEntity>();
         loot.gameObject.SetActive(false);
         return loot;
+    }
+
+    public static StuffModel Stuff_Create(GameContext ctx, int typeID, int count) {
+        StuffModel stuff = new StuffModel();
+        stuff.typeID = typeID;
+        stuff.count = count;
+        ctx.asset.TryGetStuffTM(typeID, out var tm);
+        stuff.stuffType = tm.stuffType;
+        stuff.countMax = tm.countMax;
+        stuff.gunTypeID = tm.gunTypeID;
+        stuff.isReHP = tm.isReHP;
+        stuff.reHPMax = tm.reHPMax;
+        stuff.isReStrength = tm.isReStrength;
+        stuff.reStrengthMax = tm.reStrengthMax;
+        return stuff;
     }
 }

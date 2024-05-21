@@ -89,12 +89,27 @@ public static class RoleDomain {
 
     public static void PickUpLoot(GameContext ctx, RoleEntity role, LootEntity nearlyLoot) {
         if (role.isPickKeyDown && nearlyLoot) {
-            Debug.Log("In");
-            // 生成stuff
-            // 添加进背包
-            // 销毁loot
+            var stuffTypeIDs = nearlyLoot.stuffTypeIDs;
+            var stuffCounts = nearlyLoot.stuffCount;
+            for (int i = 0; i < stuffTypeIDs.Count; i++) {
+                var typeID = stuffTypeIDs[i];
+                // 生成stuff
+                var stuff = GameFactory.Stuff_Create(ctx, typeID, stuffCounts[i]);
+                // 添加进背包
+                int surplusCount = role.stuffCom.Add(stuff);
+                if (surplusCount == 0) {
+                    // 添加成功 销毁loot
+                    LootDomain.Unspawn(ctx, nearlyLoot);
+                    UIDomain.Panel_LootSignal_Close(ctx, nearlyLoot.id);
+                } else {
+                    if (surplusCount == stuff.count) {
+                        // 格子满了
+                        Debug.Log("格子满了");
+                    } else {
+                        Debug.Log($"格子满了,成功添加了{stuff.count - surplusCount}个");
+                    }
+                }
+            }
         }
     }
-
-
 }

@@ -1,7 +1,13 @@
 using UnityEngine;
 
-public class GunSubEntity {
+public class GunSubEntity : MonoBehaviour {
     public int typeID;
-    public int maxBulletCount;
+    [SerializeField] Transform gunObj;
+    public Transform launchPoint;
+    public int damage;
     public int bulletCount;
+    public int bulletCountMax;
+
+    public GunSubEntity(){
+    }
 }

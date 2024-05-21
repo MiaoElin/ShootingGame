@@ -1,7 +1,6 @@
-public enum StuffType{
+public enum StuffType {
     None,
-    Gun,
     Supply,
     Skill,
-    Bullet
+    Weapon,
 }

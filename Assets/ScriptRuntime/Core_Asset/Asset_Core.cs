@@ -8,14 +8,20 @@ public class AssetCore {
     Dictionary<string, GameObject> entities;
     AsyncOperationHandle entityPtr;
 
+    Dictionary<string, GameObject> allUI_Prefab;
+    public AsyncOperationHandle uiPrefabPtr;
+
     Dictionary<int, RoleTM> roleTMs;
     AsyncOperationHandle roleTMPtr;
 
     Dictionary<int, LootTM> lootTMs;
     AsyncOperationHandle lootTMPtr;
 
-    Dictionary<string, GameObject> allUI_Prefab;
-    public AsyncOperationHandle uiPrefabPtr;
+    Dictionary<int, GunTM> gunTMs;
+    AsyncOperationHandle gunTMPtr;
+
+    Dictionary<int, StuffTM> stuffTMs;
+    AsyncOperationHandle stuffPtr;
 
     public ConfigTM configTM;
     AsyncOperationHandle configPtr;
@@ -23,9 +29,11 @@ public class AssetCore {
 
     public AssetCore() {
         entities = new Dictionary<string, GameObject>();
+        allUI_Prefab = new Dictionary<string, GameObject>();
         roleTMs = new Dictionary<int, RoleTM>();
         lootTMs = new Dictionary<int, LootTM>();
-        allUI_Prefab = new Dictionary<string, GameObject>();
+        gunTMs = new Dictionary<int, GunTM>();
+        stuffTMs = new Dictionary<int, StuffTM>();
     }
 
     public void LoadAll() {
@@ -66,6 +74,22 @@ public class AssetCore {
                 lootTMs.Add(tm.typeID, tm);
             }
         }
+        {
+            var ptr = Addressables.LoadAssetsAsync<GunTM>("GunTM", null);
+            gunTMPtr = ptr;
+            var list = ptr.WaitForCompletion();
+            foreach (var tm in list) {
+                gunTMs.Add(tm.typeID, tm);
+            }
+        }
+        {
+            var ptr = Addressables.LoadAssetsAsync<StuffTM>("StuffTM", null);
+            stuffPtr = ptr;
+            var list = ptr.WaitForCompletion();
+            foreach (var tm in list) {
+                stuffTMs.Add(tm.typeID, tm);
+            }
+        }
     }
 
     public void Unload() {
@@ -83,6 +107,12 @@ public class AssetCore {
         }
         if (lootTMPtr.IsValid()) {
             Addressables.Release(lootTMPtr);
+        }
+        if (gunTMPtr.IsValid()) {
+            Addressables.Release(gunTMPtr);
+        }
+        if (stuffPtr.IsValid()) {
+            Addressables.Release(stuffPtr);
         }
     }
 
@@ -102,4 +132,11 @@ public class AssetCore {
         return lootTMs.TryGetValue(typeID, out tm);
     }
 
+    public bool TryGetGunTM(int typeID, out GunTM tm) {
+        return gunTMs.TryGetValue(typeID, out tm);
+    }
+
+    public bool TryGetStuffTM(int typeID, out StuffTM tm) {
+        return stuffTMs.TryGetValue(typeID, out tm);
+    }
 }

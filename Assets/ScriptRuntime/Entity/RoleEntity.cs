@@ -37,13 +37,18 @@ public class RoleEntity : MonoBehaviour {
     // faceDir;
     public float rotationSpeed;
 
+    // 装备区
+    public GunSubEntity gun;
+
     public RoleEntity() {
         gunCom = new GunComponent();
         roleFSMComponent = new RoleFSMComponent();
+        stuffCom = new StuffComponent();
     }
 
-    public void Ctor(Animator anim) {
+    public void Ctor(Animator anim, GunSubEntity gun) {
         this.anim = anim;
+        this.gun = gun;
         rotationSpeed = 10;
     }
 

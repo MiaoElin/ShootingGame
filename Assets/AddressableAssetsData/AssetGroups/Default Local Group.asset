@@ -113,6 +113,66 @@ MonoBehaviour:
     m_SerializedLabels:
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a506ee2a99488c5448cb1d5711a62bbf
+    m_Address: Assets/ResourceRuntime/Entity/GunEntity/GunTM_103.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GunTM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 469be6860a2ee8f45a931aed2dfa47e8
+    m_Address: Assets/ResourceRuntime/Entity/GunEntity/GunTM_102.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GunTM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9b4573d78f3a544bb56feded304aafd
+    m_Address: Assets/ResourceRuntime/Entity/GunEntity/GunTM_101.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GunTM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ec7d841da990f84381632247004508d
+    m_Address: Assets/ResourceRuntime/Entity/GunEntity/GunTM_100.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - GunTM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 224ae4cf10e71cf42ab9b8882d06b6f3
+    m_Address: Assets/ResourceRuntime/Entity/GunEntity/GunEntity.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Entities
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d06b0075a450b24698ac330be80d3ce
+    m_Address: Assets/ResourceRuntime/Entity/Stuff/StuffTM_100.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StuffTM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2d288de5efe0cc4a808f71cbffbeb3e
+    m_Address: Assets/ResourceRuntime/Entity/Stuff/StuffTM_Gun_101.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StuffTM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 16f6319f199fee74db88304d23eaff92
+    m_Address: Assets/ResourceRuntime/Entity/Stuff/StuffTM_Gun_102.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StuffTM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92c94ecfd1153bd49b157534dd398a93
+    m_Address: Assets/ResourceRuntime/Entity/Stuff/StuffTM_Gun_103.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StuffTM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e18fb316475026418714ca54015c980
+    m_Address: Assets/ResourceRuntime/Entity/Stuff/StuffTM_Bullet_200.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StuffTM
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4f5eacb28cbfc954d9ddea2bca523a81, type: 2}
   m_SchemaSet:

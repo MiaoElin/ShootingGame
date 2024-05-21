@@ -5,8 +5,8 @@ using System;
 
 public class Panel_Bag : MonoBehaviour {
 
-    [SerializeField] Button btn_Supply;
-    [SerializeField] Button btn_Weapon;
+    [SerializeField] public Button btn_Supply;
+    [SerializeField] public Button btn_Weapon;
 
     [SerializeField] Transform supply_Group;
     [SerializeField] Transform weapon_Group;
@@ -22,11 +22,12 @@ public class Panel_Bag : MonoBehaviour {
 
     public void Ctor() {
         elementsCount = 16;
-        const int GridMaxCountPerGroup = 8;
+        var GridMaxCountPerGroup = CommonConst.GRID_MAXCOUNT_PERGROUP;
         elements = new Panel_Bag_Element[16];
 
         // btn Click
         btn_Supply.onClick.AddListener(() => {
+            // btn_Supply.image.sprite=
             OnClickBtn_SupplyHandle.Invoke();
         });
 
@@ -50,9 +51,8 @@ public class Panel_Bag : MonoBehaviour {
 
     }
 
-    public void Init() {
+    public void Init(int typeID) {
     }
-
 
     public void SetCurrentGroup(Transform targetGroup) {
         this.currentGroup = targetGroup;
