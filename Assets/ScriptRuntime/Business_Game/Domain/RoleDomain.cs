@@ -89,8 +89,10 @@ public static class RoleDomain {
 
     public static void PickUpLoot(GameContext ctx, RoleEntity role, LootEntity nearlyLoot) {
         if (role.isPickKeyDown && nearlyLoot) {
+            role.isPickKeyDown = false;
             var stuffTypeIDs = nearlyLoot.stuffTypeIDs;
             var stuffCounts = nearlyLoot.stuffCount;
+            Debug.Log(Time.frameCount + ":" + nearlyLoot.typeID);
             for (int i = 0; i < stuffTypeIDs.Count; i++) {
                 var typeID = stuffTypeIDs[i];
                 // 生成stuff
