@@ -9,8 +9,7 @@ public class LootEntity : MonoBehaviour {
     public bool isBox;
     public List<int> stuffTypeIDs;
     public List<int> stuffCount;
-    [SerializeField] public MeshRenderer meshR;
-    [SerializeField] public MeshFilter meshF;
+    public Transform modTransform;
     public Sprite signalSpr;
 
 

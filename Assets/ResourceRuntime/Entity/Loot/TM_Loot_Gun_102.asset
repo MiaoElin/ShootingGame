@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12227d1fd6c95cc4ca31e80cd4a29865, type: 3}
-  m_Name: LootTM_Gun_102
+  m_Name: TM_Loot_Gun_102
   m_EditorClassIdentifier: 
   typeID: 102
   lootName: "\u67AA2\u84DD\u9EC4"
   isBox: 0
   stuffTypeIDs: 66000000
   stuffCount: 01000000
-  meshR: {fileID: 8120622204687882047, guid: 760caea42d8f0e244aa5d9203e9b56b9, type: 3}
-  mesh: {fileID: 4300010, guid: 5ae220fa0f79ffe41b0102a618febf5a, type: 3}
-  material: {fileID: 2100000, guid: 78660c09ff101ea4cb77de408a9527da, type: 2}
+  mod: {fileID: 8120622204687882047, guid: 760caea42d8f0e244aa5d9203e9b56b9, type: 3}
   signalSpr: {fileID: 21300000, guid: 3696a977e3e9a44479eaa7756f90871d, type: 3}

@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12227d1fd6c95cc4ca31e80cd4a29865, type: 3}
-  m_Name: LootTM_Box_900
+  m_Name: TM_Loot_Bullet_200
   m_EditorClassIdentifier: 
-  typeID: 900
-  lootName: "\u7BB1\u5B50"
-  isBox: 1
-  stuffTypeIDs: c80000002c01000064000000
-  stuffCount: 010000000100000001000000
+  typeID: 200
+  lootName: "\u5B50\u5F39\u5305"
+  isBox: 0
+  stuffTypeIDs: c8000000
+  stuffCount: 01000000
   meshR: {fileID: 0}
   mesh: {fileID: 0}
   material: {fileID: 0}
+  signalSpr: {fileID: 21300000, guid: 6f71decb1cfe418408c92138b02b3aa4, type: 3}

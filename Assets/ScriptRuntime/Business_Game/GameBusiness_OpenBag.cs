@@ -15,6 +15,8 @@ public static class GameBusiness_OpenBag {
             CameraDomain.CloseRotation(ctx);
             // Open Bag UI
             UIDomain.Panel_Bag_Open(ctx);
+            // SFX
+            SFXDomain.Bag_OpenClose(ctx);
             return;
         }
 
@@ -29,8 +31,12 @@ public static class GameBusiness_OpenBag {
                 CameraDomain.OpenRotation(ctx);
                 // 关闭背包UI
                 UIDomain.Panel_Bag_Hide(ctx);
+                // SFX
+                SFXDomain.Bag_OpenClose(ctx);
                 // 进入normal
                 fsm.EnterNormal();
+                // 打开光标UI
+                UIDomain.Panel_CrossHair_Open(ctx);
             }
         }
     }

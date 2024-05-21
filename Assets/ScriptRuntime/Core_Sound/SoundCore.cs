@@ -8,6 +8,10 @@ public class SoundCore {
     public AudioSource prefab;
     public AudioSource role_Walk;
     public AudioSource role_EnterGround;
+    public AudioSource role_Pick;
+    public AudioSource bag_OpenClose;
+
+    public AudioSource gun_Shoot;
     AsyncOperationHandle prefabHandle;
 
     public void LoadAll() {
@@ -17,6 +21,9 @@ public class SoundCore {
         prefab = handle.WaitForCompletion().GetComponent<AudioSource>();
         role_Walk = GameObject.Instantiate(prefab, sfx.transform);
         role_EnterGround = GameObject.Instantiate(prefab, sfx.transform);
+        gun_Shoot = GameObject.Instantiate(prefab, sfx.transform);
+        role_Pick = GameObject.Instantiate(prefab, sfx.transform);
+        bag_OpenClose = GameObject.Instantiate(prefab, sfx.transform);
     }
 
     public void Unload() {
@@ -45,6 +52,30 @@ public class SoundCore {
         if (!role_EnterGround.isPlaying) {
             role_EnterGround.clip = clip;
             role_EnterGround.Play();
+        }
+    }
+
+    public void Gun_Shoot(AudioClip clip) {
+        if (!gun_Shoot.isPlaying) {
+            gun_Shoot.volume = 0.3f;
+            gun_Shoot.clip = clip;
+            gun_Shoot.Play();
+        }
+    }
+
+    public void Role_Pick(AudioClip clip) {
+        if (!role_Pick.isPlaying) {
+            role_Pick.volume = 0.3f;
+            role_Pick.clip = clip;
+            role_Pick.Play();
+        }
+    }
+
+    public void OpenClose_Bag(AudioClip clip) {
+        if (!bag_OpenClose.isPlaying) {
+            bag_OpenClose.volume = 0.3f;
+            bag_OpenClose.clip = clip;
+            bag_OpenClose.Play();
         }
     }
 

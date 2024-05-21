@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfx_role_Walk: {fileID: 8300000, guid: 500b0bcba1523a248a5872995caa5b71, type: 3}
   sfx_role_EnterGround: {fileID: 8300000, guid: 566d29df386b1704f9a7fa085b9ee519, type: 3}
+  sfx_role_Pick: {fileID: 8300000, guid: 098e91dd3d863f04fa960774d00dc805, type: 3}
+  sfx_Bag_OpenClse: {fileID: 8300000, guid: d94a561d053f531428899ea37abd862d, type: 3}
+  sfx_gun_shoot: {fileID: 8300000, guid: 6b0313980f94f1749a40cc80e997097f, type: 3}

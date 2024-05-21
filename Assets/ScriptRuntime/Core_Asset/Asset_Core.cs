@@ -67,7 +67,7 @@ public class AssetCore {
             configTM = ptr.WaitForCompletion();
         }
         {
-            var ptr = Addressables.LoadAssetsAsync<LootTM>("LootTM", null);
+            var ptr = Addressables.LoadAssetsAsync<LootTM>("TMLoot", null);
             lootTMPtr = ptr;
             var list = ptr.WaitForCompletion();
             foreach (var tm in list) {

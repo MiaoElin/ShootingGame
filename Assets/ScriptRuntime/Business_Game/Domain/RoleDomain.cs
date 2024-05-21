@@ -109,6 +109,9 @@ public static class RoleDomain {
                     // 添加成功 销毁loot
                     LootDomain.Unspawn(ctx, nearlyLoot);
                     UIDomain.Panel_LootSignal_Close(ctx, nearlyLoot.id);
+                    // SFX 
+                    SFXDomain.Role_Pick(ctx);
+
                 } else {
                     if (surplusCount == stuff.count) {
                         // 格子满了
@@ -133,6 +136,7 @@ public static class RoleDomain {
                 // gun.SetCrossHair(raycastHit.point);
                 if (ctx.input.isMouseLeftUp) {
                     RoleDomain.Unspawn(ctx, raycastHit.collider.gameObject.GetComponentInParent<RoleEntity>());
+                    SFXDomain.Gun_Shoot(ctx);
                 }
             }
             // 生成子弹

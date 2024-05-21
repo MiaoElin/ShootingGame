@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(menuName = "TM/LootTM", fileName = "LootTM")]
+[CreateAssetMenu(menuName = "TM/TMLoot", fileName = "TM_Loot")]
 public class LootTM : ScriptableObject {
 
     public int typeID;
@@ -9,9 +9,6 @@ public class LootTM : ScriptableObject {
     public bool isBox;
     public List<int> stuffTypeIDs;
     public List<int> stuffCount;
-    public GameObject meshR;
-    public Mesh mesh;
-    public Material material;
-
+    public GameObject mod;
     public Sprite signalSpr;
 }

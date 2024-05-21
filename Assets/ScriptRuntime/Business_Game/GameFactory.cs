@@ -45,8 +45,7 @@ public static class GameFactory {
         loot.isBox = tm.isBox;
         loot.stuffTypeIDs = tm.stuffTypeIDs;
         loot.stuffCount = tm.stuffCount;
-        loot.meshF.mesh = tm.mesh;
-        loot.meshR.material = tm.material;
+        GameObject.Instantiate<GameObject>(tm.mod, loot.modTransform);
         loot.signalSpr = tm.signalSpr;
         loot.gameObject.SetActive(true);
         return loot;

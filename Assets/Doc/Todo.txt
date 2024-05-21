@@ -4,8 +4,8 @@
 === 学习 ===
 模型怎么换枪
 InputSystem
-
-
+编辑器
+换天空盒
 
 === Input ===
 更换InputSystem（不会）
