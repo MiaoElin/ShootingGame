@@ -15,24 +15,20 @@ public class Panel_Bag : MonoBehaviour {
     [SerializeField] Panel_Bag_Element[] elements;
     [SerializeField] Panel_Bag_Element prefab;
     public int elementsCount;
-
-    public Action OnClickBtn_SupplyHandle;
-    public Action OnClickBtn_WeaponHandle;
     public Action OnClickGridHandle;
 
     public void Ctor() {
         elementsCount = 16;
-        var GridMaxCountPerGroup = CommonConst.GRID_MAXCOUNT_PERGROUP;
+        var GridMaxCountPerGroup = CommonConst.BAG_MAXCOUNT_PERGROUP;
         elements = new Panel_Bag_Element[16];
 
         // btn Click
         btn_Supply.onClick.AddListener(() => {
-            // btn_Supply.image.sprite=
-            OnClickBtn_SupplyHandle.Invoke();
+            SetCurrentGroup(supply_Group);
         });
 
         btn_Weapon.onClick.AddListener(() => {
-            OnClickBtn_WeaponHandle.Invoke();
+            SetCurrentGroup(weapon_Group);
         });
 
         // 生成空格子
@@ -51,7 +47,12 @@ public class Panel_Bag : MonoBehaviour {
 
     }
 
-    public void Init(int typeID) {
+    public void Init(int index, int count, string name, Sprite spr) {
+        if (count != 0) {
+            elements[index].SetGridHasStuff(spr, name, count);
+        } else {
+            elements[index].Reuse();
+        }
     }
 
     public void SetCurrentGroup(Transform targetGroup) {

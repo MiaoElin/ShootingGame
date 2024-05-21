@@ -7,6 +7,7 @@ public class UIContext {
 
     public AssetCore asset;
     public UIRepo uIRepo;
+    public EventCenter eventCenter;
     public P_LootSignalRepo p_LootSignalRepo;
     public Canvas screenCanvas;
 

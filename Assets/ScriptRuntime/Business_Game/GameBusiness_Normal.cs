@@ -16,6 +16,8 @@ public static class GameBusiness_Normal {
 
         // 生成临时loot
         LootDomain.Spawn(ctx, 102, new Vector3(0.5f, -3, 5), new Vector3(0, -150, 90));
+        var loot = LootDomain.Spawn(ctx, 300, new Vector3(2, -3, 4.2f), new Vector3(0, -6, -90));
+        loot.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
         // 生成owner
         var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, -3, 0));
@@ -63,13 +65,6 @@ public static class GameBusiness_Normal {
         var owner = ctx.GetOwner();
         RoleFSMController.ApplyFsm(ctx, owner, dt);
 
-        // int roleLen = ctx.roleRepo.TakeAll(out var allRoles);
-        // for (int i = 0; i < roleLen; i++) {
-        //     var role = allRoles[i];
-        //     RoleDomain.Move(ctx, role, dt);
-        //     RoleDomain.Jump(role);
-        //     RoleDomain.Falling(role, dt);
-        // }
         Physics.Simulate(dt);
         RoleDomain.GroundCheck(ctx, owner);
     }

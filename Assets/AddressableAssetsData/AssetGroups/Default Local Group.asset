@@ -173,6 +173,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - StuffTM
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e2979fe0eff0374eb4c1085926ffd4f
+    m_Address: Assets/ResourceRuntime/Entity/Stuff/StuffTM_Supply_300.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StuffTM
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4f5eacb28cbfc954d9ddea2bca523a81, type: 2}
   m_SchemaSet:

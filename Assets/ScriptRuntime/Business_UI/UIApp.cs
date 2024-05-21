@@ -39,8 +39,8 @@ public class UIApp {
     #endregion
 
     #region P_Bag
-    public void Panel_Bag_Open() {
-        Panel_BagDomain.Open(ctx);
+    public void Panel_Bag_Open(StuffComponent stuffCom) {
+        Panel_BagDomain.Open(ctx,stuffCom);
     }
 
     public void Panel_Bag_Hide() {

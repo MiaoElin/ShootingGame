@@ -23,7 +23,7 @@ public static class UIDomain {
     }
 
     public static void Panel_Bag_Open(GameContext ctx) {
-        ctx.uIApp.Panel_Bag_Open();
+        ctx.uIApp.Panel_Bag_Open(ctx.GetOwner().stuffCom);
     }
 
     public static void Panel_Bag_Hide(GameContext ctx) {

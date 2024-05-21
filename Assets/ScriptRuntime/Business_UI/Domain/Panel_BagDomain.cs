@@ -4,21 +4,21 @@ using UnityEngine.EventSystems;
 
 public static class Panel_BagDomain {
 
-    public static void Open(UIContext ctx) {
+    public static void Open(UIContext ctx, StuffComponent stuffs) {
         var panel = ctx.uIRepo.Tryget<Panel_Bag>();
         if (panel == null) {
             ctx.asset.TryGetUI_Prefab(typeof(Panel_Bag).Name, out var prefab);
             panel = GameObject.Instantiate(prefab, ctx.screenCanvas.transform).GetComponent<Panel_Bag>();
             panel.Ctor();
-            panel.OnClickBtn_SupplyHandle = () => { };
-            panel.OnClickBtn_WeaponHandle = () => { };
             panel.OnClickGridHandle = () => { };
             ctx.uIRepo.Add(typeof(Panel_Bag).Name, panel.gameObject);
             EventSystem.current.SetSelectedGameObject(panel.btn_Supply.gameObject);
         }
-        // panel.Init();
+        // 遍历stuffs，赋值给背包里的每个格子
+        stuffs.Foreach(stuff => {
+            panel.Init(stuff.index, stuff.count, stuff.stuffName, stuff.Spr);
+        });
         panel.gameObject.SetActive(true);
-        // panel.btn_Supply.Select();
     }
 
     public static void Hide(UIContext ctx) {

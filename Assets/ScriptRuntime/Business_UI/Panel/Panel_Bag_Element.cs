@@ -31,6 +31,6 @@ public class Panel_Bag_Element : MonoBehaviour {
         spr_Stuff.gameObject.SetActive(true);
         spr_Stuff.sprite = spr;
         btn_grid.GetComponentInChildren<Text>().text = $"{name} X {count}";
-        btn_grid.image.color = new Color(191 / 255f, 191 / 255f, 191 / 255f, 75 / 255f);
+        btn_grid.image.color = new Color(138 / 255f, 138 / 255f, 138 / 255f, 75 / 255f);
     }
 }

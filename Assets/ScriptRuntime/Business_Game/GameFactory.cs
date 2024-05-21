@@ -64,12 +64,22 @@ public static class GameFactory {
         stuff.count = count;
         ctx.asset.TryGetStuffTM(typeID, out var tm);
         stuff.stuffType = tm.stuffType;
+        stuff.stuffName = tm.stuffName;
         stuff.countMax = tm.countMax;
+        // gun
+        stuff.hasGun = tm.hasGun;
         stuff.gunTypeID = tm.gunTypeID;
+        // bulletBox
+        stuff.hasBuletBox = tm.hasBuletBox;
+        stuff.bulletBoxTypeID = tm.bulletBoxTypeID;
+        // rehp
         stuff.isReHP = tm.isReHP;
         stuff.reHPMax = tm.reHPMax;
+        // reStrength
         stuff.isReStrength = tm.isReStrength;
         stuff.reStrengthMax = tm.reStrengthMax;
+        // 背包显示的sprite
+        stuff.Spr = tm.stuffSpr;
         return stuff;
     }
 }

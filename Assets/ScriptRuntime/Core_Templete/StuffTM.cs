@@ -3,15 +3,16 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "TM/StuffTM", fileName = "StuffTM")]
 public class StuffTM : ScriptableObject {
     public int typeID;
+    public string stuffName;
     public StuffType stuffType;
     public int countMax;
 
     // gun
-    public bool isGun;
+    public bool hasGun;
     public int gunTypeID;
-    
+
     // Bullet
-    public bool isBuletBox;
+    public bool hasBuletBox;
     public int bulletBoxTypeID;
 
     // supply
@@ -23,6 +24,6 @@ public class StuffTM : ScriptableObject {
     public bool isReStrength;
     public int reStrengthMax;
 
-    // stuff 的限制图片
+    // stuff 的显示图片
     public Sprite stuffSpr;
 }
