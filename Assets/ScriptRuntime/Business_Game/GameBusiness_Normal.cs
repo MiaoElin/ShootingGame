@@ -11,13 +11,11 @@ public static class GameBusiness_Normal {
         var loot = LootDomain.Spawn(ctx, 300, new Vector3(2, -3, 4.2f), new Vector3(0, -6, -90));
 
         // 生成owner
-        var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, -3, 0), Ally.Player);
+        var owner = RoleDomain.Spawn(ctx, 100, VectorConst.OWNER_POS, VectorConst.OWNER_ROT, VectorConst.OWNER_SCALE, Ally.Player);
         ctx.ownerID = owner.id;
         owner.roleFSMComponent.EnterNormal();
-        {
-            RoleDomain.Spawn(ctx, 1000, new Vector3(0, -3, 10), Ally.Monster);
-            var role = RoleDomain.Spawn(ctx, 1000, new Vector3(2, -3, 12), Ally.Monster);
-        }
+
+        
 
         // 设置相机跟随
         CameraDomain.EnterNormal(ctx);

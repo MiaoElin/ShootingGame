@@ -9,7 +9,9 @@ public class LootEM : MonoBehaviour {
     void Awake() {
         if (mod == null) {
             mod = GameObject.Instantiate(tm.mod, transform);
-            // mod.transform.localPosition = Vector3.zero;
+            mod.transform.localPosition = Vector3.zero;
+            mod.transform.localEulerAngles = Vector3.zero;
+            mod.transform.localScale = Vector3.one;
         }
     }
 }

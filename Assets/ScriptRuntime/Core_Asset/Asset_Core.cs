@@ -26,6 +26,9 @@ public class AssetCore {
     Dictionary<int, TerrainTM> terrainTMs;
     AsyncOperationHandle terrainPtr;
 
+    Dictionary<int, MapTM> mapTMs;
+    AsyncOperationHandle mapTMPtr;
+
     public ConfigTM configTM;
     AsyncOperationHandle configPtr;
 
@@ -38,6 +41,7 @@ public class AssetCore {
         gunTMs = new Dictionary<int, GunTM>();
         stuffTMs = new Dictionary<int, StuffTM>();
         terrainTMs = new Dictionary<int, TerrainTM>();
+        mapTMs = new Dictionary<int, MapTM>();
     }
 
     public void LoadAll() {
@@ -102,6 +106,14 @@ public class AssetCore {
                 terrainTMs.Add(tm.typeID, tm);
             }
         }
+        {
+            var ptr = Addressables.LoadAssetsAsync<MapTM>("TM_Map", null);
+            mapTMPtr = ptr;
+            var list = ptr.WaitForCompletion();
+            foreach (var tm in list) {
+                mapTMs.Add(tm.stageID, tm);
+            }
+        }
 
     }
 
@@ -129,6 +141,9 @@ public class AssetCore {
         }
         if (terrainPtr.IsValid()) {
             Addressables.Release(terrainPtr);
+        }
+        if (mapTMPtr.IsValid()) {
+            Addressables.Release(mapTMPtr);
         }
     }
 

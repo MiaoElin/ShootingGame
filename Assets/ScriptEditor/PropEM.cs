@@ -10,7 +10,7 @@ public class PropEM : MonoBehaviour {
             mod = GameObject.Instantiate(propTM.mod, transform);
             mod.transform.localPosition = Vector3.zero;
             mod.transform.localEulerAngles = Vector3.zero;
-            // mod.transform.localScale = Vector3.zero;
+            mod.transform.localScale = Vector3.one;
         }
     }
 }

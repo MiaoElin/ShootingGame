@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class RoleDomain {
 
-    public static RoleEntity Spawn(GameContext ctx, int typeID, Vector3 pos, Ally ally) {
+    public static RoleEntity Spawn(GameContext ctx, int typeID, Vector3 pos, Vector3 rot, Vector3 scale, Ally ally) {
         var role = GameFactory.Role_Spawn(ctx, typeID, pos, ally);
         ctx.roleRepo.Add(role);
         return role;

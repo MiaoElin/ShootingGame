@@ -57,43 +57,43 @@ MonoBehaviour:
     m_Address: Assets/ResourceRuntime/Entity/Loot/LootTM_101.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TMLoot
+    - TM_Loot
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 09c588b80ca365c4bbcf6158b45f2d23
     m_Address: Assets/ResourceRuntime/Entity/Loot/LootTM_103.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TMLoot
+    - TM_Loot
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 37ba7e20a3eb3634882f3f45b9e14f27
     m_Address: Assets/ResourceRuntime/Entity/Loot/LootTM_100.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TMLoot
+    - TM_Loot
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ffe774f29851e3b4da5d4181670e0b79
     m_Address: Assets/ResourceRuntime/Entity/Loot/LootTM_102.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TMLoot
+    - TM_Loot
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 61ba4cee619fd2e4682fd918156274c1
     m_Address: Assets/ResourceRuntime/Entity/Loot/LootTM_200.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TMLoot
+    - TM_Loot
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 23038324002a0ba428ec8b6cb5e39f77
     m_Address: Assets/ResourceRuntime/Entity/Loot/LootTM_Box_300.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TMLoot
+    - TM_Loot
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7ab2f82ff0c761642affd177d90cb9f9
     m_Address: Assets/ResourceRuntime/Entity/Loot/LootTM_Supply_300.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TMLoot
+    - TM_Loot
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5d2fae43e65c8e445a62d08b7c2ec3ce
     m_Address: Assets/ResourceRuntime/Entity/Bullet/BulletEntity.prefab
@@ -196,6 +196,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - TM_Terrain
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ae4602b998e97d448f843ccccfbfd3a
+    m_Address: Assets/ResourceRuntime/Entity/Map/TM_Map_0.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Map
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4f5eacb28cbfc954d9ddea2bca523a81, type: 2}
