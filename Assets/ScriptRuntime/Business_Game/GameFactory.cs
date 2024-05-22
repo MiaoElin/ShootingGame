@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class GameFactory {
 
-    public static RoleEntity Role_Spawn(GameContext ctx, int typeId, Vector3 pos, Ally ally) {
+    public static RoleEntity Role_Spawn(GameContext ctx, int typeId, Vector3 pos, Vector3 rot, Vector3 scale, Ally ally) {
         bool has = ctx.asset.TryGetRoleTM(typeId, out var tm);
         if (!has) {
             Debug.LogError($"GameFactory.CreateRole {typeId} is not find");
@@ -11,6 +11,8 @@ public static class GameFactory {
         role.body = GameObject.Instantiate(tm.body, role.transform);
         role.Ctor(role.body.GetComponent<Animator>(), role.body.GetComponentInChildren<GunSubEntity>());
         role.SetPos(pos);
+        role.SetBodyRotation(rot);
+        role.SetScale(scale);
         role.typeId = typeId;
         role.ally = ally;
         role.id = ctx.iDService.roleIdRecord++;

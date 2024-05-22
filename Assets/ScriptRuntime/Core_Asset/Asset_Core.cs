@@ -174,4 +174,8 @@ public class AssetCore {
     public bool TryGetTerrainTM(int typeID, out TerrainTM tm) {
         return terrainTMs.TryGetValue(typeID, out tm);
     }
+
+    public bool TryGetMapTM(int stageID, out MapTM tm) {
+        return mapTMs.TryGetValue(stageID, out tm);
+    }
 }

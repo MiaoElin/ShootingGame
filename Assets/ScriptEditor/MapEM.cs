@@ -15,12 +15,13 @@ public class MapEM : MonoBehaviour {
             }
             for (int i = 0; i < roleEMs.Length; i++) {
                 var em = roleEMs[i];
-                var spawnerTM = tm.roleSpawnerTMs[i];
-                spawnerTM = new RoleSpawnerTM();
+                var spawnerTM = new RoleSpawnerTM();
                 spawnerTM.roleTypeID = em.tm.typeId;
                 spawnerTM.pos = em.transform.position;
                 spawnerTM.rot = em.transform.eulerAngles;
                 spawnerTM.scale = em.transform.localScale;
+                tm.roleSpawnerTMs[i] = spawnerTM;
+
             }
         }
 

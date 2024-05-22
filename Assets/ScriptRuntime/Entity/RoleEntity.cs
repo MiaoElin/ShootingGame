@@ -126,6 +126,13 @@ public class RoleEntity : MonoBehaviour {
         transform.position = pos;
     }
 
+    public void SetBodyRotation(Vector3 rot) {
+        body.transform.eulerAngles = rot;
+    }
+
+    public void SetScale(Vector3 scale) {
+        transform.localScale = scale;
+    }
 
     public Vector3 Pos() {
         return transform.position;

@@ -15,7 +15,13 @@ public static class GameBusiness_Normal {
         ctx.ownerID = owner.id;
         owner.roleFSMComponent.EnterNormal();
 
-        
+        ctx.asset.TryGetMapTM(0, out var tm);
+        var spawnerTMs = tm.roleSpawnerTMs;
+        for (int i = 0; i < spawnerTMs.Length; i++) {
+            var spawnerTM = spawnerTMs[i];
+            RoleDomain.Spawn(ctx, spawnerTM.roleTypeID, spawnerTM.pos, spawnerTM.rot, spawnerTM.scale, Ally.Monster);
+        }
+
 
         // 设置相机跟随
         CameraDomain.EnterNormal(ctx);

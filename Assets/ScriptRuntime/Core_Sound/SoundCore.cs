@@ -57,7 +57,7 @@ public class SoundCore {
 
     public void Gun_Shoot(AudioClip clip) {
         if (!gun_Shoot.isPlaying) {
-            gun_Shoot.volume = 0.3f;
+            gun_Shoot.volume = 0.1f;
             gun_Shoot.clip = clip;
             gun_Shoot.Play();
         }
