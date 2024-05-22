@@ -44,7 +44,7 @@ MonoBehaviour:
     rot: {x: -0, y: 118.5, z: -0}
     scale: {x: 1, y: 1, z: 1}
     propTypeID: 100
-  - pos: {x: 634.76, y: 18.97, z: 338.5}
+  - pos: {x: 634.76, y: 18, z: 338.5}
     rot: {x: 0, y: 272.08997, z: 0}
     scale: {x: 1, y: 1, z: 1}
     propTypeID: 110
