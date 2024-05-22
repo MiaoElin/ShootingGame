@@ -5,4 +5,5 @@ public class MapTM : ScriptableObject {
 
     public int stageID;
     public RoleSpawnerTM[] roleSpawnerTMs;
+    // public 
 }

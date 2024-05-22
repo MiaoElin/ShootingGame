@@ -20,6 +20,7 @@ public class GameContext {
     // === Repo ===
     public RoleRepo roleRepo;
     public LootRepo lootRepo;
+    public PropRepo propRepo;
 
     // === Owner ===
     public int ownerID;
@@ -39,7 +40,8 @@ public class GameContext {
         // Repo
         roleRepo = new RoleRepo();
         lootRepo = new LootRepo();
-        
+        propRepo = new PropRepo();
+
         // Service
         iDService = new IDService();
         poolService = new PoolService();

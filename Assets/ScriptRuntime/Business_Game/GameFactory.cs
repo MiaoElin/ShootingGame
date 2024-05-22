@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public static class GameFactory {
@@ -58,6 +59,29 @@ public static class GameFactory {
         var loot = GameObject.Instantiate(prefab, ctx.poolService.rolePoolGroup).GetComponent<LootEntity>();
         loot.gameObject.SetActive(false);
         return loot;
+    }
+
+    public static PropEntity Prop_Spawn(GameContext ctx, int typeID, Vector3 pos, Vector3 rot, Vector3 scale) {
+        bool has = ctx.asset.TryGetPropTM(typeID, out var tm);
+        if (!has) {
+            Debug.LogError($"GameFactory.Prop_Spawn is not find {typeID}");
+        }
+        var prop = ctx.poolService.GetProp();
+        prop.typeId = typeID;
+        GameObject.Instantiate(tm.mod, prop.modTransform);
+        prop.SetPos(pos);
+        prop.SetRotaion(rot);
+        prop.SetScale(scale);
+        prop.id = ctx.iDService.propIdRecord++;
+        prop.gameObject.SetActive(true);
+        return prop;
+    }
+
+    internal static PropEntity Prop_Create(GameContext ctx) {
+        ctx.asset.TryGetEntity_Prefab(typeof(PropEntity).Name, out var prefab);
+        var prop = GameObject.Instantiate(prefab, ctx.poolService.propPoolGroup).GetComponent<PropEntity>();
+        prop.gameObject.SetActive(false);
+        return prop;
     }
 
     public static StuffModel Stuff_Create(GameContext ctx, int typeID, int count) {

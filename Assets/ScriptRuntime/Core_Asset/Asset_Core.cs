@@ -17,6 +17,9 @@ public class AssetCore {
     Dictionary<int, LootTM> lootTMs;
     AsyncOperationHandle lootTMPtr;
 
+    Dictionary<int, PropTM> propTMs;
+    AsyncOperationHandle propTMPtr;
+
     Dictionary<int, GunTM> gunTMs;
     AsyncOperationHandle gunTMPtr;
 
@@ -38,6 +41,7 @@ public class AssetCore {
         allUI_Prefab = new Dictionary<string, GameObject>();
         roleTMs = new Dictionary<int, RoleTM>();
         lootTMs = new Dictionary<int, LootTM>();
+        propTMs = new Dictionary<int, PropTM>();
         gunTMs = new Dictionary<int, GunTM>();
         stuffTMs = new Dictionary<int, StuffTM>();
         terrainTMs = new Dictionary<int, TerrainTM>();
@@ -80,6 +84,14 @@ public class AssetCore {
             var list = ptr.WaitForCompletion();
             foreach (var tm in list) {
                 lootTMs.Add(tm.typeID, tm);
+            }
+        }
+        {
+            var ptr = Addressables.LoadAssetsAsync<PropTM>("TM_Prop", null);
+            propTMPtr = ptr;
+            var list = ptr.WaitForCompletion();
+            foreach (var tm in list) {
+                propTMs.Add(tm.typeID, tm);
             }
         }
         {
@@ -145,6 +157,9 @@ public class AssetCore {
         if (mapTMPtr.IsValid()) {
             Addressables.Release(mapTMPtr);
         }
+        if (propTMPtr.IsValid()) {
+            Addressables.Release(propTMPtr);
+        }
     }
 
     public bool TryGetEntity_Prefab(string name, out GameObject prefab) {
@@ -177,5 +192,9 @@ public class AssetCore {
 
     public bool TryGetMapTM(int stageID, out MapTM tm) {
         return mapTMs.TryGetValue(stageID, out tm);
+    }
+
+    public bool TryGetPropTM(int typeID, out PropTM tm) {
+        return propTMs.TryGetValue(typeID, out tm);
     }
 }

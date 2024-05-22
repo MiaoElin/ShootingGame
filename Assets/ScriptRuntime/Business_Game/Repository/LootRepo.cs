@@ -8,7 +8,7 @@ public class LootRepo {
 
     public LootRepo() {
         all = new Dictionary<int, LootEntity>();
-        temp = new LootEntity[1024];
+        temp = new LootEntity[256];
     }
 
     public void Add(LootEntity loot) {
