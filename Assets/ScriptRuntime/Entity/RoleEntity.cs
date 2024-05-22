@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class RoleEntity : MonoBehaviour {
@@ -32,6 +33,11 @@ public class RoleEntity : MonoBehaviour {
 
     // Componet
     public GunComponent gunCom;
+
+    internal void Iskinematic(bool b) {
+        rb.isKinematic = b;
+    }
+
     public StuffComponent stuffCom;
     public EquipComponent equipCom;
 

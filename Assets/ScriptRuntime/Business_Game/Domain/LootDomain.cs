@@ -2,8 +2,8 @@ using UnityEngine;
 
 public static class LootDomain {
 
-    public static LootEntity Spawn(GameContext ctx, int typeID, Vector3 pos, Vector3 eulerAngles) {
-        var loot = GameFactory.Loot_Spawn(ctx, typeID, pos, eulerAngles);
+    public static LootEntity Spawn(GameContext ctx, int typeID, Vector3 pos, Vector3 eulerAngles, Vector3 scale) {
+        var loot = GameFactory.Loot_Spawn(ctx, typeID, pos, eulerAngles, scale);
         ctx.lootRepo.Add(loot);
         return loot;
     }

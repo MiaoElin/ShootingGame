@@ -5,5 +5,6 @@ public class MapTM : ScriptableObject {
 
     public int stageID;
     public RoleSpawnerTM[] roleSpawnerTMs;
-    // public 
+    public LootSpawnerTM[] lootSpawnerTMs;
+    public PropSpawnerTM[] propSpawnerTMs;
 }

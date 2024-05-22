@@ -30,3 +30,21 @@ MonoBehaviour:
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
     roleTypeID: 1000
+  lootSpawnerTMs:
+  - pos: {x: 598.645, y: 17.172, z: 319.154}
+    rot: {x: 340.18365, y: 330.2894, z: 269.99997}
+    scale: {x: 1, y: 1, z: 1}
+    lootTypeID: 300
+  - pos: {x: 597.852, y: 17.122, z: 317.528}
+    rot: {x: -0, y: 103.81, z: 90}
+    scale: {x: 1, y: 1, z: 1}
+    lootTypeID: 102
+  propSpawnerTMs:
+  - pos: {x: 597.83997, y: 16.58, z: 317}
+    rot: {x: -0, y: 118.5, z: -0}
+    scale: {x: 1, y: 1, z: 1}
+    propTypeID: 100
+  - pos: {x: 634.76, y: 18.97, z: 338.5}
+    rot: {x: 0, y: 272.08997, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    propTypeID: 110

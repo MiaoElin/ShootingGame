@@ -24,4 +24,8 @@ public class LootEntity : MonoBehaviour {
     internal void SetEulerAngles(Vector3 eulerAngles) {
         transform.eulerAngles = eulerAngles;
     }
+
+    internal void SetScale(Vector3 scale) {
+        transform.localScale = scale;
+    }
 }

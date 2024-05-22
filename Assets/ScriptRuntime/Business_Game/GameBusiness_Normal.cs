@@ -6,22 +6,40 @@ public static class GameBusiness_Normal {
 
     public static void Enter(GameContext ctx) {
 
-        // 生成临时loot
-        LootDomain.Spawn(ctx, 102, new Vector3(0.5f, -3, 5), new Vector3(0, -150, 90));
-        var loot = LootDomain.Spawn(ctx, 300, new Vector3(2, -3, 4.2f), new Vector3(0, -6, -90));
-
         // 生成owner
         var owner = RoleDomain.Spawn(ctx, 100, VectorConst.OWNER_POS, VectorConst.OWNER_ROT, VectorConst.OWNER_SCALE, Ally.Player);
         ctx.ownerID = owner.id;
         owner.roleFSMComponent.EnterNormal();
 
-        ctx.asset.TryGetMapTM(0, out var tm);
-        var spawnerTMs = tm.roleSpawnerTMs;
-        for (int i = 0; i < spawnerTMs.Length; i++) {
-            var spawnerTM = spawnerTMs[i];
-            RoleDomain.Spawn(ctx, spawnerTM.roleTypeID, spawnerTM.pos, spawnerTM.rot, spawnerTM.scale, Ally.Monster);
+        bool has = ctx.asset.TryGetMapTM(0, out var mapTM);
+        if (!has) {
+            Debug.LogError($"mapTypeID is not find");
+            return;
         }
 
+        var roleSpawnerTMs = mapTM.roleSpawnerTMs;
+        if (roleSpawnerTMs != null) {
+            for (int i = 0; i < roleSpawnerTMs.Length; i++) {
+                var tm = roleSpawnerTMs[i];
+                RoleDomain.Spawn(ctx, tm.roleTypeID, tm.pos, tm.rot, tm.scale, Ally.Monster);
+            }
+        }
+
+        var lootSpawnerTMs = mapTM.lootSpawnerTMs;
+        if (lootSpawnerTMs != null) {
+            for (int i = 0; i < lootSpawnerTMs.Length; i++) {
+                var tm = lootSpawnerTMs[i];
+                LootDomain.Spawn(ctx, tm.lootTypeID, tm.pos, tm.rot, tm.scale);
+            }
+        }
+
+        var propSpawnerTMs = mapTM.propSpawnerTMs;
+        if (propSpawnerTMs != null) {
+            for (int i = 0; i < propSpawnerTMs.Length; i++) {
+                var tm = propSpawnerTMs[i];
+                PropDomain.Spawn(ctx, tm.propTypeID, tm.pos, tm.rot, tm.scale);
+            }
+        }
 
         // 设置相机跟随
         CameraDomain.EnterNormal(ctx);

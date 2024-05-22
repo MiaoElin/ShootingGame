@@ -133,6 +133,7 @@ public static class RoleDomain {
             var hit = Physics.Raycast(ray, out var raycastHit, 999f, layermask);
             // 显示准点光源
             if (ctx.input.isMouseLeftUp) {
+                ctx.input.isMouseLeftUp = false;
                 SFXDomain.Gun_Shoot(ctx);
                 if (hit) {
                     // gun.SetCrossHair(raycastHit.point);

@@ -12,21 +12,49 @@ public class MapEM : MonoBehaviour {
             RoleEM[] roleEMs = GetComponentsInChildren<RoleEM>();
             if (roleEMs != null) {
                 tm.roleSpawnerTMs = new RoleSpawnerTM[roleEMs.Length];
+                for (int i = 0; i < roleEMs.Length; i++) {
+                    var em = roleEMs[i];
+                    var spawnerTM = new RoleSpawnerTM();
+                    spawnerTM.roleTypeID = em.tm.typeId;
+                    spawnerTM.pos = em.transform.position;
+                    spawnerTM.rot = em.transform.eulerAngles;
+                    spawnerTM.scale = em.transform.localScale;
+                    tm.roleSpawnerTMs[i] = spawnerTM;
+                }
             }
-            for (int i = 0; i < roleEMs.Length; i++) {
-                var em = roleEMs[i];
-                var spawnerTM = new RoleSpawnerTM();
-                spawnerTM.roleTypeID = em.tm.typeId;
-                spawnerTM.pos = em.transform.position;
-                spawnerTM.rot = em.transform.eulerAngles;
-                spawnerTM.scale = em.transform.localScale;
-                tm.roleSpawnerTMs[i] = spawnerTM;
-
+        }
+        {
+            PropEM[] propEMs = GetComponentsInChildren<PropEM>();
+            if (propEMs != null) {
+                tm.propSpawnerTMs = new PropSpawnerTM[propEMs.Length];
+                for (int i = 0; i < propEMs.Length; i++) {
+                    var em = propEMs[i];
+                    var propSpawnerTM = new PropSpawnerTM() {
+                        pos = em.transform.position,
+                        rot = em.transform.eulerAngles,
+                        scale = em.transform.localScale,
+                        propTypeID = em.propTM.typeID
+                    };
+                    tm.propSpawnerTMs[i] = propSpawnerTM;
+                }
             }
         }
 
         {
-
+            LootEM[] lootEMs = GetComponentsInChildren<LootEM>();
+            if (lootEMs != null) {
+                tm.lootSpawnerTMs = new LootSpawnerTM[lootEMs.Length];
+                for (int i = 0; i < lootEMs.Length; i++) {
+                    var em = lootEMs[i];
+                    var lootSpawnerTM = new LootSpawnerTM() {
+                        pos = em.transform.position,
+                        rot = em.transform.eulerAngles,
+                        scale = em.transform.localScale,
+                        lootTypeID = em.tm.typeID
+                    };
+                    tm.lootSpawnerTMs[i] = lootSpawnerTM;
+                }
+            }
         }
         EditorUtility.SetDirty(tm);
 
@@ -43,4 +71,5 @@ public class MapEM : MonoBehaviour {
     //     }
 
     // }
+
 }

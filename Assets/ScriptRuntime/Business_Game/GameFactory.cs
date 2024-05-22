@@ -16,6 +16,9 @@ public static class GameFactory {
         role.SetScale(scale);
         role.typeId = typeId;
         role.ally = ally;
+        // if (ally == Ally.Monster) {
+        //     role.Iskinematic(true);
+        // }
         role.id = ctx.iDService.roleIdRecord++;
         role.hp = tm.hpMax;
         role.hpMax = tm.hpMax;
@@ -34,7 +37,7 @@ public static class GameFactory {
         return role;
     }
 
-    public static LootEntity Loot_Spawn(GameContext ctx, int typeID, Vector3 pos, Vector3 eulerAngles) {
+    public static LootEntity Loot_Spawn(GameContext ctx, int typeID, Vector3 pos, Vector3 eulerAngles, Vector3 scale) {
         bool has = ctx.asset.TryGetLootTM(typeID, out var tm);
         if (!has) {
             Debug.LogError($"GameFactory.LootSpawn {typeID} is not find");
@@ -44,6 +47,7 @@ public static class GameFactory {
         loot.lootName = tm.lootName;
         loot.SetPos(pos);
         loot.SetEulerAngles(eulerAngles);
+        loot.SetScale(scale);
         loot.id = ctx.iDService.lootIdRecord++;
         loot.isBox = tm.isBox;
         loot.stuffTypeIDs = tm.stuffTypeIDs;
