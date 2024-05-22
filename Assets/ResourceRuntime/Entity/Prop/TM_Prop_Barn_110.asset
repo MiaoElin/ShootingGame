@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 288ec2e2928655546a504568b28e0bab, type: 3}
-  m_Name: TM_Prop_Bench_100
+  m_Name: TM_Prop_Barn_110
   m_EditorClassIdentifier: 
-  typeID: 100
-  mod: {fileID: 4961144970563848073, guid: f4aa4bfa60ac078488e00cc914278e12, type: 3}
+  typeID: 110
+  mod: {fileID: 2489082864994894039, guid: da022fe0d18f0564682414d3d3eec4b3, type: 3}

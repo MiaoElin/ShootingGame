@@ -189,7 +189,13 @@ MonoBehaviour:
     m_Address: Assets/ResourceRuntime/Entity/Prop/PropTM_Bench_100.asset
     m_ReadOnly: 0
     m_SerializedLabels:
-    - TMProp
+    - TM_Prop
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3652746985c34d844870766151754641
+    m_Address: Assets/ResourceRuntime/Entity/Terrain/TM_Terrain_0.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Terrain
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4f5eacb28cbfc954d9ddea2bca523a81, type: 2}

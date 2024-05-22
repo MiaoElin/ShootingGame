@@ -132,11 +132,11 @@ public static class RoleDomain {
             var layermask = 1 << 6;
             var hit = Physics.Raycast(ray, out var raycastHit, 999f, layermask);
             // 显示准点光源
-            if (hit) {
-                // gun.SetCrossHair(raycastHit.point);
-                if (ctx.input.isMouseLeftUp) {
+            if (ctx.input.isMouseLeftUp) {
+                SFXDomain.Gun_Shoot(ctx);
+                if (hit) {
+                    // gun.SetCrossHair(raycastHit.point);
                     RoleDomain.Unspawn(ctx, raycastHit.collider.gameObject.GetComponentInParent<RoleEntity>());
-                    SFXDomain.Gun_Shoot(ctx);
                 }
             }
             // 生成子弹

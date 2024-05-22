@@ -23,6 +23,9 @@ public class AssetCore {
     Dictionary<int, StuffTM> stuffTMs;
     AsyncOperationHandle stuffPtr;
 
+    Dictionary<int, TerrainTM> terrainTMs;
+    AsyncOperationHandle terrainPtr;
+
     public ConfigTM configTM;
     AsyncOperationHandle configPtr;
 
@@ -34,6 +37,7 @@ public class AssetCore {
         lootTMs = new Dictionary<int, LootTM>();
         gunTMs = new Dictionary<int, GunTM>();
         stuffTMs = new Dictionary<int, StuffTM>();
+        terrainTMs = new Dictionary<int, TerrainTM>();
     }
 
     public void LoadAll() {
@@ -67,7 +71,7 @@ public class AssetCore {
             configTM = ptr.WaitForCompletion();
         }
         {
-            var ptr = Addressables.LoadAssetsAsync<LootTM>("TMLoot", null);
+            var ptr = Addressables.LoadAssetsAsync<LootTM>("TM_Loot", null);
             lootTMPtr = ptr;
             var list = ptr.WaitForCompletion();
             foreach (var tm in list) {
@@ -90,6 +94,15 @@ public class AssetCore {
                 stuffTMs.Add(tm.typeID, tm);
             }
         }
+        {
+            var ptr = Addressables.LoadAssetsAsync<TerrainTM>("TM_Terrain", null);
+            terrainPtr = ptr;
+            var list = ptr.WaitForCompletion();
+            foreach (var tm in list) {
+                terrainTMs.Add(tm.typeID, tm);
+            }
+        }
+
     }
 
     public void Unload() {
@@ -113,6 +126,9 @@ public class AssetCore {
         }
         if (stuffPtr.IsValid()) {
             Addressables.Release(stuffPtr);
+        }
+        if (terrainPtr.IsValid()) {
+            Addressables.Release(terrainPtr);
         }
     }
 
@@ -138,5 +154,9 @@ public class AssetCore {
 
     public bool TryGetStuffTM(int typeID, out StuffTM tm) {
         return stuffTMs.TryGetValue(typeID, out tm);
+    }
+
+    public bool TryGetTerrainTM(int typeID, out TerrainTM tm) {
+        return terrainTMs.TryGetValue(typeID, out tm);
     }
 }
