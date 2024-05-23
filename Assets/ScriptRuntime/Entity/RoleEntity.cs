@@ -8,6 +8,7 @@ public class RoleEntity : MonoBehaviour {
     public int id;
     public int hp;
     public int hpMax;
+    public float height;
     public RoleFSMComponent roleFSMComponent;
     public float moveSpeed;
     public MoveType moveType;

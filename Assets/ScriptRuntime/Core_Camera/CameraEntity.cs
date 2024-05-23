@@ -1,11 +1,12 @@
 using UnityEngine;
 using Cinemachine;
+using System;
 
 public class CameraEntity {
     public CinemachineFreeLook normalCamera;
     public CinemachineFreeLook shootLookCamera;
     public CinemachineFreeLook currentCam;
-    // public Camera currentCamera; // 目前没用到。用brain切换相机没成功
+    public Camera currentCamera; // 目前没用到。用brain切换相机没成功
     public CameraType cameraType;
     public Vector2 normalCameraAxisSpeed;
     public Vector2 shootCameraAxisSpeed;
@@ -18,7 +19,7 @@ public class CameraEntity {
     }
 
     public void Inject(Camera currentCamera, CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera) {
-        // this.currentCamera = currentCamera;
+        this.currentCamera = currentCamera;
         this.normalCamera = normalCamera;
         this.shootLookCamera = shootCamera;
     }
@@ -81,5 +82,9 @@ public class CameraEntity {
         var axisSpeed = GetCameraAxisSpeed();
         currentCam.m_XAxis.m_MaxSpeed = axisSpeed.x;
         currentCam.m_YAxis.m_MaxSpeed = axisSpeed.y;
+    }
+
+    internal Vector3 GetForward() {
+        return currentCam.transform.forward;
     }
 }

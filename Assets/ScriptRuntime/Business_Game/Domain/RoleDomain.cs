@@ -137,10 +137,16 @@ public static class RoleDomain {
                 SFXDomain.Gun_Shoot(ctx);
                 if (hit) {
                     // gun.SetCrossHair(raycastHit.point);
-                    RoleDomain.Unspawn(ctx, raycastHit.collider.gameObject.GetComponentInParent<RoleEntity>());
+                    var monster = raycastHit.collider.gameObject.GetComponentInParent<RoleEntity>();
+                    RoleDomain.Unspawn(ctx, monster);
+                    UIDomain.H_HpBar_Close(ctx, monster.id);
                 }
             }
             // 生成子弹
         }
+    }
+
+    public static void UpdateHpBar(GameContext ctx, RoleEntity role) {
+        UIDomain.H_HpBar_Update(ctx, role.id, role.Pos() + (role.height + CommonConst.ROLE_HEADOFFSET) * Vector3.up, ctx.cameraEntity.GetForward());
     }
 }

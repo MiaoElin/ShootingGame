@@ -16,9 +16,7 @@ public static class GameFactory {
         role.SetScale(scale);
         role.typeId = typeId;
         role.ally = ally;
-        // if (ally == Ally.Monster) {
-        //     role.Iskinematic(true);
-        // }
+        role.height = tm.height;
         role.id = ctx.iDService.roleIdRecord++;
         role.hp = tm.hpMax;
         role.hpMax = tm.hpMax;
@@ -60,7 +58,7 @@ public static class GameFactory {
 
     public static LootEntity Loot_Create(GameContext ctx) {
         ctx.asset.TryGetEntity_Prefab(typeof(LootEntity).Name, out var prefab);
-        var loot = GameObject.Instantiate(prefab, ctx.poolService.rolePoolGroup).GetComponent<LootEntity>();
+        var loot = GameObject.Instantiate(prefab, ctx.poolService.lootPoolGroup).GetComponent<LootEntity>();
         loot.gameObject.SetActive(false);
         return loot;
     }

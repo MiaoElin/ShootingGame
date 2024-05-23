@@ -29,4 +29,16 @@ public static class UIDomain {
     public static void Panel_Bag_Hide(GameContext ctx) {
         ctx.uIApp.Panel_Bag_Hide();
     }
+
+    public static void H_HpBar_Open(GameContext ctx, int id, int hpMax) {
+        ctx.uIApp.H_HpBar_Open(id, hpMax);
+    }
+
+    public static void H_HpBar_Close(GameContext ctx, int id) {
+        ctx.uIApp.H_HpBar_Close(id);
+    }
+
+    public static void H_HpBar_Update(GameContext ctx, int id, Vector3 pos, Vector3 forward) {
+        ctx.uIApp.H_HpBar_Update(id, pos, forward);
+    }
 }

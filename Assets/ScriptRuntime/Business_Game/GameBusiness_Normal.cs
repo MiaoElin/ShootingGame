@@ -21,7 +21,8 @@ public static class GameBusiness_Normal {
         if (roleSpawnerTMs != null) {
             for (int i = 0; i < roleSpawnerTMs.Length; i++) {
                 var tm = roleSpawnerTMs[i];
-                RoleDomain.Spawn(ctx, tm.roleTypeID, tm.pos, tm.rot, tm.scale, Ally.Monster);
+                var role = RoleDomain.Spawn(ctx, tm.roleTypeID, tm.pos, tm.rot, tm.scale, Ally.Monster);
+                UIDomain.H_HpBar_Open(ctx, role.id, role.hpMax);
             }
         }
 
@@ -87,6 +88,7 @@ public static class GameBusiness_Normal {
             RoleDomain.Move(ctx, role, dt);
             RoleDomain.Jump(role);
             RoleDomain.Falling(role, dt);
+            RoleDomain.UpdateHpBar(ctx, role);
         }
         RoleFSMController.ApplyFsm(ctx, owner, dt);
 

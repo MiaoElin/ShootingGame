@@ -50,9 +50,9 @@ public class GameContext {
 
     }
 
-    public void Inject(CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera, Camera currentCamera, Canvas screenCanvas) {
+    public void Inject(CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera, Camera currentCamera, Canvas screenCanvas, Canvas worldCanvas) {
         cameraEntity.Inject(currentCamera, normalCamera, shootCamera);
-        uIApp.Inject(asset, screenCanvas);
+        uIApp.Inject(asset, screenCanvas, worldCanvas);
     }
 
     public RoleEntity GetOwner() {

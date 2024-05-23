@@ -10,8 +10,8 @@ public class UIApp {
         ctx = new UIContext();
     }
 
-    public void Inject(AssetCore asset, Canvas screenCanvas) {
-        ctx.Inject(asset, screenCanvas);
+    public void Inject(AssetCore asset, Canvas screenCanvas, Canvas worldCanvas) {
+        ctx.Inject(asset, screenCanvas, worldCanvas);
     }
 
     #region  P_CrossHair
@@ -40,11 +40,25 @@ public class UIApp {
 
     #region P_Bag
     public void Panel_Bag_Open(StuffComponent stuffCom) {
-        Panel_BagDomain.Open(ctx,stuffCom);
+        Panel_BagDomain.Open(ctx, stuffCom);
     }
 
     public void Panel_Bag_Hide() {
         Panel_BagDomain.Hide(ctx);
+    }
+    #endregion
+
+    #region H_HpBar
+    public void H_HpBar_Open(int id, int hpMax) {
+        HUD_HpBarDomain.Open(ctx, id, hpMax);
+    }
+
+    internal void H_HpBar_Update(int id, Vector3 pos, Vector3 forward) {
+        HUD_HpBarDomain.Update(ctx, id, pos, forward);
+    }
+
+    public void H_HpBar_Close(int id) {
+        HUD_HpBarDomain.Close(ctx, id);
     }
     #endregion
 

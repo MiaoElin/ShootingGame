@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RoleTM_Moster_1000
   m_EditorClassIdentifier: 
   typeId: 1000
-  hpMax: 1000
+  hpMax: 50
+  height: 2
   moveSpeed: 5
   moveType: 2
   body: {fileID: 7553628619335038245, guid: f29934c0ca51f294c8fbdd8672fbb245, type: 3}
