@@ -50,4 +50,8 @@ public class BulletEntity : MonoBehaviour {
     internal void SetPos(Vector3 pos) {
         transform.position = pos;
     }
+
+    internal Vector3 Pos() {
+        return transform.position;
+    }
 }

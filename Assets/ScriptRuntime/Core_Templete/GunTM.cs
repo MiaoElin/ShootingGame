@@ -5,6 +5,5 @@ public class GunTM : ScriptableObject {
 
     public int typeID;
     public GameObject gunObj;
-    public int damage;
     public int bulletCountMax;
 }

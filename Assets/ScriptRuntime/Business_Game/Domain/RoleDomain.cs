@@ -137,15 +137,14 @@ public static class RoleDomain {
                 SFXDomain.Gun_Shoot(ctx);
                 if (hit) {
                     // 生成子弹
-                    // var bullet =GameFactory.
+                    var bullet = BulletDomain.Spawn(ctx, gun.bulletTypeID, gun.launchPoint.position, role.ally);
                     // 设置子弹的dir
-
+                    bullet.dir = raycastHit.point - bullet.Pos();
                     // var monster = raycastHit.collider.gameObject.GetComponentInParent<RoleEntity>();
                     // RoleDomain.Unspawn(ctx, monster);
                     // UIDomain.H_HpBar_Close(ctx, monster.id);
                 }
             }
-            // 生成子弹
         }
     }
 

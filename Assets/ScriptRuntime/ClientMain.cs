@@ -10,10 +10,17 @@ public class ClientMain : MonoBehaviour {
     [SerializeField] Camera currentCamera;
     [SerializeField] Canvas screenCanvas;
     [SerializeField] Canvas worldCanvas;
+    [SerializeField] Terrain terrain;
     bool isDestory;
     GameContext ctx;
 
     void Start() {
+
+        // var a = terrain.terrainData.detailPrototypes;
+        // foreach (var pro in a) {
+        //     var meshR = pro.prototype.GetComponent<MeshRenderer>();
+        //     meshR.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        // }
 
         // 锁定鼠标
         Cursor.lockState = CursorLockMode.Locked;

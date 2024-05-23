@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class GunSubEntity : MonoBehaviour {
     public int typeID;
-    [SerializeField] Transform gunObj;
-    [SerializeField] Transform launchPoint;
+    [SerializeField] Transform modTransform;
+    [SerializeField] public Transform launchPoint;
     [SerializeField] Transform crossHair;
-    public int damage;
+    public int bulletTypeID;
     public int bulletCount;
     public int bulletCountMax;
 

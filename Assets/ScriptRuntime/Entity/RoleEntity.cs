@@ -61,15 +61,13 @@ public class RoleEntity : MonoBehaviour {
     }
 
     public void Move(Vector3 moveAxis, float dt) {
-
+        // if (moveAxis == Vector3.zero) {
+        //     return;
+        // }
         var velocity = rb.velocity;
         velocity = moveAxis.normalized * moveSpeed;
         velocity.y = rb.velocity.y;
         rb.velocity = velocity;
-
-        if (moveAxis == Vector3.zero) {
-            return;
-        }
     }
 
     public Vector3 Velocity() {
@@ -131,6 +129,7 @@ public class RoleEntity : MonoBehaviour {
 
     public void SetPos(Vector3 pos) {
         transform.position = pos;
+        rb.position = pos;
     }
 
     public void SetBodyRotation(Vector3 rot) {

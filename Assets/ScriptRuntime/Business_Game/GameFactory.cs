@@ -127,6 +127,9 @@ public static class GameFactory {
         bullet.Ctor(tm.mod);
         bullet.SetPos(pos);
         bullet.id = ctx.iDService.bulletIdRecord++;
+        bullet.damage = tm.damage;
+        bullet.bulletMoveType = tm.bulletMoveType;
+        bullet.moveSpeed = tm.moveSpeed;
         return bullet;
     }
 }

@@ -7,4 +7,9 @@ public static class BulletDomain {
         ctx.bulletRepo.Add(bullet);
         return bullet;
     }
+
+    public static void Unspawn(GameContext ctx, BulletEntity bullet) {
+        ctx.bulletRepo.Remove(bullet);
+        ctx.poolService.ReturnBullet(bullet);
+    }
 }

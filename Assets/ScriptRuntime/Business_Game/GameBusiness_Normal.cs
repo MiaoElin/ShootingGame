@@ -10,7 +10,6 @@ public static class GameBusiness_Normal {
         var owner = RoleDomain.Spawn(ctx, 100, VectorConst.OWNER_POS, VectorConst.OWNER_ROT, VectorConst.OWNER_SCALE, Ally.Player);
         ctx.ownerID = owner.id;
         owner.roleFSMComponent.EnterNormal();
-
         bool has = ctx.asset.TryGetMapTM(0, out var mapTM);
         if (!has) {
             Debug.LogError($"mapTypeID is not find");
@@ -64,8 +63,8 @@ public static class GameBusiness_Normal {
             restTime = 0;
         } else {
             while (restTime >= Interval) {
-                restTime -= Interval;
                 FixedTick(ctx, Interval);
+                restTime -= Interval;
             }
         }
 

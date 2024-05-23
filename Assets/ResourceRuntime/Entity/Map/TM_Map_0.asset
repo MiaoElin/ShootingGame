@@ -14,37 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageID: 0
   roleSpawnerTMs:
-  - pos: {x: 598.16, y: 16.49, z: 312.64}
+  - pos: {x: 24.409973, y: 0, z: 10.799988}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
     roleTypeID: 1000
-  - pos: {x: 601.38, y: 16.49, z: 312.2}
+  - pos: {x: 26.140015, y: 0, z: 11.169983}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
     roleTypeID: 1000
-  - pos: {x: 604.51, y: 16.49, z: 314.16998}
+  - pos: {x: 23.01001, y: 0, z: 9.200012}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
     roleTypeID: 1000
-  - pos: {x: 602.77997, y: 16.49, z: 313.8}
+  - pos: {x: 19.789978, y: 0, z: 9.640015}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
     roleTypeID: 1000
   lootSpawnerTMs:
-  - pos: {x: 598.645, y: 17.172, z: 319.154}
+  - pos: {x: 20.275024, y: 0.6820011, z: 16.153992}
     rot: {x: 340.18365, y: 330.2894, z: 269.99997}
     scale: {x: 1, y: 1, z: 1}
     lootTypeID: 300
-  - pos: {x: 597.852, y: 17.122, z: 317.528}
+  - pos: {x: 19.481995, y: 0.63199997, z: 14.528015}
     rot: {x: -0, y: 103.81, z: 90}
     scale: {x: 1, y: 1, z: 1}
     lootTypeID: 102
   propSpawnerTMs:
-  - pos: {x: 597.83997, y: 16.58, z: 317}
+  - pos: {x: 19.46997, y: 0, z: 14}
     rot: {x: -0, y: 118.5, z: -0}
     scale: {x: 1, y: 1, z: 1}
     propTypeID: 100
-  - pos: {x: 634.76, y: 18, z: 338.5}
+  - pos: {x: 56.390015, y: 0, z: 35.5}
     rot: {x: 0, y: 272.08997, z: 0}
     scale: {x: 1, y: 1, z: 1}
     propTypeID: 110

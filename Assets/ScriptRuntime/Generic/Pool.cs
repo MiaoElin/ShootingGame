@@ -26,9 +26,7 @@ public class Pool<T> where T : MonoBehaviour {
             return t;
 
         } else {
-            var t = fuction();
-            t.gameObject.SetActive(true);
-            return t;
+            return fuction();
         }
     }
 

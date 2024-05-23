@@ -85,6 +85,6 @@ public class CameraEntity {
     }
 
     internal Vector3 GetForward() {
-        return currentCam.transform.forward;
+        return currentCamera.transform.forward;
     }
 }
