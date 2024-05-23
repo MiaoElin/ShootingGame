@@ -221,6 +221,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8b602160eee23148b6db8e4a4431fc2
+    m_Address: Assets/ResourceRuntime/Entity/Bullet/TM_Bullet_100.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Bullet
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4f5eacb28cbfc954d9ddea2bca523a81, type: 2}
   m_SchemaSet:

@@ -110,4 +110,23 @@ public static class GameFactory {
         stuff.Spr = tm.stuffSpr;
         return stuff;
     }
+
+    public static BulletEntity Bullet_Create(GameContext ctx) {
+        ctx.asset.TryGetEntity_Prefab(typeof(BulletEntity).Name, out var prefab);
+        var bullet = GameObject.Instantiate(prefab, ctx.poolService.bulletGroup).GetComponent<BulletEntity>();
+        return bullet;
+    }
+
+    public static BulletEntity Bullet_Spawn(GameContext ctx, int typeID, Vector3 pos, Ally ally) {
+        ctx.asset.TryGetBulletTM(typeID, out var tm);
+        if (!tm) {
+            Debug.Log($"GameFactory.Bullet_Spawn {typeID} is not find");
+        }
+        var bullet = ctx.poolService.GetBullet();
+        bullet.typeID = tm.typeID;
+        bullet.Ctor(tm.mod);
+        bullet.SetPos(pos);
+        bullet.id = ctx.iDService.bulletIdRecord++;
+        return bullet;
+    }
 }

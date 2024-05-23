@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-public class Pool<T> {
+public class Pool<T> where T : MonoBehaviour {
     Stack<T> stack;
     Func<T> fuction;
     Action action;
@@ -21,13 +21,19 @@ public class Pool<T> {
 
     public T Get() {
         if (stack.Count > 0) {
-            return stack.Pop();
+            var t = stack.Pop();
+            t.gameObject.SetActive(true);
+            return t;
+
         } else {
-            return fuction();
+            var t = fuction();
+            t.gameObject.SetActive(true);
+            return t;
         }
     }
 
     public void Return(T t) {
+        t.gameObject.SetActive(false);
         stack.Push(t);
     }
 }

@@ -23,6 +23,9 @@ public class AssetCore {
     Dictionary<int, GunTM> gunTMs;
     AsyncOperationHandle gunTMPtr;
 
+    Dictionary<int, BulletTM> bulletTMs;
+    AsyncOperationHandle bulletPtr;
+
     Dictionary<int, StuffTM> stuffTMs;
     AsyncOperationHandle stuffPtr;
 
@@ -43,6 +46,7 @@ public class AssetCore {
         lootTMs = new Dictionary<int, LootTM>();
         propTMs = new Dictionary<int, PropTM>();
         gunTMs = new Dictionary<int, GunTM>();
+        bulletTMs = new Dictionary<int, BulletTM>();
         stuffTMs = new Dictionary<int, StuffTM>();
         terrainTMs = new Dictionary<int, TerrainTM>();
         mapTMs = new Dictionary<int, MapTM>();
@@ -103,6 +107,14 @@ public class AssetCore {
             }
         }
         {
+            var ptr = Addressables.LoadAssetsAsync<BulletTM>("TM_Bullet", null);
+            bulletPtr = ptr;
+            var list = ptr.WaitForCompletion();
+            foreach (var tm in list) {
+                bulletTMs.Add(tm.typeID, tm);
+            }
+        }
+        {
             var ptr = Addressables.LoadAssetsAsync<StuffTM>("StuffTM", null);
             stuffPtr = ptr;
             var list = ptr.WaitForCompletion();
@@ -130,35 +142,22 @@ public class AssetCore {
     }
 
     public void Unload() {
-        if (entityPtr.IsValid()) {
-            Addressables.Release(entityPtr);
-        }
-        if (roleTMPtr.IsValid()) {
-            Addressables.Release(roleTMPtr);
-        }
-        if (uiPrefabPtr.IsValid()) {
-            Addressables.Release(uiPrefabPtr);
-        }
-        if (configPtr.IsValid()) {
-            Addressables.Release(configPtr);
-        }
-        if (lootTMPtr.IsValid()) {
-            Addressables.Release(lootTMPtr);
-        }
-        if (gunTMPtr.IsValid()) {
-            Addressables.Release(gunTMPtr);
-        }
-        if (stuffPtr.IsValid()) {
-            Addressables.Release(stuffPtr);
-        }
-        if (terrainPtr.IsValid()) {
-            Addressables.Release(terrainPtr);
-        }
-        if (mapTMPtr.IsValid()) {
-            Addressables.Release(mapTMPtr);
-        }
-        if (propTMPtr.IsValid()) {
-            Addressables.Release(propTMPtr);
+        Release(entityPtr);
+        Release(roleTMPtr);
+        Release(uiPrefabPtr);
+        Release(configPtr);
+        Release(lootTMPtr);
+        Release(gunTMPtr);
+        Release(bulletPtr);
+        Release(stuffPtr);
+        Release(terrainPtr);
+        Release(mapTMPtr);
+        Release(propTMPtr);
+    }
+
+    public void Release(AsyncOperationHandle ptr) {
+        if (ptr.IsValid()) {
+            Addressables.Release(ptr);
         }
     }
 
@@ -180,6 +179,10 @@ public class AssetCore {
 
     public bool TryGetGunTM(int typeID, out GunTM tm) {
         return gunTMs.TryGetValue(typeID, out tm);
+    }
+
+    public bool TryGetBulletTM(int typeID, out BulletTM tm) {
+        return bulletTMs.TryGetValue(typeID, out tm);
     }
 
     public bool TryGetStuffTM(int typeID, out StuffTM tm) {

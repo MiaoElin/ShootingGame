@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e10eed467f56749baca88a93591331, type: 3}
+  m_Name: TM_Bullet_100
+  m_EditorClassIdentifier: 
+  typeID: 100
+  damage: 20
+  bulletMoveType: 2
+  moveSpeed: 200
+  mod: {fileID: 2225244954863319617, guid: efdcd16d81eedf749bd8b4b0e7ce9fea, type: 3}

@@ -136,10 +136,13 @@ public static class RoleDomain {
                 ctx.input.isMouseLeftUp = false;
                 SFXDomain.Gun_Shoot(ctx);
                 if (hit) {
-                    // gun.SetCrossHair(raycastHit.point);
-                    var monster = raycastHit.collider.gameObject.GetComponentInParent<RoleEntity>();
-                    RoleDomain.Unspawn(ctx, monster);
-                    UIDomain.H_HpBar_Close(ctx, monster.id);
+                    // 生成子弹
+                    // var bullet =GameFactory.
+                    // 设置子弹的dir
+
+                    // var monster = raycastHit.collider.gameObject.GetComponentInParent<RoleEntity>();
+                    // RoleDomain.Unspawn(ctx, monster);
+                    // UIDomain.H_HpBar_Close(ctx, monster.id);
                 }
             }
             // 生成子弹

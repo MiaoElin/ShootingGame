@@ -1,8 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "TM/BulletTM", fileName = "BulletTM_")]
+[CreateAssetMenu(menuName = "TM/TM_Bullet", fileName = "TM_Bullet_")]
 public class BulletTM : ScriptableObject {
     public int typeID;
-    public Mesh mesh;
     public int damage;
+    public BulletMoveType bulletMoveType;
+    public float moveSpeed;
+    public GameObject mod;
 }

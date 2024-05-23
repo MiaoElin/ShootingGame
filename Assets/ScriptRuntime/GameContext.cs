@@ -21,6 +21,7 @@ public class GameContext {
     public RoleRepo roleRepo;
     public LootRepo lootRepo;
     public PropRepo propRepo;
+    public BulletRepo bulletRepo;
 
     // === Owner ===
     public int ownerID;
@@ -41,6 +42,7 @@ public class GameContext {
         roleRepo = new RoleRepo();
         lootRepo = new LootRepo();
         propRepo = new PropRepo();
+        bulletRepo = new BulletRepo();
 
         // Service
         iDService = new IDService();

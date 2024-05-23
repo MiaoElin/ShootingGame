@@ -15,15 +15,15 @@ public class SoundCore {
     AsyncOperationHandle prefabHandle;
 
     public void LoadAll() {
-        GameObject sfx = new GameObject("SFX");
+        Transform sfx = new GameObject("SFX").transform;
         var handle = Addressables.LoadAssetAsync<GameObject>("AudioSource");
         prefabHandle = handle;
         prefab = handle.WaitForCompletion().GetComponent<AudioSource>();
-        role_Walk = GameObject.Instantiate(prefab, sfx.transform);
-        role_EnterGround = GameObject.Instantiate(prefab, sfx.transform);
-        gun_Shoot = GameObject.Instantiate(prefab, sfx.transform);
-        role_Pick = GameObject.Instantiate(prefab, sfx.transform);
-        bag_OpenClose = GameObject.Instantiate(prefab, sfx.transform);
+        role_Walk = GameObject.Instantiate(prefab, sfx);
+        role_EnterGround = GameObject.Instantiate(prefab, sfx);
+        gun_Shoot = GameObject.Instantiate(prefab, sfx);
+        role_Pick = GameObject.Instantiate(prefab, sfx);
+        bag_OpenClose = GameObject.Instantiate(prefab, sfx);
     }
 
     public void Unload() {
