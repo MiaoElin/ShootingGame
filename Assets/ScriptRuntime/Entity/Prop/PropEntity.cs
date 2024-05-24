@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class PropEntity : MonoBehaviour {
     public int typeId;
+    public bool canBeDestory;
     public int id;
     public Transform modTransform;
-    
+
 
     public void SetPos(Vector3 pos) {
         transform.position = pos;

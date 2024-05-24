@@ -185,12 +185,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - RoleTM
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f511eb11775a0b14f8e6e3604f4400c0
-    m_Address: Assets/ResourceRuntime/Entity/Prop/PropTM_Bench_100.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - TM_Prop
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3652746985c34d844870766151754641
     m_Address: Assets/ResourceRuntime/Entity/Terrain/TM_Terrain_0.asset
     m_ReadOnly: 0
@@ -209,8 +203,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - Entities
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a86ee3092125036418fdc503c1655df7
-    m_Address: Assets/ResourceRuntime/Entity/Prop/TM/TM_Prop_Bench_100.asset
+  - m_GUID: 89081cd704151bd4c969b2530649f86d
+    m_Address: Assets/ResourceRuntime/Entity/Prop/TM/TM_Prop_Target_200.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - TM_Prop
@@ -227,7 +221,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - TM_Bullet
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e09530a95d5b2b147a009c8ddffa0bc8
+  - m_GUID: 441946b2b4184624fb8e324bd781d68f
     m_Address: Assets/ResourceRuntime/Entity/Prop/TM/TM_Prop_BlockerCube_120.asset
     m_ReadOnly: 0
     m_SerializedLabels:

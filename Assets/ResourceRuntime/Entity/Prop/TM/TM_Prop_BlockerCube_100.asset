@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 288ec2e2928655546a504568b28e0bab, type: 3}
-  m_Name: TM_Prop_BlockerCube_120
+  m_Script: {fileID: 11500000, guid: d4e402dc9b247c64199057af954e523a, type: 3}
+  m_Name: TM_Prop_BlockerCube_100
   m_EditorClassIdentifier: 
-  typeID: 120
+  typeID: 100
   mod: {fileID: 3665889432545606063, guid: f8612399b6fe2014988af899599d1681, type: 3}

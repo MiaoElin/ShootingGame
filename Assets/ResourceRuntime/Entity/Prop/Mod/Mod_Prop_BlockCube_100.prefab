@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8312715027719991199}
   m_Layer: 0
-  m_Name: Mod_Prop_BlockCube_120
+  m_Name: Mod_Prop_BlockCube_100
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

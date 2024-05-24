@@ -42,11 +42,15 @@ MonoBehaviour:
     scale: {x: 1, y: 1, z: 1}
     lootTypeID: 102
   propSpawnerTMs:
-  - pos: {x: 5.8, y: 0, z: 26.249}
+  - pos: {x: 0, y: 0, z: 26.249}
     rot: {x: -0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 0.77785}
-    propTypeID: 120
-  - pos: {x: 26.47, y: 0, z: 27.36}
+    scale: {x: 2.31, y: 1, z: 0.77785}
+    propTypeID: 100
+  - pos: {x: 41.8, y: 0, z: 64}
+    rot: {x: -0, y: 0, z: 0}
+    scale: {x: 2.34, y: 1, z: 1}
+    propTypeID: 100
+  - pos: {x: 31.2, y: 0.9, z: 12.39}
     rot: {x: -0, y: 0, z: 0}
     scale: {x: 1, y: 1, z: 1}
-    propTypeID: 120
+    propTypeID: 200
