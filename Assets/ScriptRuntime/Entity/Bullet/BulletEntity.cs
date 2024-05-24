@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-public class BulletEntity : MonoBehaviour {
 
+public class BulletEntity : MonoBehaviour {
     public int typeID;
     public int id;
     public bool isDead;
@@ -11,6 +11,7 @@ public class BulletEntity : MonoBehaviour {
     public float maxFlyTime;
     public BulletMoveType bulletMoveType;
     public int damage;
+    public Vector3 halfExtents;
     public float moveSpeed;
     public Transform modTransform;
     [SerializeField] Rigidbody rb;

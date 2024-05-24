@@ -6,5 +6,6 @@ public class BulletTM : ScriptableObject {
     public int damage;
     public BulletMoveType bulletMoveType;
     public float moveSpeed;
+    public Vector3 halfExtents;
     public GameObject mod;
 }

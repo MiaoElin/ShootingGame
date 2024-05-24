@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 866934450577288924}
   m_Layer: 6
   m_Name: RoleEntity
-  m_TagString: Untagged
+  m_TagString: Role
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +82,8 @@ MonoBehaviour:
   id: 0
   hp: 0
   hpMax: 0
+  isDead: 0
+  deadTimer: 0
   height: 0
   moveSpeed: 0
   moveType: 0

@@ -16,4 +16,5 @@ MonoBehaviour:
   damage: 50
   bulletMoveType: 2
   moveSpeed: 1
+  halfExtents: {x: 0.03, y: 0.03, z: 0.05}
   mod: {fileID: 2225244954863319617, guid: efdcd16d81eedf749bd8b4b0e7ce9fea, type: 3}

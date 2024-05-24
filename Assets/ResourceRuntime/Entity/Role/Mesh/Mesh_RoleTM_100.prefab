@@ -1915,7 +1915,7 @@ GameObject:
   - component: {fileID: 1930554460476918832}
   m_Layer: 6
   m_Name: Mesh_RoleTM_100
-  m_TagString: Untagged
+  m_TagString: Role
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

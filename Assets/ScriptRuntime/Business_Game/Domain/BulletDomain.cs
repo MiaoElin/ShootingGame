@@ -20,17 +20,38 @@ public static class BulletDomain {
     }
 
     public static void CheckCollision(BulletEntity bullet) {
-        var layerMask = 1 << 6;
-        Ray ray = new Ray(bullet.Pos(), bullet.GetForward());
-        bool hitRole = Physics.Raycast(ray, out RaycastHit hit, 0.1f, layerMask);
-        if (hitRole) {
+        // var layerMask = 1 << 6;
+        // Ray ray = new Ray(bullet.Pos(), bullet.GetForward());
+        // bool hitRole = Physics.Raycast(ray, out RaycastHit hit, 0.1f, layerMask);
+        // if (hitRole) {
+        //     bullet.isDead = true;
+        //     var role = hit.collider.gameObject.GetComponentInParent<RoleEntity>();
+        //     if (role.ally != bullet.ally) {
+        //         Debug.Log(role.hp);
+        //         role.hp -= bullet.damage;
+        //         if (role.hp <= 0) {
+        //             role.isDead = true;
+        //         }
+        //     }
+        // }
+        var roleLayer = 1 << 6;
+        Vector3 center = bullet.Pos() + bullet.GetForward() * 0.1f;
+        Quaternion qut = Quaternion.LookRotation(bullet.GetForward(), Vector3.up);
+        Collider[] others = Physics.OverlapBox(center, bullet.halfExtents, qut, roleLayer);
+
+        if (others.Length > 0) {
             bullet.isDead = true;
-            var role = hit.collider.gameObject.GetComponentInParent<RoleEntity>();
-            if (role.ally != bullet.ally) {
-                Debug.Log(role.hp);
-                role.hp -= bullet.damage;
-                if (role.hp <= 0) {
-                    role.isDead = true;
+        }
+        foreach (var other in others) {
+            Debug.Log(other.gameObject.tag);
+            if (other.gameObject.tag == "Role") {
+                var role = other.gameObject.GetComponentInParent<RoleEntity>();
+                if (role.ally != bullet.ally) {
+                    Debug.Log(role.hp);
+                    role.hp -= bullet.damage;
+                    if (role.hp <= 0) {
+                        role.isDead = true;
+                    }
                 }
             }
         }
