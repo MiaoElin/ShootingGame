@@ -7,8 +7,8 @@ public class BulletEntity : MonoBehaviour {
     public int id;
     public bool isDead;
     public Ally ally;
-    public float flyTime;
-    public float maxFlyTime;
+    public float maxFlyTimer;
+    public float maxFlyDistance;
     public BulletMoveType bulletMoveType;
     public int damage;
     public Vector3 halfExtents;
@@ -17,20 +17,21 @@ public class BulletEntity : MonoBehaviour {
     [SerializeField] Rigidbody rb;
     public Vector3 dir;
 
-    public void Ctor(GameObject mod, float moveSpeed) {
+    public void Ctor(GameObject mod, float moveSpeed,float maxFlyDistance) {
         GameObject.Instantiate(mod, modTransform);
         this.moveSpeed = moveSpeed;
-        maxFlyTime = 500 / moveSpeed;
+        this.maxFlyDistance=maxFlyDistance;
+        maxFlyTimer = (maxFlyDistance / moveSpeed);
     }
 
     public void Move(Vector3 dir, float dt) {
-        if (flyTime >= maxFlyTime) {
+        if (maxFlyTimer <= 0) {
             isDead = true;
             return;
         }
-        flyTime += dt;
+        maxFlyTimer -= dt;
         var velocity = rb.velocity;
-        velocity += dir.normalized * moveSpeed;
+        velocity = dir.normalized * moveSpeed;
         rb.velocity = velocity;
         SetForward(dir);
     }

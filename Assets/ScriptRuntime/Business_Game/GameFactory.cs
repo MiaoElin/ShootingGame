@@ -128,7 +128,8 @@ public static class GameFactory {
         bullet.typeID = tm.typeID;
         bullet.ally = ally;
         bullet.isDead = false;
-        bullet.Ctor(tm.mod, tm.moveSpeed);
+        bullet.Ctor(tm.mod, tm.moveSpeed, tm.maxFlyDistance);
+        bullet.halfExtents = tm.halfExtents;
         bullet.SetPos(pos);
         bullet.id = ctx.iDService.bulletIdRecord++;
         bullet.damage = tm.damage;

@@ -22,13 +22,11 @@ public static class BulletDomain {
     public static void CheckCollision(BulletEntity bullet) {
         var layerMask = 1 << 6;
         Ray ray = new Ray(bullet.Pos(), bullet.GetForward());
-        bool hitRole = Physics.Raycast(ray, out RaycastHit hit, 0.1f, layerMask);
+        bool hitRole = Physics.Raycast(ray, out RaycastHit hit, 0.5f, layerMask);
         if (hitRole) {
-            Debug.Log("hit");
             bullet.isDead = true;
             var role = hit.collider.gameObject.GetComponentInParent<RoleEntity>();
             if (role.ally != bullet.ally) {
-                Debug.Log(role.hp);
                 role.hp -= bullet.damage;
                 if (role.hp <= 0) {
                     role.isDead = true;

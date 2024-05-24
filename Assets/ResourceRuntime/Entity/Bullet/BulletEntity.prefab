@@ -59,7 +59,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1933797938241379692}
@@ -85,6 +85,7 @@ MonoBehaviour:
   maxFlyTime: 0
   bulletMoveType: 0
   damage: 0
+  halfExtents: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   modTransform: {fileID: 1933797938241379692}
   rb: {fileID: 4598255568215666200}

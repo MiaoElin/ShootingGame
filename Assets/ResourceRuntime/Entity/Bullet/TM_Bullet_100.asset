@@ -15,6 +15,7 @@ MonoBehaviour:
   typeID: 100
   damage: 50
   bulletMoveType: 2
-  moveSpeed: 1
+  moveSpeed: 100
+  maxFlyDistance: 100
   halfExtents: {x: 0.02, y: 0.02, z: 0.05}
   mod: {fileID: 2225244954863319617, guid: efdcd16d81eedf749bd8b4b0e7ce9fea, type: 3}
