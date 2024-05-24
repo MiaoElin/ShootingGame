@@ -16,6 +16,7 @@ public static class HUD_HpBarDomain {
         bool has = ctx.hpBarRepo.TryGet(id, out var hud);
         if (has) {
             GameObject.Destroy(hud.gameObject);
+            ctx.hpBarRepo.Remove(id);
         }
     }
 

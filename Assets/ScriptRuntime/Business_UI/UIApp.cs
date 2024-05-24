@@ -58,7 +58,6 @@ public class UIApp {
     }
 
     public void H_HpBar_Close(int id) {
-        ctx.hpBarRepo.Remove(id);
         HUD_HpBarDomain.Close(ctx, id);
     }
     #endregion
