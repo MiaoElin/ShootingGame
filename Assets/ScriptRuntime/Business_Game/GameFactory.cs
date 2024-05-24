@@ -120,7 +120,7 @@ public static class GameFactory {
     public static BulletEntity Bullet_Spawn(GameContext ctx, int typeID, Vector3 pos, Ally ally) {
         ctx.asset.TryGetBulletTM(typeID, out var tm);
         if (!tm) {
-            Debug.Log($"GameFactory.Bullet_Spawn {typeID} is not find");
+            Debug.LogError($"GameFactory.Bullet_Spawn {typeID} is not find");
         }
         var bullet = ctx.poolService.GetBullet();
         bullet.typeID = tm.typeID;
@@ -131,5 +131,17 @@ public static class GameFactory {
         bullet.bulletMoveType = tm.bulletMoveType;
         bullet.moveSpeed = tm.moveSpeed;
         return bullet;
+    }
+
+    public static TerrainEntity Terrain_Spawn(GameContext ctx, Vector3 gridPos) {
+        ctx.asset.TryGetTerrainTM(gridPos, out var tm);
+        if (!tm) {
+            Debug.LogError($"GameFactory.Terrain_Spawn {gridPos} is not find");
+        }
+        ctx.asset.TryGetEntity_Prefab(typeof(TerrainEntity).Name, out var prefab);
+        TerrainEntity terrain = GameObject.Instantiate(prefab, ctx.poolService.terrainGroup).GetComponent<TerrainEntity>();
+        terrain.Ctor(tm.mod);
+        terrain.SetPos(gridPos);
+        return terrain;
     }
 }

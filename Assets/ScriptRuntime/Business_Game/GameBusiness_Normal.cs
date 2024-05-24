@@ -4,7 +4,7 @@ using Cinemachine;
 
 public static class GameBusiness_Normal {
 
-    public static void Enter(GameContext ctx) {
+    public static void EnterStage(GameContext ctx) {
 
         // 生成owner
         var owner = RoleDomain.Spawn(ctx, 100, VectorConst.OWNER_POS, VectorConst.OWNER_ROT, VectorConst.OWNER_SCALE, Ally.Player);
@@ -14,6 +14,14 @@ public static class GameBusiness_Normal {
         if (!has) {
             Debug.LogError($"mapTypeID is not find");
             return;
+        }
+
+        var terrainTMs = mapTM.terrainTMs;
+        if (terrainTMs != null) {
+            for (int i = 0; i < terrainTMs.Length; i++) {
+                var tm = terrainTMs[i];
+                TerrainDomain.Spawn(ctx, tm.gridPos);
+            }
         }
 
         var roleSpawnerTMs = mapTM.roleSpawnerTMs;

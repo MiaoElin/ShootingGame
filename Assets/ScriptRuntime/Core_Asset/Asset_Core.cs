@@ -29,7 +29,7 @@ public class AssetCore {
     Dictionary<int, StuffTM> stuffTMs;
     AsyncOperationHandle stuffPtr;
 
-    Dictionary<int, TerrainTM> terrainTMs;
+    Dictionary<Vector3, TerrainTM> terrainTMs;
     AsyncOperationHandle terrainPtr;
 
     Dictionary<int, MapTM> mapTMs;
@@ -48,7 +48,7 @@ public class AssetCore {
         gunTMs = new Dictionary<int, GunTM>();
         bulletTMs = new Dictionary<int, BulletTM>();
         stuffTMs = new Dictionary<int, StuffTM>();
-        terrainTMs = new Dictionary<int, TerrainTM>();
+        terrainTMs = new Dictionary<Vector3, TerrainTM>();
         mapTMs = new Dictionary<int, MapTM>();
     }
 
@@ -127,7 +127,7 @@ public class AssetCore {
             terrainPtr = ptr;
             var list = ptr.WaitForCompletion();
             foreach (var tm in list) {
-                terrainTMs.Add(tm.typeID, tm);
+                terrainTMs.Add(tm.gridPos, tm);
             }
         }
         {
@@ -189,8 +189,8 @@ public class AssetCore {
         return stuffTMs.TryGetValue(typeID, out tm);
     }
 
-    public bool TryGetTerrainTM(int typeID, out TerrainTM tm) {
-        return terrainTMs.TryGetValue(typeID, out tm);
+    public bool TryGetTerrainTM(Vector3 gridPos, out TerrainTM tm) {
+        return terrainTMs.TryGetValue(gridPos, out tm);
     }
 
     public bool TryGetMapTM(int stageID, out MapTM tm) {

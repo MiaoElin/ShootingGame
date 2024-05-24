@@ -34,7 +34,7 @@ public class ClientMain : MonoBehaviour {
         () => GameFactory.Loot_Create(ctx),
         () => GameFactory.Prop_Create(ctx),
         () => GameFactory.Bullet_Create(ctx));
-        GameBusiness_Normal.Enter(ctx);
+        GameBusiness_Normal.EnterStage(ctx);
     }
 
     private void Load() {

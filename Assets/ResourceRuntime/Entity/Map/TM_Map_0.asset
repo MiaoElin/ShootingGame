@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: TM_Map_0
   m_EditorClassIdentifier: 
   stageID: 0
+  terrainTMs:
+  - {fileID: 11400000, guid: 3652746985c34d844870766151754641, type: 2}
   roleSpawnerTMs:
   - pos: {x: 24.409973, y: 0, z: 10.799988}
     rot: {x: 0, y: 187.79999, z: 0}
@@ -40,11 +42,11 @@ MonoBehaviour:
     scale: {x: 1, y: 1, z: 1}
     lootTypeID: 102
   propSpawnerTMs:
-  - pos: {x: 19.46997, y: 0, z: 14}
-    rot: {x: -0, y: 118.5, z: -0}
+  - pos: {x: 5.8, y: 0, z: 26.249}
+    rot: {x: -0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 0.77785}
+    propTypeID: 120
+  - pos: {x: 26.47, y: 0, z: 27.36}
+    rot: {x: -0, y: 0, z: 0}
     scale: {x: 1, y: 1, z: 1}
-    propTypeID: 100
-  - pos: {x: 56.390015, y: 0, z: 35.5}
-    rot: {x: 0, y: 272.08997, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-    propTypeID: 110
+    propTypeID: 120

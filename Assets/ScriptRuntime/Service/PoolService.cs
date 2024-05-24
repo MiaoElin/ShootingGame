@@ -3,6 +3,8 @@ using System;
 
 public class PoolService {
 
+    public Transform terrainGroup;
+
     Pool<RoleEntity> rolePool;
     public Transform rolePoolGroup;
 
@@ -19,6 +21,8 @@ public class PoolService {
     }
 
     public void Init(Func<RoleEntity> role_Create, Func<LootEntity> loot_Create, Func<PropEntity> prop_Create, Func<BulletEntity> bullet_Create) {
+        terrainGroup = new GameObject("TerrianGroup").transform;
+
         rolePoolGroup = new GameObject("RolePool").transform;
         rolePool = new Pool<RoleEntity>(role_Create, 10);
 

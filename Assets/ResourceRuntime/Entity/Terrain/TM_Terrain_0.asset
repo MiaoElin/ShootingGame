@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6307b8645845a740a02cec59075fc00, type: 3}
   m_Name: TM_Terrain_0
   m_EditorClassIdentifier: 
-  terrain: {fileID: 183153170636519832, guid: 9eca8e6d68932e24b9effdec75115712, type: 3}
+  gridPos: {x: 0, y: 0, z: 0}
+  mod: {fileID: 3549575642380195027, guid: 9eca8e6d68932e24b9effdec75115712, type: 3}

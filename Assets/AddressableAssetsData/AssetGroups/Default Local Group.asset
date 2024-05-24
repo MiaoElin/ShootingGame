@@ -227,6 +227,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - TM_Bullet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e09530a95d5b2b147a009c8ddffa0bc8
+    m_Address: Assets/ResourceRuntime/Entity/Prop/TM/TM_Prop_BlockerCube_120.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Prop
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7bed04e2e1bac2498a02be88fe8a119
+    m_Address: Assets/ResourceRuntime/Entity/Terrain/TerrainEntity.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Entities
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4f5eacb28cbfc954d9ddea2bca523a81, type: 2}
   m_SchemaSet:

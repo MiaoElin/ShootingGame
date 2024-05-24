@@ -82,6 +82,7 @@ MonoBehaviour:
   id: 0
   hp: 0
   hpMax: 0
+  height: 0
   moveSpeed: 0
   moveType: 0
   rb: {fileID: 866934450577288924}
