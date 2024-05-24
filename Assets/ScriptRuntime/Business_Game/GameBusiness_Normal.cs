@@ -63,7 +63,7 @@ public static class GameBusiness_Normal {
 
         PreTick(ctx, dt);
 
-        var restTime = ctx.restTime;
+        ref var restTime = ref ctx.restTime;
         const float Interval = 0.01f;
         restTime += dt;
         if (restTime < Interval) {
@@ -104,7 +104,7 @@ public static class GameBusiness_Normal {
         for (int i = 0; i < bulletLen; i++) {
             var bullet = allBullets[i];
             BulletDomain.Move(bullet, dt);
-            BulletDomain.CheckCollision(bullet);
+            BulletDomain.CheckCollision(bullet,dt);
         }
 
         // 子弹销毁

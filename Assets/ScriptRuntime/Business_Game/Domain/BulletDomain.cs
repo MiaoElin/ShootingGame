@@ -19,10 +19,10 @@ public static class BulletDomain {
         }
     }
 
-    public static void CheckCollision(BulletEntity bullet) {
+    public static void CheckCollision(BulletEntity bullet, float dt) {
         var layerMask = 1 << 6;
         Ray ray = new Ray(bullet.Pos(), bullet.GetForward());
-        bool hitRole = Physics.Raycast(ray, out RaycastHit hit, 0.5f, layerMask);
+        bool hitRole = Physics.Raycast(ray, out RaycastHit hit, bullet.moveSpeed * dt, layerMask);
         if (hitRole) {
             bullet.isDead = true;
             var role = hit.collider.gameObject.GetComponentInParent<RoleEntity>();
@@ -33,8 +33,9 @@ public static class BulletDomain {
                 }
             }
         }
+
         // var roleLayer = 1 << 6;
-        // Vector3 center = bullet.Pos() + bullet.GetForward() * 0.1f;
+        // Vector3 center = bullet.Pos();
         // Quaternion qut = Quaternion.LookRotation(bullet.GetForward(), Vector3.up);
         // Collider[] others = Physics.OverlapBox(center, bullet.halfExtents, qut, roleLayer);
 
