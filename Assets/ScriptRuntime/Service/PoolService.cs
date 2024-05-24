@@ -33,7 +33,7 @@ public class PoolService {
         propPool = new Pool<PropEntity>(prop_Create, 20);
 
         bulletGroup = new GameObject("BulletGroup").transform;
-        bulletPool = new Pool<BulletEntity>(bullet_Create, 100);
+        bulletPool = new Pool<BulletEntity>(bullet_Create, 0);
 
     }
 

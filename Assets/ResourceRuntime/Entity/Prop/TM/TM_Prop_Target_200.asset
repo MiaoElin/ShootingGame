@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TM_Prop_Target_200
   m_EditorClassIdentifier: 
   typeID: 200
-  canBeDestory: 1
+  canBeDestory: 0
   mod: {fileID: 296448147012062782, guid: 57e55fdcb9feda74fb9c617a121c5d3e, type: 3}

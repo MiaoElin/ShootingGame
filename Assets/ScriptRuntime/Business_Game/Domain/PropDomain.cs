@@ -7,4 +7,5 @@ public static class PropDomain {
         ctx.propRepo.Add(prop);
         return prop;
     }
+
 }

@@ -17,4 +17,8 @@ public class HpBarRepo {
         return all.TryGetValue(id, out hpBar);
     }
 
+    public void Remove(int id) {
+        all.Remove(id);
+    }
+
 }

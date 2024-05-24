@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TM_Bullet_100
   m_EditorClassIdentifier: 
   typeID: 100
-  damage: 20
+  damage: 50
   bulletMoveType: 2
-  moveSpeed: 200
+  moveSpeed: 1
   mod: {fileID: 2225244954863319617, guid: efdcd16d81eedf749bd8b4b0e7ce9fea, type: 3}

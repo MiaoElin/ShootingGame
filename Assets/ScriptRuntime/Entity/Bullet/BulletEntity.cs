@@ -5,6 +5,10 @@ public class BulletEntity : MonoBehaviour {
 
     public int typeID;
     public int id;
+    public bool isDead;
+    public Ally ally;
+    public float flyTime;
+    public float maxFlyTime;
     public BulletMoveType bulletMoveType;
     public int damage;
     public float moveSpeed;
@@ -12,14 +16,18 @@ public class BulletEntity : MonoBehaviour {
     [SerializeField] Rigidbody rb;
     public Vector3 dir;
 
-    public void Ctor(GameObject mod) {
+    public void Ctor(GameObject mod, float moveSpeed) {
         GameObject.Instantiate(mod, modTransform);
+        this.moveSpeed = moveSpeed;
+        maxFlyTime = 500 / moveSpeed;
     }
 
-    public void Move(Vector3 dir) {
-        if (dir == Vector3.zero) {
+    public void Move(Vector3 dir, float dt) {
+        if (flyTime >= maxFlyTime) {
+            isDead = true;
             return;
         }
+        flyTime += dt;
         var velocity = rb.velocity;
         velocity += dir.normalized * moveSpeed;
         rb.velocity = velocity;
@@ -31,12 +39,16 @@ public class BulletEntity : MonoBehaviour {
         if (Vector3.SqrMagnitude(dir) < moveSpeed * dt) {
             return;
         }
-        Move(dir);
+        Move(dir, dt);
         SetForward(dir);
     }
 
     public void SetForward(Vector3 dir) {
         transform.forward = dir;
+    }
+
+    public Vector3 GetForward() {
+        return transform.forward;
     }
 
     public void Show() {
@@ -54,4 +66,5 @@ public class BulletEntity : MonoBehaviour {
     internal Vector3 Pos() {
         return transform.position;
     }
+
 }

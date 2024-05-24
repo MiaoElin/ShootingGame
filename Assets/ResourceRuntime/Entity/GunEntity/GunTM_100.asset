@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GunTM_100
   m_EditorClassIdentifier: 
   typeID: 100
+  shootRang: 50
   gunObj: {fileID: 229771892290231133, guid: 726cd4437b05c2e4db054edce90cc3ce, type: 3}
-  damage: 10
   bulletCountMax: 30

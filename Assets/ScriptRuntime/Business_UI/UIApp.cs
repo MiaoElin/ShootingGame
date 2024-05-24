@@ -53,11 +53,12 @@ public class UIApp {
         HUD_HpBarDomain.Open(ctx, id, hpMax);
     }
 
-    internal void H_HpBar_Update(int id, Vector3 pos, Vector3 forward) {
-        HUD_HpBarDomain.Update(ctx, id, pos, forward);
+    internal void H_HpBar_Update(int id, int hp, Vector3 pos, Vector3 forward) {
+        HUD_HpBarDomain.Update(ctx, id, hp, pos, forward);
     }
 
     public void H_HpBar_Close(int id) {
+        ctx.hpBarRepo.Remove(id);
         HUD_HpBarDomain.Close(ctx, id);
     }
     #endregion

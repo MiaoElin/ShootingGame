@@ -4,6 +4,7 @@ using UnityEngine;
 public class GunTM : ScriptableObject {
 
     public int typeID;
+    public float shootRang;
     public GameObject gunObj;
     public int bulletCountMax;
 }

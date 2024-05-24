@@ -20,6 +20,7 @@ public static class GameFactory {
         role.id = ctx.iDService.roleIdRecord++;
         role.hp = tm.hpMax;
         role.hpMax = tm.hpMax;
+        role.deadTimer = tm.deadTimer;
         role.moveSpeed = tm.moveSpeed;
         role.moveType = tm.moveType;
         role.gravity = tm.gravity;
@@ -114,6 +115,7 @@ public static class GameFactory {
     public static BulletEntity Bullet_Create(GameContext ctx) {
         ctx.asset.TryGetEntity_Prefab(typeof(BulletEntity).Name, out var prefab);
         var bullet = GameObject.Instantiate(prefab, ctx.poolService.bulletGroup).GetComponent<BulletEntity>();
+        bullet.gameObject.SetActive(false);
         return bullet;
     }
 
@@ -124,12 +126,14 @@ public static class GameFactory {
         }
         var bullet = ctx.poolService.GetBullet();
         bullet.typeID = tm.typeID;
-        bullet.Ctor(tm.mod);
+        bullet.ally = ally;
+        bullet.isDead = false;
+        bullet.Ctor(tm.mod, tm.moveSpeed);
         bullet.SetPos(pos);
         bullet.id = ctx.iDService.bulletIdRecord++;
         bullet.damage = tm.damage;
         bullet.bulletMoveType = tm.bulletMoveType;
-        bullet.moveSpeed = tm.moveSpeed;
+        bullet.gameObject.SetActive(true);
         return bullet;
     }
 

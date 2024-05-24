@@ -12,7 +12,7 @@ public class HUD_HpBar : MonoBehaviour {
         this.hpMax = hpMax;
     }
 
-    public void UpdateTick(int hp) {
+    public void UpdateHpBar(int hp) {
         hpBar.fillAmount = (float)hp / hpMax;
     }
 

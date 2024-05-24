@@ -10,6 +10,29 @@ public static class BulletDomain {
 
     public static void Unspawn(GameContext ctx, BulletEntity bullet) {
         ctx.bulletRepo.Remove(bullet);
-        ctx.poolService.ReturnBullet(bullet);
+        GameObject.Destroy(bullet.gameObject);
+    }
+
+    public static void Move(BulletEntity bullet, float dt) {
+        if (bullet.bulletMoveType == BulletMoveType.ByLine) {
+            bullet.Move(bullet.dir, dt);
+        }
+    }
+
+    public static void CheckCollision(BulletEntity bullet) {
+        var layerMask = 1 << 6;
+        Ray ray = new Ray(bullet.Pos(), bullet.GetForward());
+        bool hitRole = Physics.Raycast(ray, out RaycastHit hit, 0.1f, layerMask);
+        if (hitRole) {
+            bullet.isDead = true;
+            var role = hit.collider.gameObject.GetComponentInParent<RoleEntity>();
+            if (role.ally != bullet.ally) {
+                Debug.Log(role.hp);
+                role.hp -= bullet.damage;
+                if (role.hp <= 0) {
+                    role.isDead = true;
+                }
+            }
+        }
     }
 }

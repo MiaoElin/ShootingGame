@@ -132,10 +132,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeID: 103
-  gunObj: {fileID: 7072444061591351740}
+  shootRang: 50
+  modTransform: {fileID: 0}
   launchPoint: {fileID: 7072444061591351750}
   crossHair: {fileID: 1954177107176565791}
-  damage: 10
+  bulletTypeID: 100
   bulletCount: 10
   bulletCountMax: 10
 --- !u!1 &7072444061591710752

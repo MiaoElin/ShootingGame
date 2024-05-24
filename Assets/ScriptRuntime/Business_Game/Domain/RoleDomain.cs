@@ -128,27 +128,29 @@ public static class RoleDomain {
         var gun = role.gun;
         if (gun != null) {
             // 从屏幕中心发射射线
+
             var ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
             var layermask = 1 << 6;
-            var hit = Physics.Raycast(ray, out var raycastHit, 999f, layermask);
+            var hit = Physics.Raycast(ray, out var raycastHit, gun.shootRang, layermask);
             // 显示准点光源
             if (ctx.input.isMouseLeftUp) {
                 ctx.input.isMouseLeftUp = false;
+                // SFX
                 SFXDomain.Gun_Shoot(ctx);
+                // 生成子弹
+                var bullet = BulletDomain.Spawn(ctx, gun.bulletTypeID, gun.launchPoint.position, role.ally);
                 if (hit) {
-                    // 生成子弹
-                    var bullet = BulletDomain.Spawn(ctx, gun.bulletTypeID, gun.launchPoint.position, role.ally);
                     // 设置子弹的dir
-                    bullet.dir = raycastHit.point - bullet.Pos();
-                    // var monster = raycastHit.collider.gameObject.GetComponentInParent<RoleEntity>();
-                    // RoleDomain.Unspawn(ctx, monster);
-                    // UIDomain.H_HpBar_Close(ctx, monster.id);
+                    bullet.dir = raycastHit.point - gun.launchPoint.position;
+                } else {
+                    Vector3 endPoint = ray.origin + ray.direction * gun.shootRang;
+                    bullet.dir = endPoint - bullet.Pos();
                 }
             }
         }
     }
 
     public static void UpdateHpBar(GameContext ctx, RoleEntity role) {
-        UIDomain.H_HpBar_Update(ctx, role.id, role.Pos() + (role.height + CommonConst.ROLE_HEADOFFSET) * Vector3.up, ctx.cameraEntity.GetForward());
+        UIDomain.H_HpBar_Update(ctx, role.id, role.hp, role.Pos() + (role.height + CommonConst.ROLE_HEADOFFSET) * Vector3.up, ctx.cameraEntity.GetForward());
     }
 }

@@ -8,6 +8,8 @@ public class RoleEntity : MonoBehaviour {
     public int id;
     public int hp;
     public int hpMax;
+    public bool isDead;
+    public float deadTimer;
     public float height;
     public RoleFSMComponent roleFSMComponent;
     public float moveSpeed;
@@ -146,11 +148,21 @@ public class RoleEntity : MonoBehaviour {
 
 
     public void Anim_Run() {
-        anim.SetFloat("F_MoveSpeed", rb.velocity.magnitude);
+        var velocity = rb.velocity;
+        velocity.y = 0;
+        anim.SetFloat("F_MoveSpeed", velocity.magnitude);
     }
 
     public void Anim_Jump() {
-        anim.SetTrigger("T_Jump");
+        anim.Play("Jump", 0, 0);
+    }
+
+    public void Anim_Dead() {
+        anim.Play("Die");
+    }
+
+    public AnimatorStateInfo GetCurrentStateInfo() {
+        return anim.GetCurrentAnimatorStateInfo(0);
     }
 
 

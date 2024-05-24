@@ -99,11 +99,44 @@ public static class GameBusiness_Normal {
         }
         RoleFSMController.ApplyFsm(ctx, owner, dt);
 
+        // 移动子弹
+        var bulletLen = ctx.bulletRepo.TakeAll(out var allBullets);
+        for (int i = 0; i < bulletLen; i++) {
+            var bullet = allBullets[i];
+            BulletDomain.Move(bullet, dt);
+            BulletDomain.CheckCollision(bullet);
+        }
+
+        // 子弹销毁
+        for (int i = 0; i < bulletLen; i++) {
+            var bullet = allBullets[i];
+            if (bullet.isDead) {
+                BulletDomain.Unspawn(ctx, bullet);
+            }
+        }
+
+        // 销毁role
+        for (int i = 0; i < roleLen; i++) {
+            var role = allRoles[i];
+            if (role.isDead) {
+                // 播死亡动画
+                role.Anim_Dead();
+                if (role.deadTimer > 0) {
+                    role.deadTimer -= dt;
+                } else {
+                    RoleDomain.Unspawn(ctx, role);
+                    UIDomain.H_HpBar_Close(ctx, role.id);
+                }
+
+            }
+        }
+
         Physics.Simulate(dt);
         RoleDomain.GroundCheck(ctx, owner);
     }
 
     public static void LateTick(GameContext ctx, float dt) {
+
         var owner = ctx.GetOwner();
         if (owner.isShootReady) {
             if (ctx.input.isShootReady) {

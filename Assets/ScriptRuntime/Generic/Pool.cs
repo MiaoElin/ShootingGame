@@ -21,9 +21,7 @@ public class Pool<T> where T : MonoBehaviour {
 
     public T Get() {
         if (stack.Count > 0) {
-            var t = stack.Pop();
-            t.gameObject.SetActive(true);
-            return t;
+            return stack.Pop();
 
         } else {
             return fuction();
@@ -31,7 +29,6 @@ public class Pool<T> where T : MonoBehaviour {
     }
 
     public void Return(T t) {
-        t.gameObject.SetActive(false);
         stack.Push(t);
     }
 }

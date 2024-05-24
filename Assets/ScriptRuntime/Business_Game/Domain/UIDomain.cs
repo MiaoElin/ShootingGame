@@ -38,7 +38,7 @@ public static class UIDomain {
         ctx.uIApp.H_HpBar_Close(id);
     }
 
-    public static void H_HpBar_Update(GameContext ctx, int id, Vector3 pos, Vector3 forward) {
-        ctx.uIApp.H_HpBar_Update(id, pos, forward);
+    public static void H_HpBar_Update(GameContext ctx, int id, int hp, Vector3 pos, Vector3 forward) {
+        ctx.uIApp.H_HpBar_Update(id, hp, pos, forward);
     }
 }
