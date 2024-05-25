@@ -22,7 +22,7 @@ public class RoleEntity : MonoBehaviour {
 
 
     public MoveType moveType;
-    public float viewRang;
+    public float viewRange;
 
     [SerializeField] Rigidbody rb;
     public float gravity;
@@ -73,16 +73,27 @@ public class RoleEntity : MonoBehaviour {
     }
 
     public void Move(Vector3 moveAxis, float dt) {
-        SetMoveSpeed(dt);
+        if (moveAxis != Vector3.zero) {
+            SetMoveSpeed(dt);
+        } else {
+            speedUpTime = 0;
+        }
+        Debug.Log(moveSpeed);
         var velocity = rb.velocity;
         velocity = moveAxis.normalized * moveSpeed;
         velocity.y = rb.velocity.y;
         rb.velocity = velocity;
     }
 
-    public void Move_To(Vector3 target) {
-        // Vector2 dir = target - Pos();
-        // if(Vector2.SqrMagnitude(dir)<=moveSpeed*dt)
+    public void Move_To(Vector3 target, float dt) {
+        Vector2 dir = target - Pos();
+        if (Vector2.SqrMagnitude(dir) <= Math.Pow(moveSpeed * dt, 2)) {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+        var velocity = rb.velocity;
+        velocity = dir.normalized * moveSpeed;
+        rb.velocity = velocity;
     }
 
     public void SetMoveSpeed(float dt) {
@@ -100,16 +111,15 @@ public class RoleEntity : MonoBehaviour {
             }
         } else {
             speedDownTime = 0;
-            if (moveSpeed == runSpeed) {
-                return;
-            }
-            var precent = speedUpTime / speedUpDuration;
-            moveSpeed = Mathf.Lerp(walkSpeed, runSpeed, precent);
-            if (speedUpTime < speedUpDuration) {
-                speedUpTime += dt;
-            } else {
+            if (speedUpTime > speedDownDuration) {
                 moveSpeed = runSpeed;
+                return;
+            } else {
+                var precent = speedUpTime / speedUpDuration;
+                moveSpeed = Mathf.Lerp(walkSpeed, runSpeed, precent);
+                speedUpTime += dt;
             }
+
         }
     }
 

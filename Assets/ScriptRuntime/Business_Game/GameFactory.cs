@@ -19,6 +19,9 @@ public static class GameFactory {
         role.height = tm.height;
         role.walkSpeed = tm.walkSpeed;
         role.runSpeed = tm.runSpeed;
+        if (ally == Ally.Monster) {
+            role.moveSpeed = tm.walkSpeed;
+        }
         role.speedUpDuration = tm.speedUpDuration;
         role.speedDownDuration = tm.speedDownDuration;
         role.id = ctx.iDService.roleIdRecord++;
@@ -26,7 +29,7 @@ public static class GameFactory {
         role.hpMax = tm.hpMax;
         role.deadTimer = tm.deadTimer;
         role.moveType = tm.moveType;
-        role.viewRang = tm.viewRang;
+        role.viewRange = tm.viewRange;
         role.gravity = tm.gravity;
         role.jumpingForce = tm.jumpingForce;
         role.gameObject.SetActive(true);

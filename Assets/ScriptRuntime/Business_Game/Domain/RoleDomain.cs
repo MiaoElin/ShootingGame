@@ -45,7 +45,7 @@ public static class RoleDomain {
 
     public static bool IsInViewRange(RoleEntity role, RoleEntity target) {
         // -是否在viewRange里
-        bool isinViewRange = PureFuction.IsPointInRange(role.Pos(), target.Pos(), role.viewRang);
+        bool isinViewRange = PureFuction.IsPointInRange(role.Pos(), target.Pos(), role.viewRange);
         // -是否在视线角度内
         if (isinViewRange) {
             Quaternion qutLeft = Quaternion.AngleAxis(-CommonConst.MONSTER_HALF_VIEWANGLW, Vector3.up);

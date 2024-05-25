@@ -13,7 +13,7 @@ public class RoleTM : ScriptableObject {
 
     public float deadTimer;
     public MoveType moveType;
-    public float viewRang;
+    public float viewRange;
 
     public GameObject body;
     public float gravity;

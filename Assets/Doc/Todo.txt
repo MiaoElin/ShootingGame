@@ -15,7 +15,10 @@ InputSystem
 === role ===
 - 给角色加头灯，暗处可以照明 
 - 添加攀爬
-- Monster 的移动
+
+=== Monster ===
+- 移动
+- 给怪加视角显示效果
 
 === SoundCore ===
 
