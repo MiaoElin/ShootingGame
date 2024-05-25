@@ -49,13 +49,21 @@ public static class RoleDomain {
     }
 
     public static bool IsInViewRange(RoleEntity role, RoleEntity target) {
+
         // -是否在viewRange里
         bool isinViewRange = PureFuction.IsPointInRange(role.Pos(), target.Pos(), role.viewRange);
-        // -是否在视线角度内
         if (isinViewRange) {
+            
+            // 从头顶发射射线，判断有没有障碍物
+            Vector3 targetDir = target.Pos() - role.Pos();
+            var hasHinder = Physics.Raycast(role.Pos() + Vector3.up * role.height, targetDir);
+            if (hasHinder) {
+                return false;
+            }
+
+            // -是否在视线角度内
             Quaternion qutLeft = Quaternion.AngleAxis(-CommonConst.MONSTER_HALF_VIEWANGLW, Vector3.up);
             Vector3 viewLeft = qutLeft * role.body.transform.forward;
-            Vector3 targetDir = target.Pos() - role.Pos();
             float angle = Vector3.SignedAngle(viewLeft, targetDir, Vector3.up);
             if (angle < 0) {
                 angle = 360 - angle; //适用于viewAngle大于180的情况
