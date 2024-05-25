@@ -35,14 +35,16 @@ public static class RoleDomain {
 
             // 判断目标是否在视线范围 这里的目标是owner
             var target = ctx.GetOwner();
-            bool isInRange = IsInViewRange(role, target);
-            if (isInRange) {
-                role.hasTarget = true;
-            }
             if (role.hasTarget) {
                 role.Move_To(target.Pos(), dt);
                 // anim
                 role.Anim_Run();
+                return;
+            }
+
+            bool isInRange = IsInViewRange(role, target);
+            if (isInRange) {
+                role.hasTarget = true;
             }
 
         }
@@ -53,7 +55,7 @@ public static class RoleDomain {
         // -是否在viewRange里
         bool isinViewRange = PureFuction.IsPointInRange(role.Pos(), target.Pos(), role.viewRange);
         if (isinViewRange) {
-            
+
             // 从头顶发射射线，判断有没有障碍物
             Vector3 targetDir = target.Pos() - role.Pos();
             var hasHinder = Physics.Raycast(role.Pos() + Vector3.up * role.height, targetDir);
@@ -184,6 +186,8 @@ public static class RoleDomain {
             // 显示准点光源
             if (ctx.input.isMouseLeftUp) {
                 ctx.input.isMouseLeftUp = false;
+                // Anim
+                role.Anim_Shoot();
                 // SFX
                 SFXDomain.Gun_Shoot(ctx);
                 // 生成子弹

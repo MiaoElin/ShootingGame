@@ -16,11 +16,11 @@ public class UIApp {
 
     #region  P_CrossHair
     public void Panel_CrossHair_Open() {
-        Panel_CrossHairDomain.Open(ctx);
+        Panel_CrossHairDomain.Open_TPS(ctx);
     }
 
     public void Panel_CrossHair_Hide() {
-        Panel_CrossHairDomain.Hide(ctx);
+        Panel_CrossHairDomain.Hide_TPS(ctx);
     }
     #endregion
 

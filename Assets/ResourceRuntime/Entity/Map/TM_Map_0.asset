@@ -19,19 +19,19 @@ MonoBehaviour:
   - pos: {x: 26.98, y: 0, z: 29.56}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
-    roleTypeID: 1000
+    roleTypeID: 1100
   - pos: {x: 28.02, y: 0, z: 24.91}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
-    roleTypeID: 1000
+    roleTypeID: 1100
   - pos: {x: 25.16, y: 0, z: 24.88}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
-    roleTypeID: 1000
+    roleTypeID: 1100
   - pos: {x: 22.8, y: 0, z: 31.6}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
-    roleTypeID: 1000
+    roleTypeID: 1100
   lootSpawnerTMs:
   - pos: {x: 21.142, y: 0.854, z: 2.96}
     rot: {x: 350.23242, y: 27.481567, z: 272.6682}

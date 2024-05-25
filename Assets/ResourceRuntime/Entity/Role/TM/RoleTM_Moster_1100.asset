@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a287d9230629e6438c90963e834b8c1, type: 3}
+  m_Name: RoleTM_Moster_1100
+  m_EditorClassIdentifier: 
+  typeId: 1100
+  hpMax: 50
+  height: 2.55
+  walkSpeed: 1
+  runSpeed: 2
+  speedUpDuration: 0
+  speedDownDuration: 0
+  deadTimer: 1
+  moveType: 2
+  viewRange: 15
+  body: {fileID: 4948039246674563254, guid: 6b851831dc8d4e24da88029e63227559, type: 3}
+  gravity: 15
+  jumpingForce: 5

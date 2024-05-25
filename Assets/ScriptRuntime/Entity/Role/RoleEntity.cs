@@ -89,13 +89,12 @@ public class RoleEntity : MonoBehaviour {
         Vector3 dir = target - transform.position;
         if (Vector3.SqrMagnitude(dir) <= Math.Pow(moveSpeed * dt, 2)) {
             rb.velocity = Vector3.zero;
-            Debug.Log("arrive");
             return;
         }
         var velocity = rb.velocity;
         velocity = dir.normalized * moveSpeed;
         rb.velocity = velocity;
-        
+
         SetForward(dir.normalized);
     }
 
@@ -219,9 +218,11 @@ public class RoleEntity : MonoBehaviour {
         anim.Play("Climb");
     }
 
-    public AnimatorStateInfo GetCurrentStateInfo() {
-        return anim.GetCurrentAnimatorStateInfo(0);
+    public void Anim_Throw() {
+        anim.Play("Throw");
     }
 
-
+    public void Anim_Shoot() {
+        anim.Play("Shoot_Single");
+    }
 }

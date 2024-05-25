@@ -164,6 +164,10 @@ public static class GameBusiness_Normal {
             owner.Anim_Climb();
         }
 
+        if (Input.GetKeyDown(KeyCode.T)) {
+            owner.Anim_Throw();
+        }
+
         // CameraDomain.MouseAxisTick(ctx);
     }
 }
