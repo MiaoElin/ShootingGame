@@ -11,6 +11,8 @@ public class InputEntity {
     public bool isJumpKeyDown;
     public bool isPickKeyDown;
     public bool isBagkeyDown;
+    public bool isRuningKeyDown;
+
     public bool isMouseLeftDown;
     public bool isMouseLeftUp;
 
@@ -54,5 +56,8 @@ public class InputEntity {
 
         // Bag
         isBagkeyDown = Input.GetKeyDown(KeyCode.Tab);
+
+        // Run
+        isRuningKeyDown = Input.GetKey(KeyCode.LeftShift);
     }
 }

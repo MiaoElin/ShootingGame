@@ -17,11 +17,14 @@ public static class GameFactory {
         role.typeId = typeId;
         role.ally = ally;
         role.height = tm.height;
+        role.walkSpeed = tm.walkSpeed;
+        role.runSpeed = tm.runSpeed;
+        role.speedUpDuration = tm.speedUpDuration;
+        role.speedDownDuration = tm.speedDownDuration;
         role.id = ctx.iDService.roleIdRecord++;
         role.hp = tm.hpMax;
         role.hpMax = tm.hpMax;
         role.deadTimer = tm.deadTimer;
-        role.moveSpeed = tm.moveSpeed;
         role.moveType = tm.moveType;
         role.gravity = tm.gravity;
         role.jumpingForce = tm.jumpingForce;

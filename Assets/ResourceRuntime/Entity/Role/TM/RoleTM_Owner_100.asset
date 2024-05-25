@@ -15,8 +15,12 @@ MonoBehaviour:
   typeId: 100
   hpMax: 100
   height: 2
-  moveSpeed: 5
+  walkSpeed: 2
+  runSpeed: 5
+  speedUpDuration: 0.3
+  speedDownDuration: 0.5
+  deadTimer: 0
   moveType: 1
   body: {fileID: 7072444061591711186, guid: 3e031dc0faae7f44d97782d975076c7f, type: 3}
   gravity: 15
-  jumpingForce: 10
+  jumpingForce: 8

@@ -6,7 +6,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class SoundCore {
 
     public AudioSource prefab;
-    public AudioSource role_Walk;
+    public AudioSource role_run;
     public AudioSource role_EnterGround;
     public AudioSource role_Pick;
     public AudioSource bag_OpenClose;
@@ -19,32 +19,45 @@ public class SoundCore {
         var handle = Addressables.LoadAssetAsync<GameObject>("AudioSource");
         prefabHandle = handle;
         prefab = handle.WaitForCompletion().GetComponent<AudioSource>();
-        role_Walk = GameObject.Instantiate(prefab, sfx);
+        role_run = GameObject.Instantiate(prefab, sfx);
         role_EnterGround = GameObject.Instantiate(prefab, sfx);
         gun_Shoot = GameObject.Instantiate(prefab, sfx);
         role_Pick = GameObject.Instantiate(prefab, sfx);
         bag_OpenClose = GameObject.Instantiate(prefab, sfx);
     }
-
     public void Unload() {
         if (prefabHandle.IsValid()) {
             Addressables.Release(prefabHandle);
         }
     }
 
-    public void Role_walk_Play(AudioClip clip) {
-        role_Walk.loop = true;
-        role_Walk.pitch = 1.5f;
-        if (!role_Walk.isPlaying) {
-            role_Walk.clip = clip;
-            role_Walk.Play();
+    public void Role_Run_Play(AudioClip clip) {
+        role_run.loop = true;
+        role_run.pitch = 1.5f; //后续应该开放给角色
+        role_run.volume = 1f;
+        if (!role_run.isPlaying) {
+            role_run.clip = clip;
+            role_run.Play();
         }
     }
 
-    public void Role_walk_Stop() {
-        if (role_Walk.isPlaying) {
-            role_Walk.Stop();
+    public void Role_Run_Stop() {
+        if (role_run.isPlaying) {
+            role_run.Stop();
         }
+    }
+
+    internal void Role_Walk_Play(AudioClip clip) {
+        role_run.loop = true;
+        role_run.pitch = 0.8f;
+        role_run.volume = 0.5f;
+        if (!role_run.isPlaying) {
+            role_run.clip = clip;
+            role_run.Play();
+        }
+    }
+
+    internal void Role_Walk_Stop() {
     }
 
     internal void Role_EnterGround_Play(AudioClip clip) {

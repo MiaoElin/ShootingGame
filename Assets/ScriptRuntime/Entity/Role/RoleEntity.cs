@@ -13,6 +13,14 @@ public class RoleEntity : MonoBehaviour {
     public float height;
     public RoleFSMComponent roleFSMComponent;
     public float moveSpeed;
+    public float walkSpeed;
+    public float runSpeed;
+    public float speedUpTime;
+    public float speedUpDuration;
+    public float speedDownTime;
+    public float speedDownDuration;
+
+
     public MoveType moveType;
 
     [SerializeField] Rigidbody rb;
@@ -33,6 +41,7 @@ public class RoleEntity : MonoBehaviour {
     public bool isJumpKeyDown;
     public bool isPickKeyDown;
     public bool isBagkeyDown;
+    public bool isSlowKeyDown;
 
     // Componet
     public GunComponent gunCom;
@@ -66,11 +75,41 @@ public class RoleEntity : MonoBehaviour {
         // if (moveAxis == Vector3.zero) {
         //     return;
         // }
+        SetMoveSpeed(dt);
         var velocity = rb.velocity;
         velocity = moveAxis.normalized * moveSpeed;
         velocity.y = rb.velocity.y;
         rb.velocity = velocity;
     }
+
+    public void SetMoveSpeed(float dt) {
+        if (isSlowKeyDown) {
+            speedUpTime = 0;
+            if (moveSpeed == walkSpeed) {
+                return;
+            }
+            var precent = speedDownTime / speedDownDuration;
+            moveSpeed = Mathf.Lerp(runSpeed, walkSpeed, precent);
+            if (speedDownTime < speedDownDuration) {
+                speedDownTime += dt;
+            } else {
+                moveSpeed = walkSpeed;
+            }
+        } else {
+            speedDownTime = 0;
+            if (moveSpeed == runSpeed) {
+                return;
+            }
+            var precent = speedUpTime / speedUpDuration;
+            moveSpeed = Mathf.Lerp(walkSpeed, runSpeed, precent);
+            if (speedUpTime < speedUpDuration) {
+                speedUpTime += dt;
+            } else {
+                moveSpeed = runSpeed;
+            }
+        }
+    }
+
 
     public Vector3 Velocity() {
         return rb.velocity;
@@ -159,6 +198,10 @@ public class RoleEntity : MonoBehaviour {
 
     public void Anim_Dead() {
         anim.Play("Die");
+    }
+
+    public void Anim_Climb() {
+        anim.Play("Climb");
     }
 
     public AnimatorStateInfo GetCurrentStateInfo() {

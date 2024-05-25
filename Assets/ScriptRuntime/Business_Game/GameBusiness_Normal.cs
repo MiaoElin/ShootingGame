@@ -83,7 +83,7 @@ public static class GameBusiness_Normal {
         var owner = ctx.GetOwner();
         owner.isJumpKeyDown = ctx.input.isJumpKeyDown;
         owner.isPickKeyDown = ctx.input.isPickKeyDown;
-        // owner.isBagkeyDown = ctx.input.isBagkeyDown;
+        owner.isSlowKeyDown = ctx.input.isRuningKeyDown;
     }
 
     public static void FixedTick(GameContext ctx, float dt) {
@@ -104,7 +104,7 @@ public static class GameBusiness_Normal {
         for (int i = 0; i < bulletLen; i++) {
             var bullet = allBullets[i];
             BulletDomain.Move(bullet, dt);
-            BulletDomain.CheckCollision(bullet,dt);
+            BulletDomain.CheckCollision(bullet, dt);
         }
 
         // 子弹销毁
@@ -160,6 +160,10 @@ public static class GameBusiness_Normal {
                 owner.isBagOpen = true;
                 ctx.fsm.EnterOpenBag();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            owner.Anim_Climb();
         }
 
         // CameraDomain.MouseAxisTick(ctx);

@@ -34,26 +34,5 @@ public static class BulletDomain {
             }
         }
 
-        // var roleLayer = 1 << 6;
-        // Vector3 center = bullet.Pos();
-        // Quaternion qut = Quaternion.LookRotation(bullet.GetForward(), Vector3.up);
-        // Collider[] others = Physics.OverlapBox(center, bullet.halfExtents, qut, roleLayer);
-
-        // if (others.Length > 0) {
-        //     bullet.isDead = true;
-        // }
-        // foreach (var other in others) {
-        //     Debug.Log(other.gameObject.tag);
-        //     if (other.gameObject.tag == "Role") {
-        //         var role = other.gameObject.GetComponentInParent<RoleEntity>();
-        //         if (role.ally != bullet.ally) {
-        //             Debug.Log(role.hp);
-        //             role.hp -= bullet.damage;
-        //             if (role.hp <= 0) {
-        //                 role.isDead = true;
-        //             }
-        //         }
-        //     }
-        // }
     }
 }

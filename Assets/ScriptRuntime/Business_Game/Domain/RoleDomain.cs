@@ -22,8 +22,13 @@ public static class RoleDomain {
             role.Anim_Run();
             // sfx
             if (dir != Vector3.zero) {
-                SFXDomain.Role_Walk_Play(ctx);
+                if (role.isSlowKeyDown) {
+                    SFXDomain.Role_Walk_Play(ctx);
+                } else {
+                    SFXDomain.Role_Run_Play(ctx);
+                }
             } else {
+                SFXDomain.Role_Run_Stop(ctx);
                 SFXDomain.Role_Walk_Stop(ctx);
             }
         }
