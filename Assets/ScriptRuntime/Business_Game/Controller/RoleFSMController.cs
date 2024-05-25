@@ -35,9 +35,9 @@ public static class RoleFSMController {
     }
 
     private static void ApplyAny(GameContext ctx, RoleEntity role, float dt) {
-        // RoleDomain.Move(ctx, role, dt);
-        // RoleDomain.Jump(role);
-        // RoleDomain.Falling(role, dt);
+        RoleDomain.Move(ctx, role, dt);
+        RoleDomain.Jump(role);
+        RoleDomain.Falling(role, dt);
         RoleDomain.SearchLoot(ctx, role, out var nearlyLoot);
         RoleDomain.PickUpLoot(ctx, role, nearlyLoot);
         RoleDomain.ShootBullet(ctx, role);

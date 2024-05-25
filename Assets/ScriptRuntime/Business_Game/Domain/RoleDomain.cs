@@ -31,6 +31,37 @@ public static class RoleDomain {
                 SFXDomain.Role_Run_Stop(ctx);
                 SFXDomain.Role_Walk_Stop(ctx);
             }
+        } else if (role.moveType == MoveType.ByAI) {
+
+            // 判断目标是否在视线范围 这里的目标是owner
+            var target = ctx.GetOwner();
+            bool isInRange = IsInViewRange(role, target);
+            // if (isInRange) {
+            //     role.Move
+            // }
+
+        }
+    }
+
+    public static bool IsInViewRange(RoleEntity role, RoleEntity target) {
+        // -是否在viewRange里
+        bool isinViewRange = PureFuction.IsPointInRange(role.Pos(), target.Pos(), role.viewRang);
+        // -是否在视线角度内
+        if (isinViewRange) {
+            Quaternion qutLeft = Quaternion.AngleAxis(-CommonConst.MONSTER_HALF_VIEWANGLW, Vector3.up);
+            Vector3 viewLeft = qutLeft * role.body.transform.forward;
+            Vector3 targetDir = target.Pos() - role.Pos();
+            float angle = Vector3.SignedAngle(viewLeft, targetDir, Vector3.up);
+            if (angle < 0) {
+                angle = 360 - angle; //适用于viewAngle大于180的情况
+            }
+            if (angle >= 0 && angle <= CommonConst.MONSTER_HALF_VIEWANGLW * 2) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 

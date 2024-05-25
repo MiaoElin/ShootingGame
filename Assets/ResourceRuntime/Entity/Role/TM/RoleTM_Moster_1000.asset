@@ -16,11 +16,12 @@ MonoBehaviour:
   hpMax: 50
   height: 2
   walkSpeed: 2
-  runSpeed: 0
+  runSpeed: 2
   speedUpDuration: 0
   speedDownDuration: 0
   deadTimer: 1
   moveType: 2
+  viewRang: 15
   body: {fileID: 7553628619335038245, guid: f29934c0ca51f294c8fbdd8672fbb245, type: 3}
   gravity: 15
   jumpingForce: 5

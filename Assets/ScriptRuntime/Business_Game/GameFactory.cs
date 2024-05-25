@@ -26,6 +26,7 @@ public static class GameFactory {
         role.hpMax = tm.hpMax;
         role.deadTimer = tm.deadTimer;
         role.moveType = tm.moveType;
+        role.viewRang = tm.viewRang;
         role.gravity = tm.gravity;
         role.jumpingForce = tm.jumpingForce;
         role.gameObject.SetActive(true);

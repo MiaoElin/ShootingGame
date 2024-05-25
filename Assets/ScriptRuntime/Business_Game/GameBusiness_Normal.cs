@@ -15,7 +15,7 @@ public static class GameBusiness_Normal {
             Debug.LogError($"mapTypeID is not find");
             return;
         }
-
+        // 加载地形
         var terrainTMs = mapTM.terrainTMs;
         if (terrainTMs != null) {
             for (int i = 0; i < terrainTMs.Length; i++) {
@@ -23,7 +23,7 @@ public static class GameBusiness_Normal {
                 TerrainDomain.Spawn(ctx, tm.gridPos);
             }
         }
-
+        // 加载角色
         var roleSpawnerTMs = mapTM.roleSpawnerTMs;
         if (roleSpawnerTMs != null) {
             for (int i = 0; i < roleSpawnerTMs.Length; i++) {
@@ -32,7 +32,7 @@ public static class GameBusiness_Normal {
                 UIDomain.H_HpBar_Open(ctx, role.id, role.hpMax);
             }
         }
-
+        // 加载loot
         var lootSpawnerTMs = mapTM.lootSpawnerTMs;
         if (lootSpawnerTMs != null) {
             for (int i = 0; i < lootSpawnerTMs.Length; i++) {
@@ -40,7 +40,7 @@ public static class GameBusiness_Normal {
                 LootDomain.Spawn(ctx, tm.lootTypeID, tm.pos, tm.rot, tm.scale);
             }
         }
-
+        // 加载Prop
         var propSpawnerTMs = mapTM.propSpawnerTMs;
         if (propSpawnerTMs != null) {
             for (int i = 0; i < propSpawnerTMs.Length; i++) {
@@ -89,15 +89,13 @@ public static class GameBusiness_Normal {
     public static void FixedTick(GameContext ctx, float dt) {
         var owner = ctx.GetOwner();
 
+        // 角色状态机
         int roleLen = ctx.roleRepo.TakeAll(out var allRoles);
         for (int i = 0; i < roleLen; i++) {
             var role = allRoles[i];
-            RoleDomain.Move(ctx, role, dt);
-            RoleDomain.Jump(role);
-            RoleDomain.Falling(role, dt);
+            RoleFSMController.ApplyFsm(ctx, role, dt);
             RoleDomain.UpdateHpBar(ctx, role);
         }
-        RoleFSMController.ApplyFsm(ctx, owner, dt);
 
         // 移动子弹
         var bulletLen = ctx.bulletRepo.TakeAll(out var allBullets);
