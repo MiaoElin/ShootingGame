@@ -15,7 +15,7 @@ MonoBehaviour:
   typeId: 1000
   hpMax: 50
   height: 2
-  walkSpeed: 2
+  walkSpeed: 3
   runSpeed: 2
   speedUpDuration: 0
   speedDownDuration: 0

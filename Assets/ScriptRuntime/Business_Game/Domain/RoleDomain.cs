@@ -36,9 +36,14 @@ public static class RoleDomain {
             // 判断目标是否在视线范围 这里的目标是owner
             var target = ctx.GetOwner();
             bool isInRange = IsInViewRange(role, target);
-            // if (isInRange) {
-            //     role.Move
-            // }
+            if (isInRange) {
+                role.hasTarget = true;
+            }
+            if (role.hasTarget) {
+                role.Move_To(target.Pos(), dt);
+                // anim
+                role.Anim_Run();
+            }
 
         }
     }

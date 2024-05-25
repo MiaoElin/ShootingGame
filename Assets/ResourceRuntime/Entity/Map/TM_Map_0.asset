@@ -16,19 +16,19 @@ MonoBehaviour:
   terrainTMs:
   - {fileID: 11400000, guid: 3652746985c34d844870766151754641, type: 2}
   roleSpawnerTMs:
-  - pos: {x: 24.409973, y: 0, z: 10.799988}
+  - pos: {x: 26.98, y: 0, z: 29.56}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
     roleTypeID: 1000
-  - pos: {x: 26.140015, y: 0, z: 11.169983}
+  - pos: {x: 28.02, y: 0, z: 24.91}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
     roleTypeID: 1000
-  - pos: {x: 23.01001, y: 0, z: 9.200012}
+  - pos: {x: 25.16, y: 0, z: 24.88}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
     roleTypeID: 1000
-  - pos: {x: 19.789978, y: 0, z: 9.640015}
+  - pos: {x: 22.8, y: 0, z: 31.6}
     rot: {x: 0, y: 187.79999, z: 0}
     scale: {x: 1, y: 1, z: 1}
     roleTypeID: 1000

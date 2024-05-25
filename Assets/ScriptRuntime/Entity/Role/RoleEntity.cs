@@ -23,6 +23,7 @@ public class RoleEntity : MonoBehaviour {
 
     public MoveType moveType;
     public float viewRange;
+    public bool hasTarget;
 
     [SerializeField] Rigidbody rb;
     public float gravity;
@@ -78,7 +79,6 @@ public class RoleEntity : MonoBehaviour {
         } else {
             speedUpTime = 0;
         }
-        Debug.Log(moveSpeed);
         var velocity = rb.velocity;
         velocity = moveAxis.normalized * moveSpeed;
         velocity.y = rb.velocity.y;
@@ -86,14 +86,17 @@ public class RoleEntity : MonoBehaviour {
     }
 
     public void Move_To(Vector3 target, float dt) {
-        Vector2 dir = target - Pos();
-        if (Vector2.SqrMagnitude(dir) <= Math.Pow(moveSpeed * dt, 2)) {
+        Vector3 dir = target - transform.position;
+        if (Vector3.SqrMagnitude(dir) <= Math.Pow(moveSpeed * dt, 2)) {
             rb.velocity = Vector3.zero;
+            Debug.Log("arrive");
             return;
         }
         var velocity = rb.velocity;
         velocity = dir.normalized * moveSpeed;
         rb.velocity = velocity;
+        
+        SetForward(dir.normalized);
     }
 
     public void SetMoveSpeed(float dt) {
