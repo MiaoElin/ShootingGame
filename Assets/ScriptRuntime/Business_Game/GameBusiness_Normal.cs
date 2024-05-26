@@ -18,6 +18,7 @@ public static class GameBusiness_Normal {
             owner.gun.gunIcon = tm.gunIcon;
             owner.gun.modTransform.GetComponent<SkinnedMeshRenderer>().sharedMesh = mod.GetComponent<MeshFilter>().mesh;
             owner.gun.modTransform.GetComponent<SkinnedMeshRenderer>().material = mod.GetComponent<MeshRenderer>().material;
+            mod.gameObject.SetActive(false);
             owner.roleFSMComponent.EnterNormal();
         }
 

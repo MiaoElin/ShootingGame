@@ -104,7 +104,7 @@ public class RoleEntity : MonoBehaviour {
         velocity = dir.normalized * moveSpeed;
         rb.velocity = velocity;
 
-        SetForward(dir.normalized);
+        body.transform.forward = Vector3.Lerp(body.transform.forward, dir.normalized, 4 * dt);
     }
 
     public void SetMoveSpeed(float dt) {

@@ -85,7 +85,7 @@ public static class RoleDomain {
 
     public static bool Check_Touch(RoleEntity monster, RoleEntity owner, float dt) {
         Vector3 dir = owner.Pos() - monster.Pos();
-        RaycastHit[] hits = Physics.RaycastAll(monster.Pos() + Vector3.up * 0.1f, dir.normalized, 2f);
+        RaycastHit[] hits = Physics.RaycastAll(monster.Pos() + Vector3.up * 0.1f, dir.normalized, 1.5f);
         monster.isArrivedTarget = false;
         foreach (var hit in hits) {
             if (hit.collider.tag == "Role") {
