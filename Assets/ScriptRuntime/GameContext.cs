@@ -54,8 +54,8 @@ public class GameContext {
 
     }
 
-    public void Inject(CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera, Camera currentCamera, Canvas screenCanvas, Canvas worldCanvas) {
-        cameraEntity.Inject(currentCamera, normalCamera, shootCamera);
+    public void Inject(CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera, CinemachineFreeLook fpsLookCamera, Camera currentCamera, Canvas screenCanvas, Canvas worldCanvas) {
+        cameraEntity.Inject(currentCamera, normalCamera, shootCamera, fpsLookCamera);
         uIApp.Inject(asset, screenCanvas, worldCanvas);
     }
 
@@ -63,4 +63,5 @@ public class GameContext {
         roleRepo.Tryget(ownerID, out var role);
         return role;
     }
+
 }

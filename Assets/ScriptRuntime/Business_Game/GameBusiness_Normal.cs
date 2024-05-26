@@ -53,7 +53,7 @@ public static class GameBusiness_Normal {
         CameraDomain.EnterNormal(ctx);
 
         // 打开准心UI
-        UIDomain.Panel_CrossHair_Open(ctx);
+        UIDomain.Panel_CrossHair_Open_TPS(ctx);
 
         // 游戏进入Normal status 
         ctx.fsm.EnterNormal();
@@ -137,18 +137,32 @@ public static class GameBusiness_Normal {
 
         var owner = ctx.GetOwner();
         if (owner.isShootReady) {
-            if (ctx.input.isShootReady) {
-                ctx.input.isShootReady = false;
+            if (ctx.input.isShootLookKeyDown) {
+                ctx.input.isShootLookKeyDown = false;
                 owner.isShootReady = false;
                 owner.roleFSMComponent.EnterNormal();
             }
         }
 
         if (!owner.isShootReady) {
-            if (ctx.input.isShootReady) {
-                ctx.input.isShootReady = false;
+            if (ctx.input.isShootLookKeyDown) {
+                ctx.input.isShootLookKeyDown = false;
                 owner.isShootReady = true;
                 owner.roleFSMComponent.EnterShoot();
+            }
+        }
+
+        if (owner.roleFSMComponent.status != RoleStatus.FPS) {
+            if (ctx.input.isFPSKeyDown) {
+                ctx.input.isFPSKeyDown = false;
+                owner.roleFSMComponent.EnterFPS();
+            }
+        }
+
+        if (owner.roleFSMComponent.status == RoleStatus.FPS) {
+            if (ctx.input.isFPSKeyDown) {
+                ctx.input.isFPSKeyDown = false;
+                owner.roleFSMComponent.EnterNormal();
             }
         }
 

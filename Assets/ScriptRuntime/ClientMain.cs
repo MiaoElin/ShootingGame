@@ -7,6 +7,7 @@ public class ClientMain : MonoBehaviour {
 
     [SerializeField] CinemachineFreeLook normalCamera;
     [SerializeField] CinemachineFreeLook shootCamera;
+    [SerializeField] CinemachineFreeLook fpsLookCamera;
     [SerializeField] Camera currentCamera;
     [SerializeField] Canvas screenCanvas;
     [SerializeField] Canvas worldCanvas;
@@ -28,7 +29,7 @@ public class ClientMain : MonoBehaviour {
 
         ctx = new GameContext();
         Load();
-        ctx.Inject(normalCamera, shootCamera, currentCamera, screenCanvas, worldCanvas);
+        ctx.Inject(normalCamera, shootCamera, fpsLookCamera, currentCamera, screenCanvas, worldCanvas);
         ctx.poolService.Init(
         () => GameFactory.Role_Create(ctx),
         () => GameFactory.Loot_Create(ctx),

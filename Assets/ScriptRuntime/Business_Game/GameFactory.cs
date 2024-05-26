@@ -10,6 +10,7 @@ public static class GameFactory {
         }
         var role = ctx.poolService.GetRole();
         role.body = GameObject.Instantiate(tm.body, role.transform);
+        role.mod = role.body.transform.Find("Mesh").gameObject;
         role.Ctor(role.body.GetComponent<Animator>(), role.body.GetComponentInChildren<GunSubEntity>());
         role.SetPos(pos);
         role.SetBodyRotation(rot);

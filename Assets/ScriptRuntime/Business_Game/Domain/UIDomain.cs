@@ -2,13 +2,18 @@ using UnityEngine;
 
 public static class UIDomain {
 
-    public static void Panel_CrossHair_Open(GameContext ctx) {
-        ctx.uIApp.Panel_CrossHair_Open();
+    public static void Panel_CrossHair_Open_TPS(GameContext ctx) {
+        ctx.uIApp.Panel_CrossHair_OpenTPS();
+    }
+
+    public static void Panel_CrossHair_Open_FPS(GameContext ctx) {
+        ctx.uIApp.Panel_CrossHair_OpenFPS();
     }
 
     public static void Panel_CrossHair_Hide(GameContext ctx) {
         ctx.uIApp.Panel_CrossHair_Hide();
     }
+
 
     public static void Panel_LootSignal_Open(GameContext ctx, int id, Vector3 pos, Sprite spr, string lootName) {
         ctx.uIApp.Panel_LootSignal_Open(id, pos, spr, lootName);

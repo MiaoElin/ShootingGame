@@ -17,6 +17,11 @@ public static class CameraDomain {
         SetFollowAndLookAt(ctx);
     }
 
+    public static void EnterFPS(GameContext ctx) {
+        ctx.cameraEntity.EnterFPS();
+        SetFollowAndLookAt(ctx);
+    }
+
     public static void CloseRotation(GameContext ctx) {
         ctx.cameraEntity.CloseRotation();
     }

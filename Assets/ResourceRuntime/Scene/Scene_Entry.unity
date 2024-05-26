@@ -48363,7 +48363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1305762742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73900,6 +73900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalCamera: {fileID: 1305762742}
   shootCamera: {fileID: 428199653}
+  fpsLookCamera: {fileID: 1491220861}
   currentCamera: {fileID: 963194227}
   screenCanvas: {fileID: 774134693}
   worldCanvas: {fileID: 1650727302}

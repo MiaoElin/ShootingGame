@@ -1,5 +1,6 @@
 public enum CameraType {
     None,
     Normal,
-    Shoot
+    Shoot,
+    Fps
 }

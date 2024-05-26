@@ -10,13 +10,9 @@ public static class Panel_CrossHairDomain {
             panel = GameObject.Instantiate(prefab, ctx.screenCanvas.transform).GetComponent<Panel_CrossHair>();
             ctx.uIRepo.Add(name, panel.gameObject);
         }
+        panel.Show();
         panel.Show_TPS();
-    }
-
-
-    public static void Hide_TPS(UIContext ctx) {
-        var panel = ctx.uIRepo.Tryget<Panel_CrossHair>();
-        panel?.Hide_TPS();
+        panel.Hide_FPS();
     }
 
     public static void Open_FPS(UIContext ctx) {
@@ -27,11 +23,13 @@ public static class Panel_CrossHairDomain {
             panel = GameObject.Instantiate(prefab, ctx.screenCanvas.transform).GetComponent<Panel_CrossHair>();
             ctx.uIRepo.Add(name, panel.gameObject);
         }
+        panel.Show();
         panel.Show_FPS();
+        panel.Hide_TPS();
     }
 
-    public static void Hide_FPS(UIContext ctx) {
+    public static void Hide(UIContext ctx) {
         var panel = ctx.uIRepo.Tryget<Panel_CrossHair>();
-        panel?.Hide_FPS();
+        panel?.Hide();
     }
 }

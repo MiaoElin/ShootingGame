@@ -33,11 +33,13 @@ public class RoleEntity : MonoBehaviour {
     public bool isEnterGround;
 
     [SerializeField] Animator anim;
-    public GameObject body;
+    public GameObject body; // 整个模型和碰撞盒
+    public GameObject mod;  // 只有模型   逻辑和表现分离
     public Transform lookAtPoint;
     public Transform orientation;
 
     public bool isShootReady;
+    
     public bool isBagOpen;
 
     // input
@@ -186,6 +188,14 @@ public class RoleEntity : MonoBehaviour {
     public void SetPos(Vector3 pos) {
         transform.position = pos;
         rb.position = pos;
+    }
+
+    public void HideBodyMod() {
+        mod.gameObject.SetActive(false);
+    }
+
+    public void ShowBodyMod() {
+        mod.gameObject.SetActive(true);
     }
 
     public void SetBodyRotation(Vector3 rot) {

@@ -7,7 +7,8 @@ public class InputEntity {
 
 
     // key
-    public bool isShootReady;
+    public bool isShootLookKeyDown;
+    public bool isFPSKeyDown;
     public bool isJumpKeyDown;
     public bool isPickKeyDown;
     public bool isBagkeyDown;
@@ -42,7 +43,9 @@ public class InputEntity {
 
 
         // isShootReady
-        isShootReady = Input.GetKeyDown(KeyCode.Z);
+        isShootLookKeyDown = Input.GetKeyDown(KeyCode.Z);
+        // FPS
+        isFPSKeyDown = Input.GetKeyDown((KeyCode.F));
 
         // Jump
         isJumpKeyDown = Input.GetKeyDown(KeyCode.Space);

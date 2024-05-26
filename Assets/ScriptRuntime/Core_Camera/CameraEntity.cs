@@ -5,26 +5,28 @@ using System;
 public class CameraEntity {
     public CinemachineFreeLook normalCamera;
     public CinemachineFreeLook shootLookCamera;
+    public CinemachineFreeLook fpsLookCamera;
     public CinemachineFreeLook currentCam;
     public Camera currentCamera; // 目前没用到。用brain切换相机没成功
     public CameraType cameraType;
     public Vector2 normalCameraAxisSpeed;
     public Vector2 shootCameraAxisSpeed;
+    public Vector2 fpsLookCameraAxisSpeed;
     public CameraEntity() {
         normalCameraAxisSpeed = new Vector2(300, 2);
         shootCameraAxisSpeed = new Vector2(300, 2);
+        fpsLookCameraAxisSpeed = new Vector2(300, 2);
     }
 
     public void Ctor() {
     }
 
-    public void Inject(Camera currentCamera, CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera) {
+    public void Inject(Camera currentCamera, CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera, CinemachineFreeLook fpsLookCamera) {
         this.currentCamera = currentCamera;
         this.normalCamera = normalCamera;
         this.shootLookCamera = shootCamera;
+        this.fpsLookCamera = fpsLookCamera;
     }
-
-
 
     public void EnterShoot() {
         cameraType = CameraType.Shoot;
@@ -51,6 +53,17 @@ public class CameraEntity {
         currentCam = normalCamera;
     }
 
+    public void EnterFPS() {
+        cameraType = CameraType.Fps;
+        if (currentCam) {
+            fpsLookCamera.m_YAxis = currentCam.m_YAxis;
+            fpsLookCamera.m_XAxis = currentCam.m_XAxis;
+            currentCam.gameObject.SetActive(false);
+        }
+        fpsLookCamera.gameObject.SetActive(true);
+        currentCam = fpsLookCamera;
+    }
+
     public Vector3 GetPos() {
         return currentCam.transform.position;
     }
@@ -68,6 +81,8 @@ public class CameraEntity {
             return normalCameraAxisSpeed;
         } else if (cameraType == CameraType.Shoot) {
             return shootCameraAxisSpeed;
+        } else if (cameraType == CameraType.Fps) {
+            return fpsLookCameraAxisSpeed;
         } else {
             return default;
         }

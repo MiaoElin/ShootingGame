@@ -10,6 +10,14 @@ public class Panel_CrossHair : MonoBehaviour {
 
     }
 
+    public void Hide() {
+        gameObject.SetActive(false);
+    }
+
+    public void Show() {
+        gameObject.SetActive(true);
+    }
+
     public void Show_TPS() {
         tps_CrossHair.SetActive(true);
     }

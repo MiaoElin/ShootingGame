@@ -15,13 +15,19 @@ public class UIApp {
     }
 
     #region  P_CrossHair
-    public void Panel_CrossHair_Open() {
+    public void Panel_CrossHair_OpenTPS() {
         Panel_CrossHairDomain.Open_TPS(ctx);
     }
 
-    public void Panel_CrossHair_Hide() {
-        Panel_CrossHairDomain.Hide_TPS(ctx);
+    public void Panel_CrossHair_OpenFPS() {
+        Panel_CrossHairDomain.Open_FPS(ctx);
     }
+
+    public void Panel_CrossHair_Hide() {
+        Panel_CrossHairDomain.Hide(ctx);
+    }
+
+
     #endregion
 
     #region P_LootSignal
