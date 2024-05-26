@@ -26,6 +26,9 @@ public static class BulletDomain {
         if (hitRole) {
             bullet.isDead = true;
             var role = hit.collider.gameObject.GetComponentInParent<RoleEntity>();
+            if (role.isDead) {
+                return;
+            }
             if (role.ally != bullet.ally) {
                 role.hp -= bullet.damage;
                 // anim

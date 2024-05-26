@@ -135,11 +135,11 @@ public static class GameBusiness_Normal {
             if (role.isDead) {
                 // 播死亡动画
                 role.Anim_Dead();
+                UIDomain.H_HpBar_Close(ctx, role.id);
                 if (role.deadTimer > 0) {
                     role.deadTimer -= dt;
                 } else {
                     RoleDomain.Unspawn(ctx, role);
-                    UIDomain.H_HpBar_Close(ctx, role.id);
                 }
 
             }
