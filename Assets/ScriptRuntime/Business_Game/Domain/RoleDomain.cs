@@ -166,7 +166,11 @@ public static class RoleDomain {
     }
 
     // 找最近的Loot
-    public static void SearchLoot(GameContext ctx, RoleEntity role, out LootEntity nearlyLoot) {
+    public static void OnwerSearchLoot(GameContext ctx, RoleEntity role, out LootEntity nearlyLoot) {
+        if (role.ally != Ally.Player) {
+            nearlyLoot = null;
+            return;
+        }
         var lootLen = ctx.lootRepo.TakeAll(out var allLoots);
         nearlyLoot = null;
         float nearlyDistance = Mathf.Pow(CommonConst.OWNER_SEARCHRANGE, 2);
