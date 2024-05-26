@@ -11,6 +11,8 @@ InputSystem
 更换InputSystem（不会）
 
 === UI ===
+- 角色的状态栏
+
 
 === role ===
 - 给角色加头灯，暗处可以照明 
@@ -20,6 +22,7 @@ InputSystem
 === Monster ===
 - √ 移动 
 - 给怪加视角显示效果
+- 给怪添加 !hasTarget状态下，左右晃动
 
 === SoundCore ===
 

@@ -7,9 +7,20 @@ public static class GameBusiness_Normal {
     public static void EnterStage(GameContext ctx) {
 
         // 生成owner
-        var owner = RoleDomain.Spawn(ctx, 100, VectorConst.OWNER_POS, VectorConst.OWNER_ROT, VectorConst.OWNER_SCALE, Ally.Player);
-        ctx.ownerID = owner.id;
-        owner.roleFSMComponent.EnterNormal();
+        {
+            var owner = RoleDomain.Spawn(ctx, 100, VectorConst.OWNER_POS, VectorConst.OWNER_ROT, VectorConst.OWNER_SCALE, Ally.Player);
+            ctx.ownerID = owner.id;
+            ctx.asset.TryGetGunTM(103, out var tm);
+            var mod = GameObject.Instantiate(tm.mod, owner.gun.transform);
+            owner.gun.typeID = tm.typeID;
+            owner.gun.bulletCount = tm.bulletCountMax;
+            owner.gun.bulletCountMax = tm.bulletCountMax;
+            owner.gun.gunIcon = tm.gunIcon;
+            owner.gun.modTransform.GetComponent<SkinnedMeshRenderer>().sharedMesh = mod.GetComponent<MeshFilter>().mesh;
+            owner.gun.modTransform.GetComponent<SkinnedMeshRenderer>().material = mod.GetComponent<MeshRenderer>().material;
+            owner.roleFSMComponent.EnterNormal();
+        }
+
         bool has = ctx.asset.TryGetMapTM(0, out var mapTM);
         if (!has) {
             Debug.LogError($"mapTypeID is not find");
@@ -54,6 +65,7 @@ public static class GameBusiness_Normal {
 
         // 打开准心UI
         UIDomain.Panel_CrossHair_Open_TPS(ctx);
+        UIDomain.Panel_PlayerStatus_Open(ctx, ctx.GetOwner().hpMax);
 
         // 游戏进入Normal status 
         ctx.fsm.EnterNormal();
@@ -80,10 +92,14 @@ public static class GameBusiness_Normal {
     }
 
     private static void PreTick(GameContext ctx, float dt) {
+
         var owner = ctx.GetOwner();
         owner.isJumpKeyDown = ctx.input.isJumpKeyDown;
         owner.isPickKeyDown = ctx.input.isPickKeyDown;
         owner.isSlowKeyDown = ctx.input.isRuningKeyDown;
+
+        UIDomain.Panel_PlayerStatus_Update(ctx, owner.hp, owner.gun.gunIcon, owner.gun.bulletCount, owner.gun.bulletCountMax);
+
     }
 
     public static void FixedTick(GameContext ctx, float dt) {

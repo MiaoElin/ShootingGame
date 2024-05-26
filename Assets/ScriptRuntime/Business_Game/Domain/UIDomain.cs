@@ -46,4 +46,20 @@ public static class UIDomain {
     public static void H_HpBar_Update(GameContext ctx, int id, int hp, Vector3 pos, Vector3 forward) {
         ctx.uIApp.H_HpBar_Update(id, hp, pos, forward);
     }
+
+    public static void Panel_PlayerStatus_Open(GameContext ctx, int hpMax) {
+        ctx.uIApp.Panel_PlayerStatus_Open(hpMax);
+    }
+
+    public static void Panel_PlayerStatus_Close(GameContext ctx) {
+        ctx.uIApp.Panel_PlayerStatus_Close();
+    }
+
+    public static void Panel_PlayerStatus_Update(GameContext ctx, int hp, Sprite currentWeapon, int bulletCount, int bulletCountMax) {
+        ctx.uIApp.Panel_PlayerStatus_Update(hp, currentWeapon, bulletCount, bulletCountMax);
+    }
+
+    public static void Panel_PlayerStatus_EnterHurt(GameContext ctx) {
+        ctx.uIApp.Panel_PlayerStatus_EnterHurt();
+    }
 }

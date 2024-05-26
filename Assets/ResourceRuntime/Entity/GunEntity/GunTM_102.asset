@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeID: 102
   shootRang: 50
-  gunObj: {fileID: 8120622204687882047, guid: 760caea42d8f0e244aa5d9203e9b56b9, type: 3}
+  mod: {fileID: 8120622204687882047, guid: 760caea42d8f0e244aa5d9203e9b56b9, type: 3}
+  bulletTypeID: 0
   bulletCountMax: 10
+  gunIcon: {fileID: 21300000, guid: af04170453ebc514895b20c68e2f5d1c, type: 3}

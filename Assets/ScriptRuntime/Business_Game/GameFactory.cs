@@ -157,4 +157,20 @@ public static class GameFactory {
         terrain.SetPos(gridPos);
         return terrain;
     }
+
+    // public static GunSubEntity Gun_Create(GameContext ctx, int typeID, Transform gunTransform) {
+    //     ctx.asset.TryGetGunTM(typeID, out var tm);
+    //     if (!tm) {
+    //         Debug.LogError($"GameFactory.Gun_Create {typeID} is not find");
+    //     }
+    //     ctx.asset.TryGetEntity_Prefab(typeof(GunSubEntity).Name, out var prefab);
+    //     GunSubEntity gun = GameObject.Instantiate(prefab, gunTransform).GetComponent<GunSubEntity>();
+    //     gun.typeID = typeID;
+    //     gun.shootRang = tm.shootRang;
+    //     gun.bulletTypeID = tm.bulletTypeID;
+    //     gun.bulletCountMax = tm.bulletCountMax;
+    //     gun.gunIcon = tm.gunIcon;
+    //     GameObject.Instantiate(tm.mod, gun.transform);
+    //     return gun;
+    // }
 }

@@ -5,6 +5,8 @@ public class GunTM : ScriptableObject {
 
     public int typeID;
     public float shootRang;
-    public GameObject gunObj;
+    public GameObject mod;
+    public int bulletTypeID;
     public int bulletCountMax;
+    public Sprite gunIcon;
 }
