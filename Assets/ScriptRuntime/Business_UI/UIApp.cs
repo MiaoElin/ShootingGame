@@ -63,8 +63,8 @@ public class UIApp {
         Panel_PlayerStatusDomain.Close(ctx);
     }
 
-    public void Panel_PlayerStatus_Update(int hp, Sprite currentWeapon, int bulletCount, int bulletCountMax) {
-        Panel_PlayerStatusDomain.Update(ctx, hp, currentWeapon, bulletCount, bulletCountMax);
+    public void Panel_PlayerStatus_Update(int hp, Sprite currentWeapon, int bulletCount, int bulletCountMax, float dt) {
+        Panel_PlayerStatusDomain.Update(ctx, hp, currentWeapon, bulletCount, bulletCountMax, dt);
     }
 
     public void Panel_PlayerStatus_EnterHurt() {

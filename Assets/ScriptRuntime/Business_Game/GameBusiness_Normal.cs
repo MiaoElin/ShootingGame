@@ -98,7 +98,7 @@ public static class GameBusiness_Normal {
         owner.isPickKeyDown = ctx.input.isPickKeyDown;
         owner.isSlowKeyDown = ctx.input.isRuningKeyDown;
 
-        UIDomain.Panel_PlayerStatus_Update(ctx, owner.hp, owner.gun.gunIcon, owner.gun.bulletCount, owner.gun.bulletCountMax);
+        UIDomain.Panel_PlayerStatus_Update(ctx, owner.hp, owner.gun.gunIcon, owner.gun.bulletCount, owner.gun.bulletCountMax, dt);
 
     }
 

@@ -114,14 +114,13 @@ public static class RoleDomain {
             var after_attackDuration = role.after_attackDuration;
             if (attackTime >= before_attackDuration && !role.hasAttack) {
                 role.hasAttack = true;
-                Debug.Log("Hit");
                 owner.hp -= role.attackDamage;
+                UIDomain.Panel_PlayerStatus_EnterHurt(ctx);
             } else if (attackTime >= after_attackDuration) {
                 role.hasAttack = false;
                 attackTime = 0;
             }
             attackTime += dt;
-
         }
     }
 

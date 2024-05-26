@@ -18,9 +18,9 @@ public static class Panel_PlayerStatusDomain {
         panel?.Close();
     }
 
-    public static void Update(UIContext ctx, int hp, Sprite currentWeapon, int bulletCount, int bulletCountMax) {
+    public static void Update(UIContext ctx, int hp, Sprite currentWeapon, int bulletCount, int bulletCountMax, float dt) {
         var panel = ctx.uIRepo.Tryget<Panel_PlayerStatus>();
-        panel?.Init(hp, bulletCount, bulletCountMax, currentWeapon);
+        panel?.Update(hp, bulletCount, bulletCountMax, currentWeapon, dt);
     }
 
     public static void EnterHurt(UIContext ctx) {
