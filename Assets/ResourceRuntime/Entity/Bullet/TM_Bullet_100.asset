@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TM_Bullet_100
   m_EditorClassIdentifier: 
   typeID: 100
-  damage: 50
+  damage: 20
   bulletMoveType: 2
   moveSpeed: 100
   maxFlyDistance: 100

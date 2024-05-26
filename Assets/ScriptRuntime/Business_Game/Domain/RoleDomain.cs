@@ -36,9 +36,16 @@ public static class RoleDomain {
             // 判断目标是否在视线范围 这里的目标是owner
             var target = ctx.GetOwner();
             if (role.hasTarget) {
-                role.Move_To(target.Pos(), dt);
-                // anim
-                role.Anim_Run();
+                Check_Touch(role, target, dt);
+                if (!role.isArrivedTarget) {
+                    role.Move_To(target.Pos(), dt);
+                    // anim
+                    role.Anim_Run();
+                } else {
+                    // 开始攻击
+                    role.Anim_Attack();
+                }
+
                 return;
             }
 
@@ -48,6 +55,21 @@ public static class RoleDomain {
             }
 
         }
+    }
+
+    public static bool Check_Touch(RoleEntity monster, RoleEntity owner, float dt) {
+        Vector3 dir = owner.Pos() - monster.Pos();
+        RaycastHit[] hits = Physics.RaycastAll(monster.Pos() + Vector3.up * 0.1f, dir.normalized, 2f);
+        monster.isArrivedTarget = false;
+        foreach (var hit in hits) {
+            if (hit.collider.tag == "Role") {
+                var role = hit.collider.GetComponentInParent<RoleEntity>();
+                if (role.ally != monster.ally) {
+                    monster.isArrivedTarget = true;
+                }
+            }
+        }
+        return monster.isArrivedTarget;
     }
 
     public static bool IsInViewRange(RoleEntity role, RoleEntity target) {

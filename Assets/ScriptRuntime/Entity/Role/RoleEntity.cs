@@ -24,6 +24,7 @@ public class RoleEntity : MonoBehaviour {
     public MoveType moveType;
     public float viewRange;
     public bool hasTarget;
+    public bool isArrivedTarget;
 
     [SerializeField] Rigidbody rb;
     public float gravity;
@@ -211,6 +212,7 @@ public class RoleEntity : MonoBehaviour {
     }
 
     public void Anim_Dead() {
+        anim.ResetTrigger("T_Attack");
         anim.Play("Die");
     }
 
@@ -224,5 +226,13 @@ public class RoleEntity : MonoBehaviour {
 
     public void Anim_Shoot() {
         anim.Play("Shoot_Single");
+    }
+
+    public void Anim_Attack() {
+        anim.SetTrigger("T_Attack");
+    }
+
+    internal void Anim_Hurt() {
+        anim.SetTrigger("T_Hurt");
     }
 }

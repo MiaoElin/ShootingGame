@@ -21,7 +21,7 @@ MonoBehaviour:
   speedDownDuration: 0
   deadTimer: 1
   moveType: 2
-  viewRange: 15
+  viewRange: 20
   body: {fileID: 4948039246674563254, guid: 6b851831dc8d4e24da88029e63227559, type: 3}
   gravity: 15
   jumpingForce: 5
