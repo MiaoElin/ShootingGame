@@ -14,6 +14,11 @@ public class RoleTM : ScriptableObject {
     public float deadTimer;
     public MoveType moveType;
     public float viewRange;
+    public int attackDamage;
+    public float attackTime;
+    public float before_attackDuration;
+    public float after_attackDuration;
+
 
     public GameObject body;
     public float gravity;

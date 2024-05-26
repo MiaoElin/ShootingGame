@@ -25,6 +25,12 @@ public class RoleEntity : MonoBehaviour {
     public float viewRange;
     public bool hasTarget;
     public bool isArrivedTarget;
+    public int attackDamage;
+    public float attackTime;
+    public float before_attackDuration;
+    public bool hasAttack;
+    public float after_attackDuration;
+
 
     [SerializeField] Rigidbody rb;
     public float gravity;
@@ -39,7 +45,7 @@ public class RoleEntity : MonoBehaviour {
     public Transform orientation;
 
     public bool isShootReady;
-    
+
     public bool isBagOpen;
 
     // input

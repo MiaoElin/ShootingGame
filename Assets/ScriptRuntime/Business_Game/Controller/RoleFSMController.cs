@@ -56,5 +56,6 @@ public static class RoleFSMController {
         RoleDomain.SearchLoot(ctx, role, out var nearlyLoot);
         RoleDomain.PickUpLoot(ctx, role, nearlyLoot);
         RoleDomain.ShootBullet(ctx, role);
+        RoleDomain.Monster_Hit(ctx, role, dt);
     }
 }

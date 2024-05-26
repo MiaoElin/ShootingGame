@@ -41,12 +41,8 @@ public static class RoleDomain {
                     role.Move_To(target.Pos(), dt);
                     // anim
                     role.Anim_Run();
-                } else {
-                    // 开始攻击
-                    role.Anim_Attack();
+                    return;
                 }
-
-                return;
             }
 
             bool isInRange = IsInViewRange(role, target);
@@ -55,21 +51,6 @@ public static class RoleDomain {
             }
 
         }
-    }
-
-    public static bool Check_Touch(RoleEntity monster, RoleEntity owner, float dt) {
-        Vector3 dir = owner.Pos() - monster.Pos();
-        RaycastHit[] hits = Physics.RaycastAll(monster.Pos() + Vector3.up * 0.1f, dir.normalized, 2f);
-        monster.isArrivedTarget = false;
-        foreach (var hit in hits) {
-            if (hit.collider.tag == "Role") {
-                var role = hit.collider.GetComponentInParent<RoleEntity>();
-                if (role.ally != monster.ally) {
-                    monster.isArrivedTarget = true;
-                }
-            }
-        }
-        return monster.isArrivedTarget;
     }
 
     public static bool IsInViewRange(RoleEntity role, RoleEntity target) {
@@ -99,6 +80,48 @@ public static class RoleDomain {
             }
         } else {
             return false;
+        }
+    }
+
+    public static bool Check_Touch(RoleEntity monster, RoleEntity owner, float dt) {
+        Vector3 dir = owner.Pos() - monster.Pos();
+        RaycastHit[] hits = Physics.RaycastAll(monster.Pos() + Vector3.up * 0.1f, dir.normalized, 2f);
+        monster.isArrivedTarget = false;
+        foreach (var hit in hits) {
+            if (hit.collider.tag == "Role") {
+                var role = hit.collider.GetComponentInParent<RoleEntity>();
+                if (role.ally != monster.ally) {
+                    monster.isArrivedTarget = true;
+                }
+            }
+        }
+        return monster.isArrivedTarget;
+    }
+
+    public static void Monster_Hit(GameContext ctx, RoleEntity role, float dt) {
+        if (role.ally == Ally.Monster) {
+            if (!role.isArrivedTarget) {
+                return;
+            }
+            // 开始攻击
+            var owner = ctx.GetOwner();
+            // anim
+            role.Anim_Attack();
+            // 攻击逻辑
+            // 动画播到攻击的地方才扣血
+            ref var attackTime = ref role.attackTime;
+            var before_attackDuration = role.before_attackDuration;
+            var after_attackDuration = role.after_attackDuration;
+            if (attackTime >= before_attackDuration && !role.hasAttack) {
+                role.hasAttack = true;
+                Debug.Log("Hit");
+                owner.hp -= role.attackDamage;
+            } else if (attackTime >= after_attackDuration) {
+                role.hasAttack = false;
+                attackTime = 0;
+            }
+            attackTime += dt;
+
         }
     }
 
@@ -201,7 +224,6 @@ public static class RoleDomain {
         var gun = role.gun;
         if (gun != null) {
             // 从屏幕中心发射射线
-
             var ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
             var layermask = 1 << 6;
             var hit = Physics.Raycast(ray, out var raycastHit, gun.shootRang, layermask);
@@ -228,4 +250,5 @@ public static class RoleDomain {
     public static void UpdateHpBar(GameContext ctx, RoleEntity role) {
         UIDomain.H_HpBar_Update(ctx, role.id, role.hp, role.Pos() + (role.height + CommonConst.ROLE_HEADOFFSET) * Vector3.up, ctx.cameraEntity.GetForward());
     }
+
 }

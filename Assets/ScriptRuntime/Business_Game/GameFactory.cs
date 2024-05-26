@@ -31,6 +31,10 @@ public static class GameFactory {
         role.deadTimer = tm.deadTimer;
         role.moveType = tm.moveType;
         role.viewRange = tm.viewRange;
+        role.attackDamage = tm.attackDamage;
+        role.attackTime = 0;
+        role.before_attackDuration = tm.before_attackDuration;
+        role.after_attackDuration = tm.after_attackDuration;
         role.gravity = tm.gravity;
         role.jumpingForce = tm.jumpingForce;
         role.gameObject.SetActive(true);

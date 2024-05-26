@@ -104,7 +104,6 @@ public static class GameBusiness_Normal {
 
     public static void FixedTick(GameContext ctx, float dt) {
         var owner = ctx.GetOwner();
-
         // 角色状态机
         int roleLen = ctx.roleRepo.TakeAll(out var allRoles);
         for (int i = 0; i < roleLen; i++) {
