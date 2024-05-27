@@ -2769,7 +2769,7 @@ GameObject:
   - component: {fileID: -6375244816069784204}
   m_Layer: 6
   m_Name: Mesh_RoleTM_1100
-  m_TagString: Role
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

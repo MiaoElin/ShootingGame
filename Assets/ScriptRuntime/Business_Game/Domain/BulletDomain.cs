@@ -24,13 +24,17 @@ public static class BulletDomain {
         Ray ray = new Ray(bullet.Pos(), bullet.GetForward());
         bool hitRole = Physics.Raycast(ray, out RaycastHit hit, bullet.moveSpeed * dt, layerMask);
         if (hitRole) {
+            Debug.Log("hit");
             bullet.isDead = true;
             var role = hit.collider.gameObject.GetComponentInParent<RoleEntity>();
             if (role.isDead) {
+                Debug.Log("Dead return");
                 return;
             }
+            Debug.Log(role.ally + " " + bullet.ally);
             if (role.ally != bullet.ally) {
                 role.hp -= bullet.damage;
+                Debug.Log(role.hp);
                 // anim
                 role.Anim_Hurt();
                 if (role.hp <= 0) {
