@@ -21,7 +21,7 @@ MonoBehaviour:
   hasBuletBox: 0
   bulletBoxTypeID: 0
   isReHP: 1
-  reHPMax: 100
+  reHPMax: 20
   isReStrength: 0
   reStrengthMax: 0
   stuffSpr: {fileID: 21300000, guid: 030940a95eaadb04f8efade930bf1dca, type: 3}

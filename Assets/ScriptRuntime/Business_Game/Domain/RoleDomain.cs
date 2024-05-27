@@ -223,6 +223,28 @@ public static class RoleDomain {
         }
     }
 
+    public static void UseStuff(GameContext ctx, int typeID) {
+        var owner = ctx.GetOwner();
+        var stuff = owner.stuffCom.Get(typeID);
+        if (stuff.stuffType == StuffType.Supply) {
+            if (stuff.isReHP) {
+                owner.hp += stuff.reHPMax;
+                if (owner.hp > owner.hpMax) {
+                    owner.hp = owner.hpMax;
+                }
+            }
+        }
+
+        stuff.count--;
+        if (stuff.count == 0) {
+            stuff.Clear();
+        }
+        // 更新背包
+        UIDomain.Panel_Bag_Open(ctx);
+        // 更新血条
+        UIDomain.Panel_PlayerStatus_Update(ctx, owner, Time.deltaTime);
+    }
+
     public static void ShootBullet(GameContext ctx, RoleEntity role) {
         var gun = role.gun;
         if (gun != null) {

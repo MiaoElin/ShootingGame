@@ -28,14 +28,28 @@ public class ClientMain : MonoBehaviour {
         // Cursor.visible = false;
 
         ctx = new GameContext();
+
         Load();
+
         ctx.Inject(normalCamera, shootCamera, fpsLookCamera, currentCamera, screenCanvas, worldCanvas);
+
         ctx.poolService.Init(
         () => GameFactory.Role_Create(ctx),
         () => GameFactory.Loot_Create(ctx),
         () => GameFactory.Prop_Create(ctx),
         () => GameFactory.Bullet_Create(ctx));
         GameBusiness_Normal.EnterStage(ctx);
+
+        EventBind(ctx);
+    }
+
+    private void EventBind(GameContext ctx) {
+        var eventCenter = ctx.eventCenter;
+        // Panel_Bag
+        eventCenter.Panel_Bag_OnclikGrid += (int typeID) => {
+            RoleDomain.UseStuff(ctx, typeID);
+        };
+
     }
 
     private void Load() {

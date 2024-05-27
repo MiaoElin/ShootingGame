@@ -10,8 +10,8 @@ public class UIApp {
         ctx = new UIContext();
     }
 
-    public void Inject(AssetCore asset, Canvas screenCanvas, Canvas worldCanvas) {
-        ctx.Inject(asset, screenCanvas, worldCanvas);
+    public void Inject(AssetCore asset, Canvas screenCanvas, Canvas worldCanvas,EventCenter eventCenter) {
+        ctx.Inject(asset, screenCanvas, worldCanvas,eventCenter);
     }
 
     #region  P_CrossHair
@@ -64,7 +64,7 @@ public class UIApp {
     }
 
     public void Panel_PlayerStatus_Update(int hp, Sprite currentWeapon, int bulletCount, int bulletCountMax, float dt) {
-        Panel_PlayerStatusDomain.Update(ctx, hp, currentWeapon, bulletCount, bulletCountMax, dt);
+        Panel_PlayerStatusDomain.Update_Status(ctx, hp, currentWeapon, bulletCount, bulletCountMax, dt);
     }
 
     public void Panel_PlayerStatus_EnterHurt() {

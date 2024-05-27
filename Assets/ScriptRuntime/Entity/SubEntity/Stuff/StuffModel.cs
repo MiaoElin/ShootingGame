@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class StuffModel {
@@ -32,4 +33,8 @@ public class StuffModel {
         hasStuff = false;
     }
 
+    public void Clear() {
+        hasStuff = false;
+        typeID = -1;
+    }
 }

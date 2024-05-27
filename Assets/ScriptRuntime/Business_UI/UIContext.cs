@@ -21,10 +21,11 @@ public class UIContext {
 
 
 
-    public void Inject(AssetCore asset, Canvas screenCanvas, Canvas worldCanvas) {
+    public void Inject(AssetCore asset, Canvas screenCanvas, Canvas worldCanvas, EventCenter eventCenter) {
         this.asset = asset;
         this.screenCanvas = screenCanvas;
         this.worldCanvas = worldCanvas;
+        this.eventCenter = eventCenter;
     }
 
 

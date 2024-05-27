@@ -9,14 +9,14 @@ public static class Panel_BagDomain {
         if (panel == null) {
             ctx.asset.TryGetUI_Prefab(typeof(Panel_Bag).Name, out var prefab);
             panel = GameObject.Instantiate(prefab, ctx.screenCanvas.transform).GetComponent<Panel_Bag>();
+            panel.OnClickGridHandle = (int typeID) => { ctx.eventCenter.UseStuff(typeID); };
             panel.Ctor();
-            panel.OnClickGridHandle = () => { };
             ctx.uIRepo.Add(typeof(Panel_Bag).Name, panel.gameObject);
             EventSystem.current.SetSelectedGameObject(panel.btn_Supply.gameObject);
         }
         // 遍历stuffs，赋值给背包里的每个格子
         stuffs.Foreach(stuff => {
-            panel.Init(stuff.index, stuff.count, stuff.stuffName, stuff.Spr);
+            panel.Init(stuff.index, stuff.typeID, stuff.count, stuff.stuffName, stuff.Spr);
         });
         panel.gameObject.SetActive(true);
     }

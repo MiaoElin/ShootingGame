@@ -15,7 +15,7 @@ public class Panel_Bag : MonoBehaviour {
     [SerializeField] Panel_Bag_Element[] elements;
     [SerializeField] Panel_Bag_Element prefab;
     public int elementsCount;
-    public Action OnClickGridHandle;
+    public Action<int> OnClickGridHandle;
 
     public void Ctor() {
         elementsCount = 16;
@@ -47,9 +47,9 @@ public class Panel_Bag : MonoBehaviour {
 
     }
 
-    public void Init(int index, int count, string name, Sprite spr) {
+    public void Init(int index, int typeID, int count, string name, Sprite spr) {
         if (count != 0) {
-            elements[index].SetGridHasStuff(spr, name, count);
+            elements[index].SetGridHasStuff(typeID, spr, name, count);
         } else {
             elements[index].Reuse();
         }

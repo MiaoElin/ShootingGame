@@ -24,7 +24,7 @@ public class Panel_PlayerStatus : MonoBehaviour {
     public void Ctor(int hpMax) {
         this.hpMax = hpMax;
         hurtTime = 0;
-        hurtDuration = 0.5f;
+        hurtDuration = 1f;
 
         bgNormalColor = new Color((float)69 / 255, (float)69 / 255, (float)69 / 255, 1);
         bgHurtColor = new Color((float)61 / 255, (float)21 / 255, (float)21 / 255, (float)146 / 255);
@@ -37,7 +37,7 @@ public class Panel_PlayerStatus : MonoBehaviour {
 
     }
 
-    public void Update(int hp, int bulletCount, int bulletCountMax, Sprite current_Weapon, float dt) {
+    public void Update_Status(int hp, int bulletCount, int bulletCountMax, Sprite current_Weapon, float dt) {
         txt_BullletCount.text = $"{bulletCount}/{bulletCountMax}";
         img_HPBar.fillAmount = (float)hp / hpMax;
         img_Weapon.sprite = current_Weapon;
@@ -62,7 +62,7 @@ public class Panel_PlayerStatus : MonoBehaviour {
         } else {
             img_BG.GetComponent<Image>().color = bgHurtColor;
             img_HPBar.GetComponent<Image>().color = hpBarHurtColor;
-            var t = hurtTime / hurtDuration;
+            var t = hurtTime / (hurtDuration / 3);
             var scale = Vector3.Lerp(Vector3.one, new Vector3(1.1f, 1.1f, 1.1f), t);
             img_BG.transform.localScale = scale;
             hurtTime += dt;

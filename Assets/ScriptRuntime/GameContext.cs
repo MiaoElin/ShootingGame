@@ -30,6 +30,9 @@ public class GameContext {
     // === Fsm ===
     public GameFsmComponent fsm;
 
+    // === Event ===
+    public EventCenter eventCenter;
+
     public GameContext() {
         // entity
         input = new InputEntity();
@@ -51,12 +54,14 @@ public class GameContext {
         poolService = new PoolService();
         // componet
         fsm = new GameFsmComponent();
+        // event
+        eventCenter = new EventCenter();
 
     }
 
     public void Inject(CinemachineFreeLook normalCamera, CinemachineFreeLook shootCamera, CinemachineFreeLook fpsLookCamera, Camera currentCamera, Canvas screenCanvas, Canvas worldCanvas) {
         cameraEntity.Inject(currentCamera, normalCamera, shootCamera, fpsLookCamera);
-        uIApp.Inject(asset, screenCanvas, worldCanvas);
+        uIApp.Inject(asset, screenCanvas, worldCanvas, eventCenter);
     }
 
     public RoleEntity GetOwner() {

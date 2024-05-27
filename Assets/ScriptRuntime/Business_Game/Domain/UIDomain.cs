@@ -55,8 +55,8 @@ public static class UIDomain {
         ctx.uIApp.Panel_PlayerStatus_Close();
     }
 
-    public static void Panel_PlayerStatus_Update(GameContext ctx, int hp, Sprite currentWeapon, int bulletCount, int bulletCountMax, float dt) {
-        ctx.uIApp.Panel_PlayerStatus_Update(hp, currentWeapon, bulletCount, bulletCountMax, dt);
+    public static void Panel_PlayerStatus_Update(GameContext ctx, RoleEntity owner, float dt) {
+        ctx.uIApp.Panel_PlayerStatus_Update(owner.hp, owner.gun.gunIcon, owner.gun.bulletCount, owner.gun.bulletCountMax, dt);
     }
 
     public static void Panel_PlayerStatus_EnterHurt(GameContext ctx) {

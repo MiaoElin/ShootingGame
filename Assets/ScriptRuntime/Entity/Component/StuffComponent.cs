@@ -67,6 +67,19 @@ public class StuffComponent {
         return surplus;
     }
 
+    public StuffModel Get(int typeID) {
+        for (int i = capacity - 1; i >= 0; i--) {
+            var stuff = stuffs[i];
+            if (stuff == null) {
+                continue;
+            }
+            if (stuff.typeID == typeID) {
+                return stuff;
+            }
+        }
+        return null;
+    }
+
     public void Foreach(Action<StuffModel> action) {
         for (int i = 0; i < capacity; i++) {
             var stuff = stuffs[i];
