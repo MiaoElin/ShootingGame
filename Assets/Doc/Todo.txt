@@ -11,7 +11,7 @@ InputSystem
 更换InputSystem（不会）
 
 === UI ===
-- 角色的状态栏
+- √角色的状态栏
 
 
 === role ===

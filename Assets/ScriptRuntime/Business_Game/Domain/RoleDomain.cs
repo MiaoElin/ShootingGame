@@ -253,8 +253,9 @@ public static class RoleDomain {
             var layermask = 1 << 6;
             var hit = Physics.Raycast(ray, out var raycastHit, gun.shootRang, layermask);
             // 显示准点光源
-            if (ctx.input.isMouseLeftUp) {
+            if (ctx.input.isMouseLeftUp && gun.bulletCount > 0) {
                 ctx.input.isMouseLeftUp = false;
+                gun.bulletCount--;
                 // Anim
                 role.Anim_Shoot();
                 // SFX

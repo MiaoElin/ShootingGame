@@ -31,6 +31,7 @@ public static class BulletDomain {
                 continue;
             }
             if (role.ally != bullet.ally) {
+                bullet.isDead = true;
                 role.hp -= bullet.damage;
                 Debug.Log(role.hp);
                 // anim
