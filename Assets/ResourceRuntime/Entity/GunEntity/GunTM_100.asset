@@ -15,6 +15,6 @@ MonoBehaviour:
   typeID: 100
   shootRang: 50
   mod: {fileID: 229771892290231133, guid: 726cd4437b05c2e4db054edce90cc3ce, type: 3}
-  bulletTypeID: 0
+  bulletTypeID: 200
   bulletCountMax: 30
   gunIcon: {fileID: 21300000, guid: af04170453ebc514895b20c68e2f5d1c, type: 3}

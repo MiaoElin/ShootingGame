@@ -13,6 +13,7 @@ public static class GameBusiness_Normal {
             ctx.asset.TryGetGunTM(103, out var tm);
             var mod = GameObject.Instantiate(tm.mod, owner.gun.transform);
             owner.gun.typeID = tm.typeID;
+            owner.gun.bulletTypeID = tm.bulletTypeID;
             owner.gun.bulletCount = tm.bulletCountMax;
             owner.gun.bulletCountMax = tm.bulletCountMax;
             owner.gun.gunIcon = tm.gunIcon;

@@ -105,7 +105,7 @@ public static class RoleDomain {
     public static void Monster_Hit(GameContext ctx, RoleEntity role, float dt) {
         if (role.ally == Ally.Monster) {
             if (!role.isArrivedTarget) {
-                role.ResetAttack();
+                role.ResetAttackInfo();
                 return;
             }
             // 开始攻击
@@ -236,6 +236,17 @@ public static class RoleDomain {
                 owner.hp += stuff.reHPMax;
                 if (owner.hp > owner.hpMax) {
                     owner.hp = owner.hpMax;
+                }
+            }
+        } else if (stuff.stuffType == StuffType.Weapon) {
+            var gun = owner.gun;
+            if (stuff.hasBuletBox) {
+                ctx.asset.TrygetBulletBoxTM(stuff.bulletBoxTypeID, out var tm);
+                if (tm.bulletTypeID == gun.bulletTypeID) {
+                    gun.bulletCount += tm.bulletCount;
+                    if (gun.bulletCount > gun.bulletCountMax) {
+                        gun.bulletCount = gun.bulletCountMax;
+                    }
                 }
             }
         }

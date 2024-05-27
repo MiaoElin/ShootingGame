@@ -257,7 +257,7 @@ public class RoleEntity : MonoBehaviour {
         return anim.GetCurrentAnimatorStateInfo(0);
     }
 
-    internal void ResetAttack() {
+    internal void ResetAttackInfo() {
         attackTime = 0;
         hasAttack = false;
     }

@@ -263,6 +263,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b18f221bf145564285f31752140b300
+    m_Address: Assets/ResourceRuntime/Entity/Bullet/BulletBox/BulletBoxTM_200.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_BulletBox
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4f5eacb28cbfc954d9ddea2bca523a81, type: 2}
   m_SchemaSet:

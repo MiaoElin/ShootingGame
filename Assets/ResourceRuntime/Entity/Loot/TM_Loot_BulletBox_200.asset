@@ -17,7 +17,5 @@ MonoBehaviour:
   isBox: 0
   stuffTypeIDs: c8000000
   stuffCount: 01000000
-  meshR: {fileID: 0}
-  mesh: {fileID: 0}
-  material: {fileID: 0}
+  mod: {fileID: 2030403160043677451, guid: 228ba74aefdaf7944bfaa5650dde23ae, type: 3}
   signalSpr: {fileID: 21300000, guid: 6f71decb1cfe418408c92138b02b3aa4, type: 3}

@@ -23,6 +23,9 @@ public class AssetCore {
     Dictionary<int, GunTM> gunTMs;
     AsyncOperationHandle gunTMPtr;
 
+    Dictionary<int, BulletBoxTM> bulletBoxTMs;
+    AsyncOperationHandle bulletBoxPtr;
+
     Dictionary<int, BulletTM> bulletTMs;
     AsyncOperationHandle bulletPtr;
 
@@ -46,6 +49,7 @@ public class AssetCore {
         lootTMs = new Dictionary<int, LootTM>();
         propTMs = new Dictionary<int, PropTM>();
         gunTMs = new Dictionary<int, GunTM>();
+        bulletBoxTMs = new Dictionary<int, BulletBoxTM>();
         bulletTMs = new Dictionary<int, BulletTM>();
         stuffTMs = new Dictionary<int, StuffTM>();
         terrainTMs = new Dictionary<Vector3, TerrainTM>();
@@ -107,6 +111,14 @@ public class AssetCore {
             }
         }
         {
+            var ptr = Addressables.LoadAssetsAsync<BulletBoxTM>("TM_BulletBox", null);
+            bulletBoxPtr = ptr;
+            var list = ptr.WaitForCompletion();
+            foreach (var tm in list) {
+                bulletBoxTMs.Add(tm.typeID, tm);
+            }
+        }
+        {
             var ptr = Addressables.LoadAssetsAsync<BulletTM>("TM_Bullet", null);
             bulletPtr = ptr;
             var list = ptr.WaitForCompletion();
@@ -148,6 +160,7 @@ public class AssetCore {
         Release(configPtr);
         Release(lootTMPtr);
         Release(gunTMPtr);
+        Release(bulletBoxPtr);
         Release(bulletPtr);
         Release(stuffPtr);
         Release(terrainPtr);
@@ -179,6 +192,10 @@ public class AssetCore {
 
     public bool TryGetGunTM(int typeID, out GunTM tm) {
         return gunTMs.TryGetValue(typeID, out tm);
+    }
+
+    public bool TrygetBulletBoxTM(int typeID, out BulletBoxTM tm) {
+        return bulletBoxTMs.TryGetValue(typeID, out tm);
     }
 
     public bool TryGetBulletTM(int typeID, out BulletTM tm) {
