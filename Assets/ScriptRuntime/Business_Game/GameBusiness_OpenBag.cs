@@ -37,7 +37,7 @@ public static class GameBusiness_OpenBag {
                 // 进入normal
                 fsm.EnterNormal();
                 // 打开光标UI
-                UIDomain.Panel_CrossHair_Open_TPS(ctx);
+                UIDomain.Panel_CrossHair_Open(ctx);
                 // 恢复时间
                 Time.timeScale = 1;
             }

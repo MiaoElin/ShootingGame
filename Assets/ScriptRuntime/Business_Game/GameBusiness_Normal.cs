@@ -66,7 +66,7 @@ public static class GameBusiness_Normal {
         CameraDomain.EnterNormal(ctx);
 
         // 打开准心UI
-        UIDomain.Panel_CrossHair_Open_TPS(ctx);
+        UIDomain.Panel_CrossHair_Open(ctx);
         UIDomain.Panel_PlayerStatus_Open(ctx, ctx.GetOwner().hpMax);
 
         // 游戏进入Normal status 

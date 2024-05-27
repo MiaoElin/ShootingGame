@@ -2,12 +2,15 @@ using UnityEngine;
 
 public static class UIDomain {
 
-    public static void Panel_CrossHair_Open_TPS(GameContext ctx) {
-        ctx.uIApp.Panel_CrossHair_OpenTPS();
+    public static void Panel_CrossHair_Open(GameContext ctx) {
+        ctx.uIApp.Panel_CrossHair_Open();
     }
 
+    public static void Panel_CrossHair_Open_TPS(GameContext ctx) {
+        ctx.uIApp.Panel_CrossHair_Open_TPS();
+    }
     public static void Panel_CrossHair_Open_FPS(GameContext ctx) {
-        ctx.uIApp.Panel_CrossHair_OpenFPS();
+        ctx.uIApp.Panel_CrossHair_Open_FPS();
     }
 
     public static void Panel_CrossHair_Hide(GameContext ctx) {

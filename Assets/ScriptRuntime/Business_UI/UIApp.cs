@@ -10,16 +10,20 @@ public class UIApp {
         ctx = new UIContext();
     }
 
-    public void Inject(AssetCore asset, Canvas screenCanvas, Canvas worldCanvas,EventCenter eventCenter) {
-        ctx.Inject(asset, screenCanvas, worldCanvas,eventCenter);
+    public void Inject(AssetCore asset, Canvas screenCanvas, Canvas worldCanvas, EventCenter eventCenter) {
+        ctx.Inject(asset, screenCanvas, worldCanvas, eventCenter);
     }
 
     #region  P_CrossHair
-    public void Panel_CrossHair_OpenTPS() {
+    public void Panel_CrossHair_Open() {
+        Panel_CrossHairDomain.Open(ctx);
+    }
+
+    public void Panel_CrossHair_Open_TPS() {
         Panel_CrossHairDomain.Open_TPS(ctx);
     }
 
-    public void Panel_CrossHair_OpenFPS() {
+    public void Panel_CrossHair_Open_FPS() {
         Panel_CrossHairDomain.Open_FPS(ctx);
     }
 
