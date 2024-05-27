@@ -26,14 +26,12 @@ public static class BulletDomain {
         for (int i = 0; i < hits.Length; i++) {
             var hit = hits[i];
             var role = hit.collider.gameObject.GetComponentInParent<RoleEntity>();
-            Debug.Log(role.ally);
             if (role.isDead) {
                 continue;
             }
             if (role.ally != bullet.ally) {
                 bullet.isDead = true;
                 role.hp -= bullet.damage;
-                Debug.Log(role.hp);
                 // anim
                 role.Anim_Hurt();
                 if (role.hp <= 0) {

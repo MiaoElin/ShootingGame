@@ -220,6 +220,7 @@ public class RoleEntity : MonoBehaviour {
     public void Anim_Run() {
         var velocity = rb.velocity;
         velocity.y = 0;
+        anim.ResetTrigger("T_Attack");
         anim.SetFloat("F_MoveSpeed", velocity.magnitude);
     }
 
@@ -250,5 +251,14 @@ public class RoleEntity : MonoBehaviour {
 
     internal void Anim_Hurt() {
         anim.SetTrigger("T_Hurt");
+    }
+
+    public AnimatorStateInfo GetStateInfo() {
+        return anim.GetCurrentAnimatorStateInfo(0);
+    }
+
+    internal void ResetAttack() {
+        attackTime = 0;
+        hasAttack = false;
     }
 }

@@ -38,6 +38,10 @@ public static class RoleDomain {
             if (role.hasTarget) {
                 Check_Touch(role, target, dt);
                 if (!role.isArrivedTarget) {
+                    var info = role.GetStateInfo();
+                    if (info.IsName("Attack")) {
+                        return;
+                    }
                     role.Move_To(target.Pos(), dt);
                     // anim
                     role.Anim_Run();
@@ -101,6 +105,7 @@ public static class RoleDomain {
     public static void Monster_Hit(GameContext ctx, RoleEntity role, float dt) {
         if (role.ally == Ally.Monster) {
             if (!role.isArrivedTarget) {
+                role.ResetAttack();
                 return;
             }
             // 开始攻击
