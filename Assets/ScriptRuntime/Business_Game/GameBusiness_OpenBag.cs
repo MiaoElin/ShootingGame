@@ -6,6 +6,7 @@ public static class GameBusiness_OpenBag {
         var fsm = ctx.fsm;
         if (fsm.isEnterOpenBag) {
             fsm.isEnterOpenBag = false;
+            Time.timeScale = 0;
             // Hide CrossHair
             UIDomain.Panel_CrossHair_Hide(ctx);
             // Open Curcor
@@ -37,6 +38,8 @@ public static class GameBusiness_OpenBag {
                 fsm.EnterNormal();
                 // 打开光标UI
                 UIDomain.Panel_CrossHair_Open_TPS(ctx);
+                // 恢复时间
+                Time.timeScale = 1;
             }
         }
     }
