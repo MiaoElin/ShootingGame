@@ -22,16 +22,14 @@ public static class BulletDomain {
     public static void CheckCollision(BulletEntity bullet, float dt) {
         var layerMask = 1 << 6;
         Ray ray = new Ray(bullet.Pos(), bullet.GetForward());
-        bool hitRole = Physics.Raycast(ray, out RaycastHit hit, bullet.moveSpeed * dt, layerMask);
-        if (hitRole) {
-            Debug.Log("hit");
-            bullet.isDead = true;
+        RaycastHit[] hits = Physics.RaycastAll(ray, bullet.moveSpeed * dt, layerMask);
+        for (int i = 0; i < hits.Length; i++) {
+            var hit = hits[i];
             var role = hit.collider.gameObject.GetComponentInParent<RoleEntity>();
+            Debug.Log(role.ally);
             if (role.isDead) {
-                Debug.Log("Dead return");
-                return;
+                continue;
             }
-            Debug.Log(role.ally + " " + bullet.ally);
             if (role.ally != bullet.ally) {
                 role.hp -= bullet.damage;
                 Debug.Log(role.hp);
@@ -42,6 +40,5 @@ public static class BulletDomain {
                 }
             }
         }
-
     }
 }
